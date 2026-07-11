@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Agriculture engineering study resources, notes, books and quizzes." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://theciae.com/" />
+    <title>The Concept in Agricultural Engineering | Notes, Books & Quizzes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="The Concept in Agricultural Engineering home"><span class="brand-mark">✦</span> the<span>ciae</span>.com</a>
+      <nav><a href="#resources">Resources</a><a href="#quizzes">Quizzes</a><a href="#about">About</a></nav>
+      <button class="button button-dark" id="openUpload">Upload resource</button>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">FOR AGRICULTURE ENGINEERING STUDENTS</p>
+          <h1>Grow your knowledge.<br /><em>Shape the future.</em></h1>
+          <p class="hero-text">Your place for organised notes, practical manuals, previous-year papers and quick quizzes—built for agriculture engineering.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#resources">Explore resources <span>→</span></a><button class="text-button" id="heroUpload">Share a resource <span>↗</span></button></div>
+          <div class="stats"><div><strong id="resourceCount">12</strong><span>study resources</span></div><div><strong>6</strong><span>core subjects</span></div><div><strong>24</strong><span>quiz questions</span></div></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div>
+          <div class="plant"><i></i><i></i><i></i><b></b></div><div class="plant plant-small"><i></i><i></i><b></b></div>
+          <div class="hero-card"><span>THIS WEEK'S FOCUS</span><strong>Irrigation<br />Engineering</strong><small>12 resources available</small></div>
+        </div>
+      </section>
+
+      <section class="section resources" id="resources">
+        <div class="section-heading"><div><p class="eyebrow">RESOURCE LIBRARY</p><h2>Find what you need</h2></div><p>Browse by subject, semester, or resource type.</p></div>
+        <div class="filters"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search notes, subjects, topics..." /></label><select id="subjectFilter"><option value="all">All subjects</option></select><select id="typeFilter"><option value="all">All types</option><option>Syllabus</option><option>Notes</option><option>Book</option><option>Question Paper</option><option>Lab Manual</option></select></div>
+        <div class="resource-grid" id="resourceGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>No matching resources yet. Try another search.</p>
+      </section>
+
+      <section class="section quiz-section" id="quizzes">
+        <div><p class="eyebrow">TEST YOURSELF</p><h2>Quick quiz corner</h2><p>Small quizzes to sharpen concepts before your next class or exam.</p><div class="quiz-list"><button class="quiz-option active" data-quiz="irrigation"><span>01</span> Irrigation basics <b>5 questions</b></button><button class="quiz-option" data-quiz="soil"><span>02</span> Soil mechanics <b>5 questions</b></button></div></div>
+        <div class="quiz-card"><div class="quiz-progress"><span id="quizLabel">IRRIGATION BASICS</span><span id="questionNumber">1 / 5</span></div><div class="progress"><i id="progressBar"></i></div><h3 id="questionText"></h3><div class="answers" id="answers"></div><p id="quizFeedback" class="quiz-feedback"></p><button class="button button-primary" id="nextQuestion" disabled>Check answer</button></div>
+      </section>
+
+      <section class="cta" id="about"><div><p class="eyebrow">CONTRIBUTE TO THE COMMUNITY</p><h2>Have helpful notes to share?</h2><p>Upload your own original notes, lab work, or open resources. Help the next student learn faster.</p></div><button class="button button-light" id="ctaUpload">Upload a resource <span>→</span></button></section>
+    </main>
+    <footer><a class="brand" href="#home"><span class="brand-mark">✦</span> the<span>ciae</span>.com</a><p>Built for the agriculture engineering community.</p><p>© <span id="year"></span> The Concept in Agricultural Engineering</p></footer>
+
+    <dialog id="uploadDialog"><form id="uploadForm" method="dialog"><div class="modal-heading"><div><p class="eyebrow">ADMIN AREA</p><h2>Add a resource</h2></div><button type="button" class="close" id="closeUpload" aria-label="Close">×</button></div><p class="modal-note">This demo saves information in this browser. Later, connect cloud storage so students can access uploaded files.</p><div class="form-grid"><label>Title<input required name="title" placeholder="e.g. Irrigation Engineering Unit 1" /></label><label>Subject<input required name="subject" placeholder="e.g. Soil & Water Engineering" /></label><label>Semester<select required name="semester"><option value="Semester 1">Semester 1</option><option value="Semester 2">Semester 2</option><option value="Semester 3">Semester 3</option><option value="Semester 4">Semester 4</option><option value="Semester 5">Semester 5</option><option value="Semester 6">Semester 6</option><option value="Semester 7">Semester 7</option><option value="Semester 8">Semester 8</option></select></label><label>Type<select required name="type"><option>Syllabus</option><option>Notes</option><option>Book</option><option>Question Paper</option><option>Lab Manual</option></select></label><label class="wide">Choose file<input required name="file" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.jpeg,.png,.zip" /><small>PDF, DOCX, PPTX, XLSX, JPG, PNG or ZIP · maximum 50 MB recommended</small></label></div><div class="form-actions"><button type="button" class="button button-plain" id="cancelUpload">Cancel</button><button class="button button-primary" value="default">Save resource</button></div></form></dialog>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -120,6 +120,7 @@ document.querySelector('#closePdf').onclick=()=>{document.querySelector('#pdfDia
 // support dialog
 document.querySelector('#openSupport').onclick=e=>{e.preventDefault();document.querySelector('#supportDialog').showModal()};
 document.querySelector('#closeSupport').onclick=()=>document.querySelector('#supportDialog').close();
+document.querySelector('#copyUpi').onclick=e=>{navigator.clipboard.writeText(document.querySelector('#upiId').textContent).then(()=>{e.target.textContent='Copied ✓';setTimeout(()=>e.target.textContent='Copy',1800)}).catch(()=>{})};
 
 // ---- upload dialog ----
 const dialog=document.querySelector('#uploadDialog');['openUpload','heroUpload','ctaUpload'].forEach(id=>document.querySelector('#'+id).onclick=()=>dialog.showModal());document.querySelector('#closeUpload').onclick=()=>dialog.close();document.querySelector('#cancelUpload').onclick=()=>dialog.close();

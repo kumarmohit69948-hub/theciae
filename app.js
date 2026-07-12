@@ -5,26 +5,64 @@ const ICONS={'Semester 1':'S1','Semester 2':'S2','Semester 3':'S3','Semester 4':
 const grid=document.querySelector('#courseGrid'), search=document.querySelector('#searchInput'), pillBox=document.querySelector('#semPills'), emptyState=document.querySelector('#emptyState');
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const dept=code=>DEPTS[code.replace(/[^A-Z].*$/,'')]||'Agricultural Engineering';
-let courses=[], activePill='all';
+let courses=[], activePill='all', filesIdx={};
+
+// Discover uploaded files by reading the repo tree from the GitHub API.
+// Any file dropped into courses/<Semester>/<Course>/<Lecture>/ on GitHub
+// shows up here automatically on the next page load.
+const REPO='kumarmohit69948-hub/theciae', BRANCHES=['main','feat/syllabus-course-folders'];
+async function loadFiles(){
+  const cached=sessionStorage.getItem('theciae-files-v1');
+  if(cached)return JSON.parse(cached);
+  for(const br of BRANCHES){
+    try{
+      const r=await fetch(`https://api.github.com/repos/${REPO}/git/trees/${br}?recursive=1`);
+      if(!r.ok)continue;
+      const t=await r.json();
+      const files=(t.tree||[]).filter(e=>e.type==='blob'&&e.path.startsWith('courses/')&&!/(\.gitkeep|README\.md)$/.test(e.path)).map(e=>e.path);
+      if(files.length){const out={branch:br,files};sessionStorage.setItem('theciae-files-v1',JSON.stringify(out));return out}
+    }catch(e){}
+  }
+  return {branch:'main',files:[]};
+}
+function indexFiles({branch,files}){
+  const idx={};
+  files.forEach(path=>{
+    const seg=path.split('/');if(seg.length<4)return;
+    const code=seg[2].split(' - ')[0].trim();
+    idx[code]=idx[code]||{course:[],lectures:{}};
+    const name=seg[seg.length-1];
+    const url=`https://raw.githubusercontent.com/${REPO}/${branch}/${seg.map(encodeURIComponent).join('/')}`;
+    if(seg.length===4){idx[code].course.push({name,url})}
+    else{const n=parseInt(seg[3],10);if(isNaN(n)){idx[code].course.push({name,url})}else{(idx[code].lectures[n]=idx[code].lectures[n]||[]).push({name,url})}}
+  });
+  return idx;
+}
+const fileCount=code=>{const f=filesIdx[code];return f?f.course.length+Object.values(f.lectures).reduce((a,b)=>a+b.length,0):0};
 
 const SYLLABUS_CARD=`<article class="resource-card course-card"><div class="card-top"><span class="file-icon">PDF</span><span class="tag">Official Syllabus</span></div><h3>B.Tech. Agricultural Engineering — 6th Deans' Committee Syllabus</h3><p>Complete curriculum document</p><div class="card-bottom"><span>All Semesters</span><a href="assets/btech-agril-engg-6th-dean-syllabus.pdf" download>Download ↓</a></div></article>`;
 
 function renderCourses(){
   const q=search.value.trim().toLowerCase();
   const matches=courses.filter(c=>(activePill==='all'||c.section===activePill)&&(!q||c.text.includes(q)));
-  grid.innerHTML=(activePill==='all'&&!q?SYLLABUS_CARD:'')+matches.map(c=>`<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${ICONS[c.section]||'—'}</span><span class="tag">${esc(c.code)}</span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p><div class="card-bottom"><span>${c.practical?'Practical / skill module':c.lectures.length?c.lectures.length+' lectures':'Plan coming soon'}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`).join('');
+  grid.innerHTML=(activePill==='all'&&!q?SYLLABUS_CARD:'')+matches.map(c=>{const nf=fileCount(c.code);return `<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${ICONS[c.section]||'—'}</span><span class="tag">${esc(c.code)}</span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p><div class="card-bottom"><span>${c.practical?'Practical / skill module':c.lectures.length?c.lectures.length+' lectures':'Plan coming soon'}${nf?` · <b class="has-files">${nf} file${nf>1?'s':''}</b>`:''}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`}).join('');
   emptyState.hidden=!!matches.length||(activePill==='all'&&!q);
 }
 function openLecture(i){
-  const c=courses[i];
+  const c=courses[i], f=filesIdx[c.code]||{course:[],lectures:{}};
+  const links=list=>`<span class="syl-files">${list.map(x=>`<a href="${x.url}" target="_blank" rel="noopener" download>${esc(x.name)} ↓</a>`).join('')}</span>`;
   document.querySelector('#lecCode').textContent=c.code+' · '+(PILLS.find(p=>p[0]===c.section)||['',''])[1].toUpperCase();
   document.querySelector('#lecTitle').textContent=c.title;
-  document.querySelector('#lecBody').innerHTML=c.lectures.length?`<ol class="syl-lectures">${c.lectures.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:`<p class="syl-note">${c.practical?'Hands-on skill module — resources will be added directly under this course.':'Lecture-wise plan will be added soon.'}</p>`;
+  document.querySelector('#lecBody').innerHTML=
+    (f.course.length?`<p class="syl-note"><strong>Course resources:</strong></p>${links(f.course)}`:'')+
+    (c.lectures.length?`<ol class="syl-lectures">${c.lectures.map(l=>`<li><i class="lec-n">${String(l.n).padStart(2,'0')}</i>${esc(l.t)}${f.lectures[l.n]?links(f.lectures[l.n]):''}</li>`).join('')}</ol>`:`<p class="syl-note">${c.practical?'Hands-on skill module — resources will be added directly under this course.':'Lecture-wise plan will be added soon.'}</p>`)+
+    `<p class="syl-hint">Notes and papers uploaded to this course's folders on GitHub appear here automatically.</p>`;
   document.querySelector('#lectureDialog').showModal();
 }
-fetch('courses.json').then(r=>r.json()).then(sections=>{
+Promise.all([fetch('courses.json').then(r=>r.json()),loadFiles().catch(()=>({branch:'main',files:[]}))]).then(([sections,tree])=>{
+  filesIdx=indexFiles(tree);
   let i=0;
-  sections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.join(' ')).toLowerCase()})}));
+  sections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.map(l=>l.t).join(' ')).toLowerCase()})}));
   document.querySelector('#resourceCount').textContent=courses.length;
   pillBox.innerHTML=PILLS.map(([v,l])=>`<button class="pill${v==='all'?' active':''}" data-v="${v}">${l}</button>`).join('');
   pillBox.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));b.classList.add('active');activePill=b.dataset.v;renderCourses()});

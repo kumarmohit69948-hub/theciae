@@ -15,7 +15,7 @@
   <body>
     <header class="site-header">
       <a class="brand" href="#home" aria-label="The Concept in Agricultural Engineering home"><span class="brand-mark">✦</span> the<span>ciae</span>.com</a>
-      <nav><a href="#resources">Resources</a><a href="#quizzes">Quizzes</a><a href="#about">About</a></nav>
+      <nav><a href="#resources">Resources</a><a href="#syllabus">Syllabus</a><a href="#quizzes">Quizzes</a><a href="#about">About</a></nav>
       <button class="button button-dark" id="openUpload">Upload resource</button>
     </header>
 
@@ -40,6 +40,13 @@
         <div class="filters"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search notes, subjects, topics..." /></label><select id="subjectFilter"><option value="all">All subjects</option></select><select id="typeFilter"><option value="all">All types</option><option>Syllabus</option><option>Notes</option><option>Book</option><option>Question Paper</option><option>Lab Manual</option></select></div>
         <div class="resource-grid" id="resourceGrid"></div>
         <p class="empty-state" id="emptyState" hidden>No matching resources yet. Try another search.</p>
+      </section>
+
+      <section class="section syllabus-section" id="syllabus">
+        <div class="section-heading"><div><p class="eyebrow">B.TECH. AGRICULTURAL ENGINEERING</p><h2>Browse by syllabus</h2></div><p>Every course and lecture of the ICAR 6th Deans' Committee curriculum, semester by semester.</p></div>
+        <div class="filters"><label class="search"><span>⌕</span><input id="sylSearch" type="search" placeholder="Search courses — e.g. irrigation, FMPE, soil..." /></label></div>
+        <div class="syl-tree" id="sylTree"><p class="empty-state">Loading syllabus…</p></div>
+        <p class="empty-state" id="sylEmpty" hidden>No matching courses. Try another search.</p>
       </section>
 
       <section class="section quiz-section" id="quizzes">

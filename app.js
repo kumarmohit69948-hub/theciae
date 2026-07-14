@@ -15,7 +15,7 @@ const doneCount=c=>{const p=progress[c.code]||{};return c.lectures.filter(l=>p[l
 // shows up here automatically on the next page load.
 const REPO='kumarmohit69948-hub/theciae', BRANCHES=['main','feat/syllabus-course-folders'];
 async function loadFiles(){
-  const cached=sessionStorage.getItem('theciae-files-v1');
+  const cached=sessionStorage.getItem('theciae-files-v2');
   if(cached)return JSON.parse(cached);
   for(const br of BRANCHES){
     try{
@@ -23,10 +23,11 @@ async function loadFiles(){
       if(!r.ok)continue;
       const t=await r.json();
       const files=(t.tree||[]).filter(e=>e.type==='blob'&&e.path.startsWith('courses/')&&!/(\.gitkeep|README\.md)$/.test(e.path)).map(e=>e.path);
-      if(files.length){const out={branch:br,files};sessionStorage.setItem('theciae-files-v1',JSON.stringify(out));return out}
+      const dirs=(t.tree||[]).filter(e=>e.type==='tree'&&e.path.startsWith('courses/')).map(e=>e.path);
+      if(dirs.length){const out={branch:br,files,dirs};sessionStorage.setItem('theciae-files-v2',JSON.stringify(out));return out}
     }catch(e){}
   }
-  return {branch:'main',files:[]};
+  return {branch:'main',files:[],dirs:[]};
 }
 function indexFiles({branch,files}){
   const idx={};
@@ -82,8 +83,9 @@ function openLecture(i){
     `<p class="syl-hint">Tick lectures as you complete them — your progress is saved on this device. Files uploaded to this course's folders on GitHub appear here automatically.</p>`;
   document.querySelector('#lectureDialog').showModal();
 }
-Promise.all([fetch('courses.json').then(r=>r.json()),loadFiles().catch(()=>({branch:'main',files:[]}))]).then(([sections,tree])=>{
+Promise.all([fetch('courses.json').then(r=>r.json()),loadFiles().catch(()=>({branch:'main',files:[],dirs:[]}))]).then(([sections,tree])=>{
   filesIdx=indexFiles(tree);
+  populateUploadPickers(tree.dirs||[]);
   let i=0;
   sections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.map(l=>l.t).join(' ')).toLowerCase()})}));
   document.querySelector('#resourceCount').textContent=courses.length;
@@ -122,9 +124,44 @@ document.querySelector('#openSupport').onclick=e=>{e.preventDefault();document.q
 document.querySelector('#closeSupport').onclick=()=>document.querySelector('#supportDialog').close();
 document.querySelector('#copyUpi').onclick=e=>{navigator.clipboard.writeText(document.querySelector('#upiId').textContent).then(()=>{e.target.textContent='Copied ✓';setTimeout(()=>e.target.textContent='Copy',1800)}).catch(()=>{})};
 
-// ---- upload dialog ----
+// ---- upload dialog (commits to GitHub via /api/upload) ----
 const dialog=document.querySelector('#uploadDialog');['openUpload','heroUpload','ctaUpload'].forEach(id=>document.querySelector('#'+id).onclick=()=>dialog.showModal());document.querySelector('#closeUpload').onclick=()=>dialog.close();document.querySelector('#cancelUpload').onclick=()=>dialog.close();
-document.querySelector('#uploadForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);const saved=load('theciae-uploads','[]');saved.unshift({title:f.get('title'),subject:f.get('subject'),semester:f.get('semester'),type:f.get('type')});localStorage.setItem('theciae-uploads',JSON.stringify(saved));dialog.close();e.target.reset();alert('Resource noted in this browser. Connect cloud storage before publishing so uploads are stored permanently.');});
+let courseDirs=[],lectureDirs=[];
+function populateUploadPickers(dirs){
+  // course folders start with a course code, e.g. "courses/Semester 1/SWCE1.4 - ..."
+  courseDirs=dirs.filter(d=>/^[A-Z]{2,4}[-0-9]/.test(d.split('/').pop()));
+  lectureDirs=dirs.filter(d=>/^\d\d /.test(d.split('/').pop()));
+  const sel=document.querySelector('#upCourse');if(!sel)return;
+  const groups={};
+  courseDirs.forEach(d=>{const seg=d.split('/');const g=seg.slice(1,-1).join(' / ');(groups[g]=groups[g]||[]).push(d)});
+  sel.innerHTML='<option value="">Select a course…</option>'+Object.keys(groups).map(g=>`<optgroup label="${esc(g)}">${groups[g].map(d=>`<option value="${esc(d)}">${esc(d.split('/').pop())}</option>`).join('')}</optgroup>`).join('');
+}
+document.querySelector('#upCourse').addEventListener('change',e=>{
+  const course=e.target.value, lec=document.querySelector('#upLecture');
+  const kids=lectureDirs.filter(d=>d.startsWith(course+'/')&&d.split('/').length===course.split('/').length+1).sort();
+  lec.innerHTML='<option value="">— course level (no specific lecture) —</option>'+kids.map(d=>`<option value="${esc(d)}">${esc(d.split('/').pop())}</option>`).join('');
+});
+document.querySelector('#uploadForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const f=new FormData(e.target), file=f.get('file'), status=document.querySelector('#uploadStatus'), btn=document.querySelector('#uploadSubmit');
+  if(!f.get('course')){status.textContent='Please select a course.';return}
+  if(!file||!file.name){status.textContent='Please choose a file.';return}
+  if(file.size>3*1024*1024){status.textContent='File is over 3 MB — please upload it via GitHub instead.';return}
+  const safeName=file.name.replace(/[<>:"/\\|?*]/g,' ').replace(/\s+/g,' ').trim();
+  const dir=f.get('lecture')||f.get('course');
+  btn.disabled=true;btn.textContent='Uploading…';status.textContent='';
+  try{
+    const b64=await new Promise((res,rej)=>{const rd=new FileReader();rd.onload=()=>res(rd.result.split(',')[1]);rd.onerror=rej;rd.readAsDataURL(file)});
+    const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:f.get('password'),path:`${dir}/${safeName}`,content:b64})});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok)throw new Error(j.error||('Upload failed ('+r.status+')'));
+    sessionStorage.removeItem('theciae-files-v2');
+    status.textContent='';e.target.reset();dialog.close();
+    alert('Uploaded! "'+safeName+'" is now on GitHub and will appear on the site.');
+    location.reload();
+  }catch(err){status.textContent='⚠ '+err.message}
+  finally{btn.disabled=false;btn.textContent='Upload to site'}
+});
 
 // ---- quizzes ----
 const QUIZ_TITLES={irrigation:'Irrigation basics',soil:'Soil mechanics',machinery:'Farm machinery',energy:'Renewable energy',food:'Food processing',surveying:'Surveying'};

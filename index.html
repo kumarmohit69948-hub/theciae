@@ -9,7 +9,7 @@
     <title>The Concept in Agricultural Engineering | Notes, Books & Quizzes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -31,7 +31,7 @@
         <div class="hero-art" aria-hidden="true">
           <div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div>
           <div class="plant"><i></i><i></i><i></i><b></b></div><div class="plant plant-small"><i></i><i></i><b></b></div>
-          <div class="hero-card"><span>THIS WEEK'S FOCUS</span><strong>Irrigation<br />Engineering</strong><small>12 resources available</small></div>
+          <div class="hero-card"><span>COMPLETE CURRICULUM</span><strong>115 courses,<br />8 semesters</strong><small>ICAR 6th Deans' Committee aligned</small></div>
         </div>
       </section>
 
@@ -50,7 +50,31 @@
 
       <section class="cta" id="about"><div><p class="eyebrow">CONTRIBUTE TO THE COMMUNITY</p><h2>Have helpful notes to share?</h2><p>Upload your own original notes, lab work, or open resources. Help the next student learn faster.</p></div><button class="button button-light" id="ctaUpload">Upload a resource <span>→</span></button></section>
     </main>
-    <footer><a class="brand" href="#home"><span class="brand-mark">✦</span> the<span>ciae</span>.com</a><p>Built for the agriculture engineering community.</p><p>© <span id="year"></span> The Concept in Agricultural Engineering</p></footer>
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand brand-light" href="#home"><span class="brand-mark">✦</span> the<span>ciae</span>.com</a>
+          <p>The Concept in Agricultural Engineering — organised notes, lecture plans, papers and quizzes for every B.Tech. Agricultural Engineering student.</p>
+        </div>
+        <nav class="footer-col" aria-label="Explore">
+          <h4>Explore</h4>
+          <a href="#resources">Syllabus &amp; resources</a>
+          <a href="#quizzes">Quiz corner</a>
+          <a href="#about">About</a>
+        </nav>
+        <nav class="footer-col" aria-label="Contribute">
+          <h4>Contribute</h4>
+          <a href="#" onclick="document.querySelector('#openUpload').click();return false">Upload a resource</a>
+          <a href="#" onclick="document.querySelector('#openSupport').click();return false">Support the project ♥</a>
+          <a href="https://github.com/kumarmohit69948-hub/theciae" target="_blank" rel="noopener">GitHub repository ↗</a>
+        </nav>
+        <div class="footer-col">
+          <h4>Curriculum</h4>
+          <p class="footer-fine">Course structure follows the ICAR 6th Deans' Committee recommendations for the B.Tech. (Agricultural Engineering) degree programme.</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> The Concept in Agricultural Engineering</span><span>Built for the agriculture engineering community.</span></div>
+    </footer>
 
     <dialog id="uploadDialog"><form id="uploadForm"><div class="modal-heading"><div><p class="eyebrow">ADMIN AREA</p><h2>Add a resource</h2></div><button type="button" class="close" id="closeUpload" aria-label="Close">×</button></div><p class="modal-note">Uploads commit straight to the GitHub repository and appear on the site right away. Files up to ~3 MB here — for bigger files use GitHub's own upload page.</p><div class="form-grid"><label class="wide">Course<select required name="course" id="upCourse"><option value="">Loading courses…</option></select></label><label class="wide">Lecture<select name="lecture" id="upLecture"><option value="">— course level (no specific lecture) —</option></select></label><label class="wide">Choose file<input required name="file" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.jpg,.jpeg,.png,.zip" /><small>PDF, DOCX, PPTX, XLSX, JPG, PNG or ZIP · up to ~3 MB</small></label><label class="wide">Admin password<input required name="password" type="password" autocomplete="off" placeholder="Only the site owner can upload" /></label></div><div class="form-actions"><button type="button" class="button button-plain" id="cancelUpload">Cancel</button><button class="button button-primary" id="uploadSubmit">Upload to site</button></div><p id="uploadStatus" class="quiz-feedback"></p></form></dialog>
     <dialog id="lectureDialog"><div class="lecture-modal"><div class="modal-heading"><div><p class="eyebrow" id="lecCode"></p><h2 id="lecTitle"></h2></div><button type="button" class="close" id="closeLecture" aria-label="Close">×</button></div><div id="lecProg" hidden><div class="progress"><i id="lecProgBar"></i></div><span id="lecProgText"></span></div><div id="lecBody"></div></div></dialog>

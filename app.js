@@ -39,7 +39,7 @@ function indexFiles({branch,files}){
     const enc=seg.map(encodeURIComponent).join('/');
     const raw=`https://raw.githubusercontent.com/${REPO}/${branch}/${enc}`;
     const cdn=`https://cdn.jsdelivr.net/gh/${REPO}@${branch}/${enc}`;
-    const f={name,raw,cdn};
+    const f={name,raw,cdn,path};
     if(seg.length===4){idx[code].course.push(f)}
     else{const n=parseInt(seg[3],10);if(isNaN(n)){idx[code].course.push(f)}else{(idx[code].lectures[n]=idx[code].lectures[n]||[]).push(f)}}
   });
@@ -47,17 +47,15 @@ function indexFiles({branch,files}){
 }
 const fileCount=code=>{const f=filesIdx[code];return f?f.course.length+Object.values(f.lectures).reduce((a,b)=>a+b.length,0):0};
 
-const SYLLABUS_CARD=`<article class="resource-card course-card"><div class="card-top"><span class="file-icon">PDF</span><span class="tag">Official Syllabus</span></div><h3>B.Tech. Agricultural Engineering — 6th Deans' Committee Syllabus</h3><p>Complete curriculum document</p><div class="card-bottom"><span>All Semesters</span><a href="assets/btech-agril-engg-6th-dean-syllabus.pdf" download>Download ↓</a></div></article>`;
-
 function renderCourses(){
   const q=search.value.trim().toLowerCase();
   const matches=courses.filter(c=>(activePill==='all'||(activePill==='starred'?stars.has(c.code):c.section===activePill))&&(!q||c.text.includes(q)));
-  grid.innerHTML=(activePill==='all'&&!q?SYLLABUS_CARD:'')+matches.map(c=>{
+  grid.innerHTML=matches.map(c=>{
     const nf=fileCount(c.code), dn=doneCount(c), tot=c.lectures.length;
     const status=c.practical?'Practical / skill module':tot?(dn?`${dn}/${tot} done`:tot+' lectures'):'Plan coming soon';
     return `<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${ICONS[c.section]||'—'}</span><span class="card-top-right"><span class="tag">${esc(c.code)}</span><button class="star${stars.has(c.code)?' on':''}" data-star="${esc(c.code)}" title="Save to My courses">★</button></span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p>${dn?`<div class="mini-progress"><i style="width:${Math.round(dn/tot*100)}%"></i></div>`:''}<div class="card-bottom"><span>${status}${nf?` · <b class="has-files">${nf} file${nf>1?'s':''}</b>`:''}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`}).join('');
-  emptyState.hidden=!!matches.length||(activePill==='all'&&!q);
-  if(activePill==='starred'&&!matches.length&&!q){emptyState.hidden=false;emptyState.textContent='No saved courses yet — tap the ★ on any course card to pin it here.'}
+  emptyState.hidden=!!matches.length;
+  if(activePill==='starred'&&!matches.length&&!q){emptyState.textContent='No saved courses yet — tap the ★ on any course card to pin it here.'}
   else emptyState.textContent='No matching courses yet. Try another search.';
 }
 let openCourse=null;
@@ -67,9 +65,10 @@ function updateLectureProgress(c){
   if(tot){document.querySelector('#lecProgBar').style.width=Math.round(dn/tot*100)+'%';document.querySelector('#lecProgText').textContent=`${dn} of ${tot} lectures completed`}
 }
 function fileLinks(list){
-  return `<span class="syl-files">${list.map(x=>/\.pdf$/i.test(x.name)
+  return `<span class="syl-files">${list.map(x=>(/\.pdf$/i.test(x.name)
     ?`<a href="${esc(x.cdn)}" class="pdf-chip" data-name="${esc(x.name)}" data-dl="${esc(x.raw)}">${esc(x.name)} — view ⤢</a>`
-    :`<a href="${esc(x.raw)}" target="_blank" rel="noopener" download>${esc(x.name)} ↓</a>`).join('')}</span>`;
+    :`<a href="${esc(x.raw)}" target="_blank" rel="noopener" download>${esc(x.name)} ↓</a>`)
+    +`<button class="file-del" data-path="${esc(x.path)}" data-fname="${esc(x.name)}" title="Delete this file (admin only)">🗑</button>`).join('')}</span>`;
 }
 function openLecture(i){
   const c=courses[i], f=filesIdx[c.code]||{course:[],lectures:{}}, p=progress[c.code]||{};
@@ -109,8 +108,26 @@ document.querySelector('#lecBody').addEventListener('change',e=>{
   cb.closest('li').classList.toggle('done',cb.checked);
   updateLectureProgress(openCourse);renderCourses();
 });
-// in-page PDF viewer
-document.querySelector('#lecBody').addEventListener('click',e=>{
+// in-page PDF viewer + admin file delete
+document.querySelector('#lecBody').addEventListener('click',async e=>{
+  const del=e.target.closest('.file-del');
+  if(del){
+    e.preventDefault();
+    const name=del.dataset.fname;
+    if(!confirm(`Delete "${name}" from the website?\n(Only the site owner can complete this.)`))return;
+    const pw=prompt('Admin password:');
+    if(!pw)return;
+    del.disabled=true;
+    try{
+      const r=await fetch('/api/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw,path:del.dataset.path})});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok)throw new Error(j.error||('Delete failed ('+r.status+')'));
+      sessionStorage.removeItem('theciae-files-v2');
+      alert('"'+name+'" deleted.');
+      location.reload();
+    }catch(err){alert('⚠ '+err.message);del.disabled=false}
+    return;
+  }
   const a=e.target.closest('.pdf-chip');if(!a)return;
   e.preventDefault();
   document.querySelector('#pdfName').textContent=a.dataset.name;
@@ -215,3 +232,9 @@ nextBtn.onclick=()=>{
 document.querySelectorAll('.quiz-option').forEach(b=>b.onclick=()=>{document.querySelectorAll('.quiz-option').forEach(x=>x.classList.remove('active'));b.classList.add('active');startQuiz(b.dataset.quiz)});
 startQuiz('irrigation');
 document.querySelector('#year').textContent=new Date().getFullYear();
+
+// ---- gentle reveal-on-scroll for sections ----
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+  document.querySelectorAll('.section, .cta').forEach(el=>{el.classList.add('fade-up');io.observe(el)});
+}

@@ -93,6 +93,10 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",san
 .search:focus-within{border-color:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
 .search span{font-size:1.35rem;color:var(--faint)}
 .search input{border:0;outline:0;background:transparent;width:100%;font:inherit;color:var(--ink)}
+.prog-tabs{display:inline-flex;background:var(--wash);border:1px solid var(--line);border-radius:999px;padding:4px;gap:4px;margin-bottom:22px}
+.prog-tab{border:0;background:none;border-radius:999px;padding:10px 20px;font:700 .85rem "DM Sans";color:var(--muted);cursor:pointer;transition:all .18s var(--ease)}
+.prog-tab:hover{color:var(--ink)}
+.prog-tab.active{background:var(--ink);color:#fff;box-shadow:var(--shadow-sm)}
 .sem-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
 .pill{border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px;padding:9px 16px;font:600 .8rem "DM Sans";cursor:pointer;transition:all .16s var(--ease)}
 .pill:hover{border-color:var(--green);color:var(--green);transform:translateY(-1px)}

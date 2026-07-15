@@ -1,12 +1,13 @@
 // ---- syllabus course library ----
 const DEPTS={FMPE:'Farm Machinery & Power Engineering',SWCE:'Soil & Water Conservation Engineering',IDE:'Irrigation & Drainage Engineering',PFE:'Processing & Food Engineering',REE:'Renewable Energy Engineering',CSE:'Computer Science & Engineering',AS:'Applied Sciences',CAE:'Agricultural Engineering',SEC:'Skill Enhancement',MDC:'Multidisciplinary Course',AEC:'Ability Enhancement Course',VAC:'Value-Added Course',FC:'Foundation Course'};
 const PILLS=[['all','All'],['starred','★ My courses'],['Semester 1','Sem 1'],['Semester 2','Sem 2'],['Semester 3','Sem 3'],['Semester 4','Sem 4'],['Semester 5','Sem 5'],['Semester 6','Sem 6'],['Semester 7','Sem 7'],['Semester 8','Sem 8'],['Semester 8 — Electives','Electives'],['Skill Enhancement Courses (Semester 2)','Skill Modules']];
+const MTECH_PILLS=[['all','All units'],['starred','★ My saved']];
 const ICONS={'Semester 1':'S1','Semester 2':'S2','Semester 3':'S3','Semester 4':'S4','Semester 5':'S5','Semester 6':'S6','Semester 7':'S7','Semester 8':'S8','Semester 8 — Electives':'EL','Skill Enhancement Courses (Semester 2)':'SK'};
 const grid=document.querySelector('#courseGrid'), search=document.querySelector('#searchInput'), pillBox=document.querySelector('#semPills'), emptyState=document.querySelector('#emptyState');
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const dept=code=>DEPTS[code.replace(/[^A-Z].*$/,'')]||'Agricultural Engineering';
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||d)}catch(e){return JSON.parse(d)}};
-let courses=[], activePill='all', filesIdx={}, specialsIdx={};
+let courses=[], activePill='all', activeProg='btech', filesIdx={}, specialsIdx={};
 let progress=load('theciae-progress','{}'), stars=new Set(load('theciae-stars','[]'));
 const doneCount=c=>{const p=progress[c.code]||{};return c.lectures.filter(l=>p[l.n]).length};
 
@@ -55,12 +56,13 @@ const fileCount=code=>{const f=filesIdx[code];return f?f.course.length+Object.va
 
 function renderCourses(){
   const q=search.value.trim().toLowerCase();
-  const matches=courses.filter(c=>(activePill==='all'||(activePill==='starred'?stars.has(c.code):c.section===activePill))&&(!q||c.text.includes(q)));
+  const matches=courses.filter(c=>c.prog===activeProg&&(activePill==='all'||(activePill==='starred'?stars.has(c.code):c.section===activePill))&&(!q||c.text.includes(q)));
   grid.innerHTML=matches.map(c=>{
     const nf=fileCount(c.code), dn=doneCount(c), tot=c.lectures.length, sp=specialsIdx[c.code];
-    let status=c.practical?'Practical / skill module':tot?(dn?`${dn}/${tot} done`:tot+' lectures'):'Plan coming soon';
+    const word=c.prog==='mtech'?'topic':'lecture';
+    let status=c.practical?'Practical / skill module':tot?(dn?`${dn}/${tot} done`:tot+' '+word+'s'):'Plan coming soon';
     if(sp)status+=(sp.quiz?' · <b class="has-files">quiz</b>':'')+(sp.flash?' · <b class="has-files">cards</b>':'');
-    return `<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${ICONS[c.section]||'—'}</span><span class="card-top-right"><span class="tag">${esc(c.code)}</span><button class="star${stars.has(c.code)?' on':''}" data-star="${esc(c.code)}" title="Save to My courses">★</button></span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p>${dn?`<div class="mini-progress"><i style="width:${Math.round(dn/tot*100)}%"></i></div>`:''}<div class="card-bottom"><span>${status}${nf?` · <b class="has-files">${nf} file${nf>1?'s':''}</b>`:''}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`}).join('');
+    return `<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${esc(c.icon||ICONS[c.section]||'—')}</span><span class="card-top-right"><span class="tag">${esc(c.code)}</span><button class="star${stars.has(c.code)?' on':''}" data-star="${esc(c.code)}" title="Save to My courses">★</button></span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p>${dn?`<div class="mini-progress"><i style="width:${Math.round(dn/tot*100)}%"></i></div>`:''}<div class="card-bottom"><span>${status}${nf?` · <b class="has-files">${nf} file${nf>1?'s':''}</b>`:''}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`}).join('');
   emptyState.hidden=!!matches.length;
   if(activePill==='starred'&&!matches.length&&!q){emptyState.textContent='No saved courses yet — tap the ★ on any course card to pin it here.'}
   else emptyState.textContent='No matching courses yet. Try another search.';
@@ -69,7 +71,7 @@ let openCourse=null;
 function updateLectureProgress(c){
   const dn=doneCount(c), tot=c.lectures.length, prog=document.querySelector('#lecProg');
   prog.hidden=!tot;
-  if(tot){document.querySelector('#lecProgBar').style.width=Math.round(dn/tot*100)+'%';document.querySelector('#lecProgText').textContent=`${dn} of ${tot} lectures completed`}
+  if(tot){document.querySelector('#lecProgBar').style.width=Math.round(dn/tot*100)+'%';document.querySelector('#lecProgText').textContent=`${dn} of ${tot} ${c.prog==='mtech'?'topics':'lectures'} completed`}
 }
 function fileLinks(list){
   return `<span class="syl-files">${list.map(x=>(/\.pdf$/i.test(x.name)
@@ -80,7 +82,7 @@ function fileLinks(list){
 function openLecture(i){
   const c=courses[i], f=filesIdx[c.code]||{course:[],lectures:{}}, p=progress[c.code]||{};
   openCourse=c;
-  document.querySelector('#lecCode').textContent=c.code+' · '+(PILLS.find(x=>x[0]===c.section)||['',''])[1].toUpperCase();
+  document.querySelector('#lecCode').textContent=c.code+' · '+((PILLS.find(x=>x[0]===c.section)||[null,c.section])[1]).toUpperCase();
   document.querySelector('#lecTitle').textContent=c.title;
   updateLectureProgress(c);
   const sp=specialsIdx[c.code];
@@ -91,14 +93,23 @@ function openLecture(i){
     `<p class="syl-hint">Tick lectures as you complete them — your progress is saved on this device. Files uploaded to this course's folders on GitHub appear here automatically.</p>`;
   document.querySelector('#lectureDialog').showModal();
 }
-Promise.all([fetch('courses.json').then(r=>r.json()),loadFiles().catch(()=>({branch:'main',files:[],dirs:[]}))]).then(([sections,tree])=>{
+function renderPills(){
+  const list=activeProg==='mtech'?MTECH_PILLS:PILLS;
+  pillBox.innerHTML=list.map(([v,l])=>`<button class="pill${v===activePill?' active':''}" data-v="${v}">${l}</button>`).join('');
+  pillBox.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));b.classList.add('active');activePill=b.dataset.v;renderCourses()});
+}
+Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=>r.json()).catch(()=>[]),loadFiles().catch(()=>({branch:'main',files:[],dirs:[]}))]).then(([sections,msections,tree])=>{
   filesIdx=indexFiles(tree);
   populateUploadPickers(tree.dirs||[]);
   let i=0;
-  sections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.map(l=>l.t).join(' ')).toLowerCase()})}));
+  sections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,prog:'btech',section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.map(l=>l.t).join(' ')).toLowerCase()})}));
+  msections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,prog:'mtech',section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.map(l=>l.t).join(' ')).toLowerCase()})}));
   document.querySelector('#resourceCount').textContent=courses.length;
-  pillBox.innerHTML=PILLS.map(([v,l])=>`<button class="pill${v==='all'?' active':''}" data-v="${v}">${l}</button>`).join('');
-  pillBox.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));b.classList.add('active');activePill=b.dataset.v;renderCourses()});
+  document.querySelectorAll('.prog-tab').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.prog-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+    activeProg=b.dataset.prog;activePill='all';renderPills();renderCourses();
+  });
+  renderPills();
   renderCourses();
   renderStreak();
   grid.addEventListener('click',e=>{

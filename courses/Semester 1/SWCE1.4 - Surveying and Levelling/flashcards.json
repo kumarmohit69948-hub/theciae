@@ -1,0 +1,12 @@
+[
+  ["Benchmark (BM)", "A fixed reference point of known elevation used as the starting point for levelling work."],
+  ["Contour line", "An imaginary line on a map joining points of equal elevation above a datum."],
+  ["Levelling", "The process of determining differences in elevation between points on the earth's surface."],
+  ["Back sight (BS)", "The first staff reading taken after setting up the level, on a point of known elevation."],
+  ["Fore sight (FS)", "The last staff reading taken before shifting the instrument, on a point whose elevation is to be found."],
+  ["Theodolite", "A precision instrument for measuring horizontal and vertical angles in traversing and triangulation."],
+  ["Total station", "An electronic instrument combining a theodolite with an EDM to measure angles and distances together."],
+  ["Ranging", "The process of establishing intermediate points on a straight line between two survey stations."],
+  ["Plane table surveying", "A graphical method of surveying in which field work and plotting are done simultaneously."],
+  ["GPS", "Global Positioning System — satellite-based positioning used for locating survey points."]
+]

@@ -6,7 +6,7 @@ const grid=document.querySelector('#courseGrid'), search=document.querySelector(
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const dept=code=>DEPTS[code.replace(/[^A-Z].*$/,'')]||'Agricultural Engineering';
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||d)}catch(e){return JSON.parse(d)}};
-let courses=[], activePill='all', filesIdx={};
+let courses=[], activePill='all', filesIdx={}, specialsIdx={};
 let progress=load('theciae-progress','{}'), stars=new Set(load('theciae-stars','[]'));
 const doneCount=c=>{const p=progress[c.code]||{};return c.lectures.filter(l=>p[l.n]).length};
 
@@ -40,6 +40,12 @@ function indexFiles({branch,files}){
     const raw=`https://raw.githubusercontent.com/${REPO}/${branch}/${enc}`;
     const cdn=`https://cdn.jsdelivr.net/gh/${REPO}@${branch}/${enc}`;
     const f={name,raw,cdn,path};
+    // quiz.json / flashcards.json in a course folder power the practice features
+    if(seg.length===4&&/^(quiz|flashcards)\.json$/i.test(name)){
+      specialsIdx[code]=specialsIdx[code]||{};
+      specialsIdx[code][name.toLowerCase().startsWith('quiz')?'quiz':'flash']=f;
+      return;
+    }
     if(seg.length===4){idx[code].course.push(f)}
     else{const n=parseInt(seg[3],10);if(isNaN(n)){idx[code].course.push(f)}else{(idx[code].lectures[n]=idx[code].lectures[n]||[]).push(f)}}
   });
@@ -51,8 +57,9 @@ function renderCourses(){
   const q=search.value.trim().toLowerCase();
   const matches=courses.filter(c=>(activePill==='all'||(activePill==='starred'?stars.has(c.code):c.section===activePill))&&(!q||c.text.includes(q)));
   grid.innerHTML=matches.map(c=>{
-    const nf=fileCount(c.code), dn=doneCount(c), tot=c.lectures.length;
-    const status=c.practical?'Practical / skill module':tot?(dn?`${dn}/${tot} done`:tot+' lectures'):'Plan coming soon';
+    const nf=fileCount(c.code), dn=doneCount(c), tot=c.lectures.length, sp=specialsIdx[c.code];
+    let status=c.practical?'Practical / skill module':tot?(dn?`${dn}/${tot} done`:tot+' lectures'):'Plan coming soon';
+    if(sp)status+=(sp.quiz?' · <b class="has-files">quiz</b>':'')+(sp.flash?' · <b class="has-files">cards</b>':'');
     return `<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${ICONS[c.section]||'—'}</span><span class="card-top-right"><span class="tag">${esc(c.code)}</span><button class="star${stars.has(c.code)?' on':''}" data-star="${esc(c.code)}" title="Save to My courses">★</button></span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p>${dn?`<div class="mini-progress"><i style="width:${Math.round(dn/tot*100)}%"></i></div>`:''}<div class="card-bottom"><span>${status}${nf?` · <b class="has-files">${nf} file${nf>1?'s':''}</b>`:''}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`}).join('');
   emptyState.hidden=!!matches.length;
   if(activePill==='starred'&&!matches.length&&!q){emptyState.textContent='No saved courses yet — tap the ★ on any course card to pin it here.'}
@@ -76,7 +83,9 @@ function openLecture(i){
   document.querySelector('#lecCode').textContent=c.code+' · '+(PILLS.find(x=>x[0]===c.section)||['',''])[1].toUpperCase();
   document.querySelector('#lecTitle').textContent=c.title;
   updateLectureProgress(c);
+  const sp=specialsIdx[c.code];
   document.querySelector('#lecBody').innerHTML=
+    (sp?`<div class="practice-row">${sp.quiz?`<button class="button button-primary" data-practice="quiz">▶ Practice quiz</button>`:''}${sp.flash?`<button class="button button-plain" data-practice="flash">🃏 Flashcards</button>`:''}</div>`:'')+
     (f.course.length?`<p class="syl-note"><strong>Course resources:</strong></p>${fileLinks(f.course)}`:'')+
     (c.lectures.length?`<ol class="syl-lectures">${c.lectures.map(l=>`<li class="${p[l.n]?'done':''}"><i class="lec-n">${String(l.n).padStart(2,'0')}</i>${esc(l.t)}${f.lectures[l.n]?fileLinks(f.lectures[l.n]):''}<label class="lec-check" title="Mark as completed"><input type="checkbox" data-n="${l.n}"${p[l.n]?' checked':''}></label></li>`).join('')}</ol>`:`<p class="syl-note">${c.practical?'Hands-on skill module — resources will be added directly under this course.':'Lecture-wise plan will be added soon.'}</p>`)+
     `<p class="syl-hint">Tick lectures as you complete them — your progress is saved on this device. Files uploaded to this course's folders on GitHub appear here automatically.</p>`;
@@ -91,6 +100,7 @@ Promise.all([fetch('courses.json').then(r=>r.json()),loadFiles().catch(()=>({bra
   pillBox.innerHTML=PILLS.map(([v,l])=>`<button class="pill${v==='all'?' active':''}" data-v="${v}">${l}</button>`).join('');
   pillBox.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));b.classList.add('active');activePill=b.dataset.v;renderCourses()});
   renderCourses();
+  renderStreak();
   grid.addEventListener('click',e=>{
     const st=e.target.closest('[data-star]');
     if(st){e.preventDefault();const code=st.dataset.star;stars.has(code)?stars.delete(code):stars.add(code);localStorage.setItem('theciae-stars',JSON.stringify([...stars]));renderCourses();return}
@@ -107,9 +117,31 @@ document.querySelector('#lecBody').addEventListener('change',e=>{
   localStorage.setItem('theciae-progress',JSON.stringify(progress));
   cb.closest('li').classList.toggle('done',cb.checked);
   updateLectureProgress(openCourse);renderCourses();
+  if(cb.checked)recordStudy();
 });
-// in-page PDF viewer + admin file delete
+// in-page PDF viewer + admin file delete + practice launchers
 document.querySelector('#lecBody').addEventListener('click',async e=>{
+  const pr=e.target.closest('[data-practice]');
+  if(pr&&openCourse){
+    const sp=specialsIdx[openCourse.code];if(!sp)return;
+    pr.disabled=true;
+    try{
+      if(pr.dataset.practice==='quiz'){
+        const data=await (await fetch(sp.quiz.raw)).json();
+        if(!Array.isArray(data)||!data.length)throw new Error('quiz.json is empty or invalid');
+        quizzes.__custom=data;QUIZ_TITLES.__custom=openCourse.code+' practice';
+        document.querySelector('#lectureDialog').close();
+        startQuiz('__custom');
+        document.querySelector('#quizzes').scrollIntoView({behavior:'smooth'});
+      }else{
+        const data=await (await fetch(sp.flash.raw)).json();
+        if(!Array.isArray(data)||!data.length)throw new Error('flashcards.json is empty or invalid');
+        openFlashcards(openCourse.code,data);
+      }
+    }catch(err){alert('⚠ Could not load practice content: '+err.message)}
+    finally{pr.disabled=false}
+    return;
+  }
   const del=e.target.closest('.file-del');
   if(del){
     e.preventDefault();
@@ -136,6 +168,94 @@ document.querySelector('#lecBody').addEventListener('click',async e=>{
   document.querySelector('#pdfDialog').showModal();
 });
 document.querySelector('#closePdf').onclick=()=>{document.querySelector('#pdfDialog').close();document.querySelector('#pdfFrame').src='about:blank'};
+
+// ---- flashcards ----
+let flashDeck=[],flashIdx=0;
+function renderFlash(){
+  const [front,back]=flashDeck[flashIdx];
+  document.querySelector('#flashCard').classList.remove('flipped');
+  document.querySelector('#flashFront').textContent=front;
+  document.querySelector('#flashBack').textContent=back;
+  document.querySelector('#flashCount').textContent=`${flashIdx+1} / ${flashDeck.length}`;
+}
+function openFlashcards(code,deck){
+  flashDeck=shuffle(deck);flashIdx=0;
+  document.querySelector('#flashCode').textContent=code+' · TAP TO FLIP';
+  renderFlash();
+  document.querySelector('#flashDialog').showModal();
+  recordStudy('flash');
+}
+document.querySelector('#flashCard').onclick=()=>document.querySelector('#flashCard').classList.toggle('flipped');
+document.querySelector('#flashPrev').onclick=()=>{flashIdx=(flashIdx-1+flashDeck.length)%flashDeck.length;renderFlash()};
+document.querySelector('#flashNext').onclick=()=>{flashIdx=(flashIdx+1)%flashDeck.length;renderFlash()};
+document.querySelector('#closeFlash').onclick=()=>document.querySelector('#flashDialog').close();
+
+// ---- streaks, badges, toast ----
+const BADGES=[
+  ['seed','🌱','First lecture completed',s=>s.ticks>=1],
+  ['sprout','📚','10 lectures completed',s=>s.ticks>=10],
+  ['harvest','🎓','First course fully completed',s=>s.courseDone],
+  ['flame3','🔥','3-day study streak',s=>s.streak>=3],
+  ['flame7','⚡','7-day study streak',s=>s.streak>=7],
+  ['ace','🏅','Perfect quiz score',s=>s.perfect]
+];
+let studyDays=new Set(load('theciae-days','[]')), earned=new Set(load('theciae-badges','[]'));
+const todayStr=()=>new Date().toISOString().slice(0,10);
+function streakLen(){
+  let n=0,d=new Date();
+  if(!studyDays.has(todayStr()))d.setDate(d.getDate()-1); // streak may end yesterday
+  while(studyDays.has(d.toISOString().slice(0,10))){n++;d.setDate(d.getDate()-1)}
+  return n;
+}
+function toast(msg){
+  const t=document.querySelector('#toast');
+  t.textContent=msg;t.hidden=false;t.classList.add('show');
+  clearTimeout(t._h);t._h=setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.hidden=true,300)},3200);
+}
+function statsNow(){
+  const ticks=Object.values(progress).reduce((a,p)=>a+Object.keys(p).length,0);
+  const courseDone=courses.some(c=>c.lectures.length&&doneCount(c)===c.lectures.length);
+  return {ticks,courseDone,streak:streakLen(),perfect:localStorage.getItem('theciae-perfect')==='1'};
+}
+function checkBadges(){
+  const s=statsNow();
+  BADGES.forEach(([id,icon,label,test])=>{
+    if(!earned.has(id)&&test(s)){earned.add(id);localStorage.setItem('theciae-badges',JSON.stringify([...earned]));toast(`Badge earned: ${icon} ${label}!`)}
+  });
+  renderStreak();
+}
+function renderStreak(){
+  const s=statsNow(), strip=document.querySelector('#streakStrip');
+  if(!s.ticks&&!s.streak&&!earned.size){strip.hidden=true;return}
+  const icons=BADGES.filter(([id])=>earned.has(id)).map(([,i,l])=>`<span title="${l}">${i}</span>`).join('');
+  strip.innerHTML=`${s.streak?`<b>🔥 ${s.streak}-day streak</b>`:'<b>Start your streak today</b>'} · ${s.ticks} lecture${s.ticks===1?'':'s'} completed ${icons?`· <span class="badge-row">${icons}</span>`:''}`;
+  strip.hidden=false;
+}
+function recordStudy(){
+  if(!studyDays.has(todayStr())){studyDays.add(todayStr());localStorage.setItem('theciae-days',JSON.stringify([...studyDays]))}
+  checkBadges();
+}
+
+// ---- calculators ----
+function bindCalc(ids,fn,outId){
+  const els=ids.map(id=>document.querySelector('#'+id)), out=document.querySelector('#'+outId);
+  const run=()=>{const v=els.map(e=>parseFloat(e.value));out.innerHTML=v.some(x=>!isFinite(x)||x<0)?'Enter valid values':fn(...v)};
+  els.forEach(e=>e.addEventListener('input',run));run();
+}
+bindCalc(['dripEto','dripKc','dripSp','dripSr'],(eto,kc,sp,sr)=>{
+  const l=eto*kc*sp*sr;
+  return `≈ <strong>${l.toFixed(1)} litres</strong> per plant per day`;
+},'dripOut');
+bindCalc(['pumpQ','pumpH','pumpEff'],(q,h,eff)=>{
+  if(!eff)return 'Enter valid values';
+  const kw=(9.81*(q/1000)*h)/(eff/100);
+  return `≈ <strong>${kw.toFixed(2)} kW</strong> (${(kw*1.341).toFixed(2)} hp) shaft power`;
+},'pumpOut');
+bindCalc(['seedPop','seedTgw','seedGerm','seedPur'],(pop,tgw,g,p)=>{
+  if(!g||!p)return 'Enter valid values';
+  const kg=(pop/((g/100)*(p/100)))*tgw/1e6;
+  return `≈ <strong>${kg.toFixed(1)} kg/ha</strong> seed required`;
+},'seedOut');
 // support dialog
 document.querySelector('#openSupport').onclick=e=>{e.preventDefault();document.querySelector('#supportDialog').showModal()};
 document.querySelector('#closeSupport').onclick=()=>document.querySelector('#supportDialog').close();
@@ -158,26 +278,50 @@ document.querySelector('#upCourse').addEventListener('change',e=>{
   const kids=lectureDirs.filter(d=>d.startsWith(course+'/')&&d.split('/').length===course.split('/').length+1).sort();
   lec.innerHTML='<option value="">— course level (no specific lecture) —</option>'+kids.map(d=>`<option value="${esc(d)}">${esc(d.split('/').pop())}</option>`).join('');
 });
+// multi-file batch upload with drag & drop and a session-remembered password
+const upFile=document.querySelector('#upFile'), dropZone=document.querySelector('#dropZone'), pwInput=document.querySelector('#uploadForm [name=password]');
+let uploadedSomething=false;
+pwInput.value=sessionStorage.getItem('theciae-pw')||'';
+['dragover','dragenter'].forEach(ev=>dropZone.addEventListener(ev,e=>{e.preventDefault();dropZone.classList.add('drag')}));
+['dragleave','drop'].forEach(ev=>dropZone.addEventListener(ev,e=>{e.preventDefault();dropZone.classList.remove('drag')}));
+dropZone.addEventListener('drop',e=>{if(e.dataTransfer.files.length){upFile.files=e.dataTransfer.files;upFile.dispatchEvent(new Event('change'))}});
+upFile.addEventListener('change',()=>{
+  document.querySelector('#uploadList').innerHTML=[...upFile.files].map(f=>`<div class="up-item" data-f="${esc(f.name)}"><span>${esc(f.name)}</span><b>${f.size>3*1024*1024?'⚠ over 3 MB':'ready'}</b></div>`).join('');
+});
+const closeUploadDialog=()=>{dialog.close();if(uploadedSomething){uploadedSomething=false;location.reload()}};
+document.querySelector('#closeUpload').onclick=closeUploadDialog;
+document.querySelector('#cancelUpload').onclick=closeUploadDialog;
 document.querySelector('#uploadForm').addEventListener('submit',async e=>{
   e.preventDefault();
-  const f=new FormData(e.target), file=f.get('file'), status=document.querySelector('#uploadStatus'), btn=document.querySelector('#uploadSubmit');
+  const f=new FormData(e.target), files=[...upFile.files], status=document.querySelector('#uploadStatus'), btn=document.querySelector('#uploadSubmit');
   if(!f.get('course')){status.textContent='Please select a course.';return}
-  if(!file||!file.name){status.textContent='Please choose a file.';return}
-  if(file.size>3*1024*1024){status.textContent='File is over 3 MB — please upload it via GitHub instead.';return}
-  const safeName=file.name.replace(/[<>:"/\\|?*]/g,' ').replace(/\s+/g,' ').trim();
-  const dir=f.get('lecture')||f.get('course');
-  btn.disabled=true;btn.textContent='Uploading…';status.textContent='';
-  try{
-    const b64=await new Promise((res,rej)=>{const rd=new FileReader();rd.onload=()=>res(rd.result.split(',')[1]);rd.onerror=rej;rd.readAsDataURL(file)});
-    const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:f.get('password'),path:`${dir}/${safeName}`,content:b64})});
-    const j=await r.json().catch(()=>({}));
-    if(!r.ok)throw new Error(j.error||('Upload failed ('+r.status+')'));
-    sessionStorage.removeItem('theciae-files-v2');
-    status.textContent='';e.target.reset();dialog.close();
-    alert('Uploaded! "'+safeName+'" is now on GitHub and will appear on the site.');
-    location.reload();
-  }catch(err){status.textContent='⚠ '+err.message}
-  finally{btn.disabled=false;btn.textContent='Upload to site'}
+  if(!files.length){status.textContent='Please choose at least one file.';return}
+  const dir=f.get('lecture')||f.get('course'), pw=f.get('password');
+  btn.disabled=true;status.textContent='';
+  let ok=0;
+  for(const file of files){
+    const row=document.querySelector(`.up-item[data-f="${CSS.escape(file.name)}"] b`);
+    if(file.size>3*1024*1024){if(row)row.textContent='⚠ skipped (over 3 MB)';continue}
+    if(row)row.textContent='uploading…';
+    btn.textContent=`Uploading ${ok+1} / ${files.length}…`;
+    const safeName=file.name.replace(/[<>:"/\\|?*]/g,' ').replace(/\s+/g,' ').trim();
+    try{
+      const b64=await new Promise((res,rej)=>{const rd=new FileReader();rd.onload=()=>res(rd.result.split(',')[1]);rd.onerror=rej;rd.readAsDataURL(file)});
+      const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw,path:`${dir}/${safeName}`,content:b64})});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok)throw new Error(j.error||('failed ('+r.status+')'));
+      ok++;uploadedSomething=true;
+      if(row)row.textContent='✓ uploaded';
+      sessionStorage.setItem('theciae-pw',pw);
+    }catch(err){
+      if(row)row.textContent='✗ '+err.message;
+      if(/password/i.test(err.message)){status.textContent='⚠ '+err.message;sessionStorage.removeItem('theciae-pw');break}
+    }
+  }
+  if(uploadedSomething)sessionStorage.removeItem('theciae-files-v2');
+  btn.disabled=false;btn.textContent='Upload to site';
+  if(ok===files.length&&ok>0){status.textContent='';toast(`${ok} file${ok>1?'s':''} uploaded ✓ — same course selected for more`);upFile.value='';document.querySelector('#uploadList').innerHTML=''}
+  else if(ok>0)status.textContent=`Uploaded ${ok} of ${files.length} — see the list above.`;
 });
 
 // ---- quizzes ----
@@ -211,6 +355,8 @@ function showSummary(){
   document.querySelector('#progressBar').style.width='100%';
   document.querySelector('#questionText').textContent=`You scored ${score} / ${total}`;
   document.querySelector('#quizFeedback').textContent=score===total?'Perfect! You have mastered this topic.':score>=Math.ceil(total*0.6)?'Good work — review the ones you missed.':'Keep practising — try the wrong ones again.';
+  if(score===total)localStorage.setItem('theciae-perfect','1');
+  recordStudy();
   answerBox.innerHTML=wrong.length?`<button class="answer" id="retryWrong">↻ Retry the ${wrong.length} you got wrong</button>`:'';
   const rw=document.querySelector('#retryWrong');if(rw)rw.onclick=()=>startQuiz(quiz,wrong);
   nextBtn.textContent='Restart quiz';nextBtn.disabled=false;

@@ -1,19 +1,17 @@
 // ---- syllabus course library ----
 const DEPTS={FMPE:'Farm Machinery & Power Engineering',ASPE:'Agricultural Structures & Process Engineering',SWCE:'Soil & Water Conservation Engineering',IDE:'Irrigation & Drainage Engineering',PFE:'Processing & Food Engineering',REE:'Renewable Energy Engineering',CSE:'Computer Science & Engineering',AS:'Applied Sciences',CAE:'Agricultural Engineering',SEC:'Skill Enhancement',MDC:'Multidisciplinary Course',AEC:'Ability Enhancement Course',VAC:'Value-Added Course',FC:'Foundation Course'};
 const PILLS=[['all','All'],['starred','★ My courses'],['Semester 1','Sem 1'],['Semester 2','Sem 2'],['Semester 3','Sem 3'],['Semester 4','Sem 4'],['Semester 5','Sem 5'],['Semester 6','Sem 6'],['Semester 7','Sem 7'],['Semester 8','Sem 8'],['Semester 8 — Electives','Electives'],['Skill Enhancement Courses (Semester 2)','Skill Modules']];
-// M.Tech pills are built per-discipline from the section names in mtech.json
+// M.Tech (ARS/NET) disciplines come from the section names in mtech.json;
+// each is shown as its own sub-tab (FMPE, ASPE, …).
 let MTECH_SECTIONS=[];
-function mtechPills(){
-  const disc=MTECH_SECTIONS.map((s,i)=>[s,mtechShort(s)]);
-  return [['all','All units'],['starred','★ My saved'],...disc];
-}
+const MTECH_PILLS=[['all','All units'],['starred','★ My saved']];
 const mtechShort=s=>s.split('—').pop().trim().replace('Farm Machinery & Power','FMPE').replace('Agricultural Structures & Process Engineering','ASPE');
 const ICONS={'Semester 1':'S1','Semester 2':'S2','Semester 3':'S3','Semester 4':'S4','Semester 5':'S5','Semester 6':'S6','Semester 7':'S7','Semester 8':'S8','Semester 8 — Electives':'EL','Skill Enhancement Courses (Semester 2)':'SK'};
 const grid=document.querySelector('#courseGrid'), search=document.querySelector('#searchInput'), pillBox=document.querySelector('#semPills'), emptyState=document.querySelector('#emptyState');
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const dept=code=>DEPTS[code.replace(/[^A-Z].*$/,'')]||'Agricultural Engineering';
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||d)}catch(e){return JSON.parse(d)}};
-let courses=[], activePill='all', activeProg='btech', filesIdx={}, specialsIdx={};
+let courses=[], activePill='all', activeProg='btech', activeDisc='', filesIdx={}, specialsIdx={};
 let progress=load('theciae-progress','{}'), stars=new Set(load('theciae-stars','[]'));
 const doneCount=c=>{const p=progress[c.code]||{};return c.lectures.filter(l=>p[l.n]).length};
 
@@ -62,7 +60,10 @@ const fileCount=code=>{const f=filesIdx[code];return f?f.course.length+Object.va
 
 function renderCourses(){
   const q=search.value.trim().toLowerCase();
-  const matches=courses.filter(c=>c.prog===activeProg&&(activePill==='all'||(activePill==='starred'?stars.has(c.code):c.section===activePill))&&(!q||c.text.includes(q)));
+  const matches=courses.filter(c=>c.prog===activeProg
+    &&(activeProg!=='mtech'||c.section===activeDisc)
+    &&(activePill==='all'||(activePill==='starred'?stars.has(c.code):c.section===activePill))
+    &&(!q||c.text.includes(q)));
   grid.innerHTML=matches.map(c=>{
     const nf=fileCount(c.code), dn=doneCount(c), tot=c.lectures.length, sp=specialsIdx[c.code];
     const word=c.prog==='mtech'?'topic':'lecture';
@@ -101,9 +102,19 @@ function openLecture(i){
   document.querySelector('#lectureDialog').showModal();
 }
 function renderPills(){
-  const list=activeProg==='mtech'?mtechPills():PILLS;
+  const list=activeProg==='mtech'?MTECH_PILLS:PILLS;
   pillBox.innerHTML=list.map(([v,l])=>`<button class="pill${v===activePill?' active':''}" data-v="${esc(v)}">${esc(l)}</button>`).join('');
   pillBox.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));b.classList.add('active');activePill=b.dataset.v;renderCourses()});
+}
+function renderDiscTabs(){
+  const box=document.querySelector('#discTabs');
+  if(activeProg!=='mtech'||!MTECH_SECTIONS.length){box.hidden=true;return}
+  box.hidden=false;
+  box.innerHTML=MTECH_SECTIONS.map(s=>`<button class="disc-tab${s===activeDisc?' active':''}" data-disc="${esc(s)}">${esc(mtechShort(s))}</button>`).join('');
+  box.querySelectorAll('.disc-tab').forEach(b=>b.onclick=()=>{
+    box.querySelectorAll('.disc-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+    activeDisc=b.dataset.disc;activePill='all';renderPills();renderCourses();
+  });
 }
 Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=>r.json()).catch(()=>[]),loadFiles().catch(()=>({branch:'main',files:[],dirs:[]}))]).then(([sections,msections,tree])=>{
   filesIdx=indexFiles(tree);
@@ -111,12 +122,16 @@ Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=
   let i=0;
   sections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,prog:'btech',section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.map(l=>l.t).join(' ')).toLowerCase()})}));
   MTECH_SECTIONS=msections.map(s=>s.section);
+  activeDisc=MTECH_SECTIONS[0]||'';
   msections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,prog:'mtech',section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.map(l=>l.t).join(' ')).toLowerCase()})}));
   document.querySelector('#resourceCount').textContent=courses.length;
   document.querySelectorAll('.prog-tab').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('.prog-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-    activeProg=b.dataset.prog;activePill='all';renderPills();renderCourses();
+    activeProg=b.dataset.prog;activePill='all';
+    if(activeProg==='mtech'&&!activeDisc)activeDisc=MTECH_SECTIONS[0]||'';
+    renderDiscTabs();renderPills();renderCourses();
   });
+  renderDiscTabs();
   renderPills();
   renderCourses();
   renderStreak();

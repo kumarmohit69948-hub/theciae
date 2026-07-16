@@ -97,6 +97,11 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",san
 .prog-tab{border:0;background:none;border-radius:999px;padding:10px 20px;font:700 .85rem "DM Sans";color:var(--muted);cursor:pointer;transition:all .18s var(--ease)}
 .prog-tab:hover{color:var(--ink)}
 .prog-tab.active{background:var(--ink);color:#fff;box-shadow:var(--shadow-sm)}
+.disc-tabs{display:flex;flex-wrap:wrap;gap:26px;margin:-6px 0 22px;border-bottom:1px solid var(--line)}
+.disc-tab{border:0;background:none;padding:10px 2px 12px;font:700 .92rem "DM Sans";color:var(--muted);cursor:pointer;position:relative;transition:color .18s var(--ease)}
+.disc-tab:hover{color:var(--ink)}
+.disc-tab.active{color:var(--green)}
+.disc-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--green)}
 .sem-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
 .pill{border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px;padding:9px 16px;font:600 .8rem "DM Sans";cursor:pointer;transition:all .16s var(--ease)}
 .pill:hover{border-color:var(--green);color:var(--green);transform:translateY(-1px)}

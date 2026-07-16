@@ -143,6 +143,17 @@ Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=
     e.preventDefault();openLecture(+t.dataset.i);
   });
   search.addEventListener('input',renderCourses);
+  // deep link: index.html#course=CODE opens that course's popup (used by Study Reels)
+  const openFromHash=()=>{
+    const m=location.hash.match(/^#course=(.+)$/);if(!m)return;
+    const c=courses.find(x=>x.code===decodeURIComponent(m[1]));
+    if(!c)return;
+    if(c.prog==='mtech'){activeProg='mtech';activeDisc=c.section;document.querySelectorAll('.prog-tab').forEach(x=>x.classList.toggle('active',x.dataset.prog==='mtech'));renderDiscTabs();renderPills();renderCourses()}
+    document.querySelector('#resources').scrollIntoView();
+    openLecture(c.i);
+  };
+  window.addEventListener('hashchange',openFromHash);
+  openFromHash();
 }).catch(()=>{grid.innerHTML='<p class="empty-state">Could not load the syllabus. Please refresh the page.</p>'});
 document.querySelector('#closeLecture').onclick=()=>document.querySelector('#lectureDialog').close();
 document.querySelector('#lecBody').addEventListener('change',e=>{

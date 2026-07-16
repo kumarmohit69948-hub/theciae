@@ -4,6 +4,8 @@ const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||d)}catch(e){return JSON.parse(d)}};
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const feed=document.querySelector('#feed');
+// ?course=CODE turns the feed into a single-course revision reel
+const courseFilter=new URLSearchParams(location.search).get('course');
 let deck=[],cursor=0,savedOnly=false,interacted=false;
 let saves=load('theciae-reel-saves','[]'); // array of card ids
 const saveSet=new Set(saves);
@@ -49,14 +51,17 @@ async function buildDeck(){
   ]);
   const cards=[];
   // 1) topic cards from both programmes
-  const topics=[];
+  let topics=[];
   bt.forEach(sec=>sec.courses.forEach(c=>c.lectures.forEach(l=>topics.push({code:c.code,course:c.title,text:l.t}))));
   mt.forEach(sec=>sec.courses.forEach(c=>c.lectures.forEach(l=>topics.push({code:c.code,course:c.title,text:l.t}))));
-  shuffle(topics).slice(0,220).forEach(t=>cards.push({kind:'topic',id:'t:'+t.code+':'+t.text.slice(0,40),...t}));
-  // 2) built-in MCQs
-  Object.entries(MCQS).forEach(([label,qs])=>qs.forEach(q=>cards.push({kind:'mcq',id:'q:'+q[0].slice(0,50),label,q:q[0],opts:q[1],ans:q[2]})));
+  if(courseFilter)topics=topics.filter(t=>t.code===courseFilter);
+  shuffle(topics).slice(0,courseFilter?topics.length:220).forEach(t=>cards.push({kind:'topic',id:'t:'+t.code+':'+t.text.slice(0,40),...t}));
+  // 2) built-in MCQs (general mix only — they aren't tied to one course)
+  if(!courseFilter)Object.entries(MCQS).forEach(([label,qs])=>qs.forEach(q=>cards.push({kind:'mcq',id:'q:'+q[0].slice(0,50),label,q:q[0],opts:q[1],ans:q[2]})));
   // 3) user-authored quiz.json / flashcards.json from the repo (served by this same site)
-  const special=(tree.files||[]).filter(p=>/\/(quiz|flashcards)\.json$/i.test(p)).slice(0,12);
+  let special=(tree.files||[]).filter(p=>/\/(quiz|flashcards)\.json$/i.test(p));
+  if(courseFilter)special=special.filter(p=>courseCodeOf(p)===courseFilter);
+  special=special.slice(0,12);
   await Promise.all(special.map(async p=>{
     try{
       const data=await (await fetch(encodeURI('/'+p))).json();
@@ -80,7 +85,12 @@ function currentDeck(){return savedOnly?deck.filter(c=>saveSet.has(c.id)):deck}
 function renderMore(reset){
   const d=currentDeck();
   if(reset){feed.innerHTML='';cursor=0}
-  if(!d.length){feed.innerHTML='<section class="reel"><div class="reel-card reel-topic"><p class="reel-eyebrow">SAVED CARDS</p><h2 style="color:#fff">Nothing saved yet</h2><p class="reel-sub">Tap ♥ on any card to keep it here.</p></div></section>';return}
+  if(!d.length){
+    feed.innerHTML=savedOnly
+      ?'<section class="reel"><div class="reel-card reel-topic"><p class="reel-eyebrow">SAVED CARDS</p><h2 style="color:#fff">Nothing saved yet</h2><p class="reel-sub">Tap ♥ on any card to keep it here.</p></div></section>'
+      :`<section class="reel"><div class="reel-card reel-topic"><p class="reel-eyebrow">${esc(courseFilter||'FEED')}</p><h2 style="color:#fff">No cards for this course yet</h2><p class="reel-sub">Topics appear once the course has a lecture plan — and quiz.json / flashcards.json files make it even richer. <a href="reels.html" style="color:#dcec6a">Watch the full mix instead →</a></p></div></section>`;
+    return;
+  }
   const chunk=d.slice(cursor,cursor+10);
   feed.insertAdjacentHTML('beforeend',chunk.map((c,k)=>cardHTML(c,cursor+k)).join(''));
   cursor+=chunk.length;
@@ -144,6 +154,12 @@ document.querySelector('#savedToggle').onclick=e=>{
   renderMore(true);
   feed.scrollTop=0;
 };
+if(courseFilter){
+  const chip=document.createElement('a');
+  chip.className='reels-chip on';chip.href='reels.html';chip.title='Back to the full mix';
+  chip.textContent=courseFilter+' ✕';
+  document.querySelector('.reels-top-right').prepend(chip);
+}
 buildDeck().then(d=>{
   deck=d;
   renderStreak();

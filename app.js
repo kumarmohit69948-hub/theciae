@@ -69,7 +69,7 @@ function renderCourses(){
     const word=c.prog==='mtech'?'topic':'lecture';
     let status=c.practical?'Practical / skill module':tot?(dn?`${dn}/${tot} done`:tot+' '+word+'s'):'Plan coming soon';
     if(sp)status+=(sp.quiz?' · <b class="has-files">quiz</b>':'')+(sp.flash?' · <b class="has-files">cards</b>':'');
-    return `<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${esc(c.icon||ICONS[c.section]||'—')}</span><span class="card-top-right"><span class="tag">${esc(c.code)}</span><button class="star${stars.has(c.code)?' on':''}" data-star="${esc(c.code)}" title="Save to My courses">★</button></span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p>${dn?`<div class="mini-progress"><i style="width:${Math.round(dn/tot*100)}%"></i></div>`:''}<div class="card-bottom"><span>${status}${nf?` · <b class="has-files">${nf} file${nf>1?'s':''}</b>`:''}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`}).join('');
+    return `<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${esc(c.icon||ICONS[c.section]||'—')}</span><span class="card-top-right"><span class="tag">${esc(c.code)}</span><a class="card-reel" href="reels.html?course=${encodeURIComponent(c.code)}" title="Study reels for this course">▶</a><button class="star${stars.has(c.code)?' on':''}" data-star="${esc(c.code)}" title="Save to My courses">★</button></span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p>${dn?`<div class="mini-progress"><i style="width:${Math.round(dn/tot*100)}%"></i></div>`:''}<div class="card-bottom"><span>${status}${nf?` · <b class="has-files">${nf} file${nf>1?'s':''}</b>`:''}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`}).join('');
   emptyState.hidden=!!matches.length;
   if(activePill==='starred'&&!matches.length&&!q){emptyState.textContent='No saved courses yet — tap the ★ on any course card to pin it here.'}
   else emptyState.textContent='No matching courses yet. Try another search.';
@@ -95,7 +95,7 @@ function openLecture(i){
   updateLectureProgress(c);
   const sp=specialsIdx[c.code];
   document.querySelector('#lecBody').innerHTML=
-    (sp?`<div class="practice-row">${sp.quiz?`<button class="button button-primary" data-practice="quiz">▶ Practice quiz</button>`:''}${sp.flash?`<button class="button button-plain" data-practice="flash">🃏 Flashcards</button>`:''}</div>`:'')+
+    `<div class="practice-row"><a class="button button-primary" href="reels.html?course=${encodeURIComponent(c.code)}">▶ Study reels</a>${sp&&sp.quiz?`<button class="button button-plain" data-practice="quiz">❓ Practice quiz</button>`:''}${sp&&sp.flash?`<button class="button button-plain" data-practice="flash">🃏 Flashcards</button>`:''}</div>`+
     (f.course.length?`<p class="syl-note"><strong>Course resources:</strong></p>${fileLinks(f.course)}`:'')+
     (c.lectures.length?`<ol class="syl-lectures">${c.lectures.map(l=>`<li class="${p[l.n]?'done':''}"><i class="lec-n">${String(l.n).padStart(2,'0')}</i>${esc(l.t)}${f.lectures[l.n]?fileLinks(f.lectures[l.n]):''}<label class="lec-check" title="Mark as completed"><input type="checkbox" data-n="${l.n}"${p[l.n]?' checked':''}></label></li>`).join('')}</ol>`:`<p class="syl-note">${c.practical?'Hands-on skill module — resources will be added directly under this course.':'Lecture-wise plan will be added soon.'}</p>`)+
     `<p class="syl-hint">Tick lectures as you complete them — your progress is saved on this device. Files uploaded to this course's folders on GitHub appear here automatically.</p>`;
@@ -136,6 +136,7 @@ Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=
   renderCourses();
   renderStreak();
   grid.addEventListener('click',e=>{
+    if(e.target.closest('.card-reel'))return; // let the reels link navigate
     const st=e.target.closest('[data-star]');
     if(st){e.preventDefault();const code=st.dataset.star;stars.has(code)?stars.delete(code):stars.add(code);localStorage.setItem('theciae-stars',JSON.stringify([...stars]));renderCourses();return}
     const t=e.target.closest('[data-i]');if(!t)return;

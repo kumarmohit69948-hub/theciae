@@ -145,6 +145,7 @@ Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=
   search.addEventListener('input',renderCourses);
   // deep link: index.html#course=CODE opens that course's popup (used by Study Reels)
   const openFromHash=()=>{
+    if(location.hash==='#support'){document.querySelector('#supportDialog').showModal();return}
     const m=location.hash.match(/^#course=(.+)$/);if(!m)return;
     const c=courses.find(x=>x.code===decodeURIComponent(m[1]));
     if(!c)return;

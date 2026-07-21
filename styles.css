@@ -34,6 +34,7 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",san
 .site-header nav a:hover{color:var(--ink)}
 .site-header nav a:hover::after{transform:scaleX(1)}
 .site-header nav a.nav-reels{color:var(--green);font-weight:700}
+.site-header nav a.nav-app{color:var(--green);font-weight:700}
 
 /* ---------- buttons ---------- */
 .button{border:0;border-radius:var(--r-sm);padding:13px 20px;font:600 .9rem "DM Sans";cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:12px;transition:transform .18s var(--ease),box-shadow .18s var(--ease),background .18s var(--ease)}

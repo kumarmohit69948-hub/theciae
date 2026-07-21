@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="theciae study app — syllabus, quizzes, study reels and progress for agricultural engineering students." />
+    <meta name="theme-color" content="#f6f3ea" />
+    <link rel="canonical" href="https://theciae.com/app.html" />
+    <title>theciae — study app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <a class="app-brand" href="index.html"><span class="mark">✦</span> the<span>ciae</span></a>
+        <span class="hd-right">
+          <span class="chip" id="hdStreak" hidden></span>
+          <button class="hd-heart" id="hdSupport" title="Support theciae">♥</button>
+        </span>
+      </header>
+
+      <div class="screens" id="screens">
+        <!-- HOME -->
+        <section class="screen" id="screen-home">
+          <p class="eyebrow" id="semLine">AGRICULTURAL ENGINEERING</p>
+          <h1 class="h-greet" id="greet">Welcome back</h1>
+          <div class="streak-strip" id="streakStrip" hidden></div>
+
+          <div id="contWrap"></div>
+
+          <div class="qgrid">
+            <button class="qa qa-quiz" data-go="quiz"><span class="k">PRACTICE</span><span><span class="t">Quiz corner</span><span class="s">6 topic banks</span></span></button>
+            <button class="qa qa-reels" data-go="reels"><span style="font-size:13px">▶</span><span><span class="t">Study reels</span><span class="s">swipe to revise</span></span></button>
+            <button class="qa qa-mine" data-go="courses"><span class="k">★</span><span><span class="t">My courses</span><span class="s" id="mineCount">saved courses</span></span></button>
+            <button class="qa qa-support" id="qaSupport"><span style="font-size:13px">♥</span><span><span class="t">Support</span><span class="s">keep it free</span></span></button>
+          </div>
+
+          <div class="card">
+            <div class="fml-head">
+              <p class="card-label">FIELD FORMULA</p>
+              <button class="fml-another" id="fmlAnother">↻ Another</button>
+            </div>
+            <p class="fml-title" id="fmlTitle"></p>
+            <div class="fml-box" id="fmlBox"></div>
+            <p class="fml-legend" id="fmlLegend"></p>
+          </div>
+        </section>
+
+        <!-- COURSES (phase 2) -->
+        <section class="screen" id="screen-courses" hidden>
+          <div class="soon"><div>
+            <div class="em">📚</div><h2>Course library</h2>
+            <p>The full syllabus browser lands in the app in the next update. For now it's ready on the web.</p>
+            <a class="btn" href="index.html#resources">Open the syllabus →</a>
+          </div></div>
+        </section>
+
+        <!-- QUIZ (phase 2) -->
+        <section class="screen" id="screen-quiz" hidden>
+          <div class="soon"><div>
+            <div class="em">🧠</div><h2>Quiz corner</h2>
+            <p>Six topic quiz banks with instant scoring — playable now on the web version.</p>
+            <a class="btn" href="index.html#quizzes">Open quizzes →</a>
+          </div></div>
+        </section>
+
+        <!-- REELS (phase 3) -->
+        <section class="screen" id="screen-reels" hidden>
+          <div class="soon"><div>
+            <div class="em">▶</div><h2>Study reels</h2>
+            <p>Swipe through bite-sized revision cards — the full reels feed is live.</p>
+            <a class="btn" href="reels.html">Open Study Reels →</a>
+          </div></div>
+        </section>
+
+        <!-- PROFILE (phase 4) -->
+        <section class="screen" id="screen-profile" hidden>
+          <div class="soon"><div>
+            <div class="em">🎓</div><h2>Your profile</h2>
+            <p>Stats, badges and settings arrive here in a later update. Your progress is already being tracked as you study.</p>
+            <a class="btn btn-dark" href="index.html">Back to the site</a>
+          </div></div>
+        </section>
+      </div>
+
+      <nav class="tabbar" id="tabbar">
+        <button class="tab on" data-tab="home"><span class="pill"><svg viewBox="0 0 24 24"><path d="M4 11 12 4l8 7"></path><path d="M6 10v9h12v-9"></path></svg></span><span class="lbl">Home</span></button>
+        <button class="tab" data-tab="courses"><span class="pill"><svg viewBox="0 0 24 24"><path d="M5 4h10a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2z"></path><path d="M9 4v12"></path></svg></span><span class="lbl">Courses</span></button>
+        <button class="tab" data-tab="quiz"><span class="pill"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18"></path><path d="M9.6 9a2.4 2.4 0 1 1 3.3 2.2c-.8.4-.9.9-.9 1.6M12 16.5h.01"></path></svg></span><span class="lbl">Quiz</span></button>
+        <button class="tab" data-tab="reels"><span class="pill"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span><span class="lbl">Reels</span></button>
+        <button class="tab" data-tab="profile"><span class="pill"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8"></path><path d="M5 20a7 7 0 0 1 14 0"></path></svg></span><span class="lbl">Profile</span></button>
+      </nav>
+
+      <div class="app-toast" id="appToast" hidden></div>
+    </div>
+    <script src="app-view.js"></script>
+  </body>
+</html>

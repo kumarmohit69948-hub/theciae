@@ -35,6 +35,8 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",san
 .site-header nav a:hover::after{transform:scaleX(1)}
 .site-header nav a.nav-reels{color:var(--green);font-weight:700}
 .site-header nav a.nav-app{color:var(--green);font-weight:700}
+.nav-toggle{display:none}
+.only-mobile{display:none}
 
 /* ---------- buttons ---------- */
 .button{border:0;border-radius:var(--r-sm);padding:13px 20px;font:600 .9rem "DM Sans";cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:12px;transition:transform .18s var(--ease),box-shadow .18s var(--ease),background .18s var(--ease)}
@@ -331,9 +333,15 @@ dialog form{padding:32px}
   .footer-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:750px){
-  .site-header{height:auto;flex-wrap:wrap;padding-top:12px;padding-bottom:12px;row-gap:4px}
-  .site-header .button{padding:10px 14px;font-size:.75rem}
-  .site-header nav{order:3;width:100%;overflow-x:auto;gap:22px;padding-bottom:4px}
+  .site-header{height:62px}
+  .site-header .button-dark{display:none}
+  .nav-toggle{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font-size:1.25rem;cursor:pointer}
+  .site-header nav{position:absolute;top:64px;right:12px;left:12px;flex-direction:column;gap:2px;background:#faf8f1;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:8px;display:none;z-index:60}
+  .site-header.nav-open nav{display:flex}
+  .site-header nav a{padding:13px 14px;border-radius:9px;font-size:.95rem}
+  .site-header nav a:hover{background:var(--green-wash)}
+  .site-header nav a::after{display:none}
+  .only-mobile{display:block;border-top:1px solid var(--hairline);margin-top:4px;color:var(--green);font-weight:700}
   .hero,.quiz-section{grid-template-columns:1fr}
   .hero-copy{padding:64px 0 40px}
   .hero-art{min-height:330px}

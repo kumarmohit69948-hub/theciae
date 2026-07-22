@@ -309,7 +309,14 @@ document.querySelector('#closeSupport').onclick=()=>document.querySelector('#sup
 document.querySelector('#copyUpi').onclick=e=>{navigator.clipboard.writeText(document.querySelector('#upiId').textContent).then(()=>{e.target.textContent='Copied ✓';setTimeout(()=>e.target.textContent='Copy',1800)}).catch(()=>{})};
 
 // ---- upload dialog (commits to GitHub via /api/upload) ----
-const dialog=document.querySelector('#uploadDialog');['openUpload','heroUpload','ctaUpload'].forEach(id=>document.querySelector('#'+id).onclick=()=>dialog.showModal());document.querySelector('#closeUpload').onclick=()=>dialog.close();document.querySelector('#cancelUpload').onclick=()=>dialog.close();
+const dialog=document.querySelector('#uploadDialog');['openUpload','heroUpload','ctaUpload','navUpload'].forEach(id=>{const el=document.querySelector('#'+id);if(el)el.onclick=e=>{e.preventDefault();dialog.showModal();document.querySelector('.site-header').classList.remove('nav-open')}});document.querySelector('#closeUpload').onclick=()=>dialog.close();document.querySelector('#cancelUpload').onclick=()=>dialog.close();
+// mobile hamburger menu
+(function(){const hdr=document.querySelector('.site-header'),tog=document.querySelector('#navToggle');
+  if(!tog)return;
+  tog.onclick=e=>{e.stopPropagation();const open=hdr.classList.toggle('nav-open');tog.setAttribute('aria-expanded',open)};
+  document.querySelector('#siteNav').addEventListener('click',e=>{if(e.target.closest('a'))hdr.classList.remove('nav-open')});
+  document.addEventListener('click',e=>{if(!e.target.closest('.site-header'))hdr.classList.remove('nav-open')});
+})();
 let courseDirs=[],lectureDirs=[];
 function populateUploadPickers(dirs){
   // course folders start with a course code, e.g. "courses/Semester 1/SWCE1.4 - ..."

@@ -155,7 +155,56 @@ Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=
   };
   window.addEventListener('hashchange',openFromHash);
   openFromHash();
+  // "What are you looking for?" chips route straight to the right shelf
+  document.querySelectorAll('.find-chip[data-route]').forEach(b=>b.onclick=()=>{
+    if(b.dataset.route==='sem'){
+      activeProg='btech';activePill=b.dataset.v;activeDisc=activeDisc||MTECH_SECTIONS[0]||'';
+    }else{
+      activeProg='mtech';activePill='all';
+      activeDisc=MTECH_SECTIONS.find(s=>mtechShort(s).includes(b.dataset.v))||MTECH_SECTIONS[0]||'';
+    }
+    document.querySelectorAll('.prog-tab').forEach(x=>x.classList.toggle('active',x.dataset.prog===activeProg));
+    renderDiscTabs();renderPills();renderCourses();
+    document.querySelector('#resources').scrollIntoView({behavior:'smooth'});
+  });
 }).catch(()=>{grid.innerHTML='<p class="empty-state">Could not load the syllabus. Please refresh the page.</p>'});
+
+// ---- "New this week": latest uploads, straight from the repo's commits ----
+async function loadFresh(){
+  const box=document.querySelector('#freshStrip');if(!box)return;
+  try{
+    let items=null;
+    const cached=sessionStorage.getItem('theciae-fresh-v1');
+    if(cached)items=JSON.parse(cached);
+    if(!items){
+      const commits=await (await fetch(`https://api.github.com/repos/${REPO}/commits?path=courses&per_page=8`)).json();
+      if(!Array.isArray(commits))throw 0;
+      items=[];const seen=new Set();
+      for(const c of commits){
+        if(items.length>=4)break;
+        const det=await (await fetch(c.url)).json();
+        for(const f of (det.files||[])){
+          if(items.length>=4)break;
+          if(f.status!=='added')continue;
+          if(!f.filename.startsWith('courses/'))continue;
+          if(/(\.gitkeep|README\.md)$/.test(f.filename))continue;
+          const seg=f.filename.split('/');if(seg.length<4)continue;
+          if(seen.has(f.filename))continue;seen.add(f.filename);
+          items.push({name:seg[seg.length-1],code:seg[2].split(' - ')[0].trim(),date:det.commit.author.date});
+        }
+      }
+      sessionStorage.setItem('theciae-fresh-v1',JSON.stringify(items));
+    }
+    if(!items.length)return;
+    const ago=d=>{const days=Math.floor((Date.now()-new Date(d).getTime())/864e5);
+      if(days<1)return 'today';if(days===1)return 'yesterday';if(days<7)return days+' days ago';
+      const w=Math.floor(days/7);return w<5?w+' week'+(w>1?'s':'')+' ago':Math.floor(days/30)+' month(s) ago'};
+    document.querySelector('#freshRow').innerHTML=items.map(it=>
+      `<a class="fresh-item" href="#course=${encodeURIComponent(it.code)}"><span class="fresh-ico">📄</span><span class="fresh-body"><b>${esc(it.name)}</b><span>${esc(it.code)} · ${esc(ago(it.date))}</span></span></a>`).join('');
+    box.hidden=false;
+  }catch(e){}
+}
+loadFresh();
 document.querySelector('#closeLecture').onclick=()=>document.querySelector('#lectureDialog').close();
 document.querySelector('#lecBody').addEventListener('change',e=>{
   const cb=e.target.closest('input[data-n]');if(!cb||!openCourse)return;

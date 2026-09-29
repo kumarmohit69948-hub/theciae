@@ -8,7 +8,7 @@ $DEPTS=@{FMPE='Farm Machinery & Power Engineering';ASPE='Agricultural Structures
 function Dept($code){ $p=($code -replace '[^A-Z].*$',''); if($DEPTS.ContainsKey($p)){$DEPTS[$p]}else{'Agricultural Engineering'} }
 function Esc($s){ [System.Web.HttpUtility]::HtmlEncode($s) }
 Add-Type -AssemblyName System.Web
-function ShortSec($s){ ($s -split '—')[-1].Trim().Replace('Farm Machinery & Power','FMPE').Replace('Agricultural Structures & Process Engineering','ASPE') }
+function ShortSec($s){ ($s -split '—')[-1].Trim().Replace('Farm Machinery & Power','FMPE').Replace('Agricultural Structures & Process Engineering','ASPE').Replace('Soil and Water Conservation Engineering','SWCE').Replace('Soil & Water Conservation Engineering','SWCE') }
 
 $bt = Get-Content (Join-Path $root 'courses.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $mt = Get-Content (Join-Path $root 'mtech.json') -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -149,4 +149,5 @@ $sitemap = '<?xml version="1.0" encoding="UTF-8"?>' + "`n" + '<urlset xmlns="htt
 [System.IO.File]::WriteAllText((Join-Path $root 'sitemap.xml'), $sitemap, (New-Object System.Text.UTF8Encoding($false)))
 
 "Generated $n course pages + syllabus.html + sitemap ($($all.Count+4) urls)"
+
 

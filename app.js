@@ -5,7 +5,7 @@ const PILLS=[['all','All'],['starred','★ My courses'],['Semester 1','Sem 1'],[
 // each is shown as its own sub-tab (FMPE, ASPE, …).
 let MTECH_SECTIONS=[];
 const MTECH_PILLS=[['all','All units'],['starred','★ My saved']];
-const mtechShort=s=>s.split('—').pop().trim().replace('Farm Machinery & Power','FMPE').replace('Agricultural Structures & Process Engineering','ASPE');
+const mtechShort=s=>s.split('—').pop().trim().replace('Farm Machinery & Power','FMPE').replace('Agricultural Structures & Process Engineering','ASPE').replace('Soil and Water Conservation Engineering','SWCE').replace('Soil & Water Conservation Engineering','SWCE');
 const ICONS={'Semester 1':'S1','Semester 2':'S2','Semester 3':'S3','Semester 4':'S4','Semester 5':'S5','Semester 6':'S6','Semester 7':'S7','Semester 8':'S8','Semester 8 — Electives':'EL','Skill Enhancement Courses (Semester 2)':'SK'};
 const grid=document.querySelector('#courseGrid'), search=document.querySelector('#searchInput'), pillBox=document.querySelector('#semPills'), emptyState=document.querySelector('#emptyState');
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');

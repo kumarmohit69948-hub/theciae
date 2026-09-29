@@ -145,7 +145,6 @@ Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=
   search.addEventListener('input',renderCourses);
   // deep link: index.html#course=CODE opens that course's popup (used by Study Reels)
   const openFromHash=()=>{
-    if(location.hash==='#support'){document.querySelector('#supportDialog').showModal();return}
     const m=location.hash.match(/^#course=(.+)$/);if(!m)return;
     const c=courses.find(x=>x.code===decodeURIComponent(m[1]));
     if(!c)return;
@@ -352,10 +351,6 @@ bindCalc(['seedPop','seedTgw','seedGerm','seedPur'],(pop,tgw,g,p)=>{
   const kg=(pop/((g/100)*(p/100)))*tgw/1e6;
   return `≈ <strong>${kg.toFixed(1)} kg/ha</strong> seed required`;
 },'seedOut');
-// support dialog
-document.querySelector('#openSupport').onclick=e=>{e.preventDefault();document.querySelector('#supportDialog').showModal()};
-document.querySelector('#closeSupport').onclick=()=>document.querySelector('#supportDialog').close();
-document.querySelector('#copyUpi').onclick=e=>{navigator.clipboard.writeText(document.querySelector('#upiId').textContent).then(()=>{e.target.textContent='Copied ✓';setTimeout(()=>e.target.textContent='Copy',1800)}).catch(()=>{})};
 
 // ---- upload dialog (commits to GitHub via /api/upload) ----
 const dialog=document.querySelector('#uploadDialog');['openUpload','heroUpload','ctaUpload','navUpload'].forEach(id=>{const el=document.querySelector('#'+id);if(el)el.onclick=e=>{e.preventDefault();dialog.showModal();document.querySelector('.site-header').classList.remove('nav-open')}});document.querySelector('#closeUpload').onclick=()=>dialog.close();document.querySelector('#cancelUpload').onclick=()=>dialog.close();

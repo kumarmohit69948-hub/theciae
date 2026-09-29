@@ -90,9 +90,6 @@ function go(tab){
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>go(b.dataset.tab));
 document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){go(g.dataset.go)}});
 
-// support → the site's support dialog (opens via #support hash handler)
-$('#hdSupport').onclick=()=>{location.href='index.html#support'};
-$('#qaSupport').onclick=()=>{location.href='index.html#support'};
 
 // load real course data (B.Tech + M.Tech)
 Promise.all([

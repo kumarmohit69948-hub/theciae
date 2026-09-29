@@ -70,7 +70,7 @@ a{color:var(--green);text-decoration:none}
 .qa-quiz{background:var(--ink);color:#fff}.qa-quiz .k{font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--lime)}.qa-quiz .s{color:#b9cec3}
 .qa-reels{background:var(--green);color:#fff}.qa-reels .s{color:#c9e3d4}
 .qa-mine{background:var(--paper);color:var(--ink);border:1px solid var(--line)}.qa-mine .s{color:var(--muted)}.qa-mine .k{color:var(--gold);font-size:13px}
-.qa-support{background:var(--lime);color:var(--ink)}.qa-support .s{color:#38513f}
+.qa-tools{background:var(--lime);color:var(--ink);text-decoration:none}.qa-tools .s{color:#38513f}
 
 /* formula card */
 .fml-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}

@@ -19,7 +19,7 @@
   <body>
     <header class="site-header">
       <a class="brand" href="#home" aria-label="The Concept in Agricultural Engineering home"><span class="brand-mark">✦</span> the<span>ciae</span>.com</a>
-      <nav id="siteNav"><a href="#resources">Syllabus</a><a href="reels.html" class="nav-reels">▶ Reels</a><a href="#quizzes">Quizzes</a><a href="#tools">Tools</a><a href="#about">About</a><a href="app.html" class="nav-app">📱 App</a><a href="#" id="openSupport">Support ♥</a><a href="#" id="navUpload" class="only-mobile">⬆ Upload resource</a></nav>
+      <nav id="siteNav"><a href="#resources">Syllabus</a><a href="reels.html" class="nav-reels">▶ Reels</a><a href="#quizzes">Quizzes</a><a href="#tools">Tools</a><a href="#about">About</a><a href="app.html" class="nav-app">📱 App</a><a href="#" id="navUpload" class="only-mobile">⬆ Upload resource</a></nav>
       <button class="button button-dark" id="openUpload">Upload resource</button>
       <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
     </header>
@@ -124,7 +124,6 @@
         <nav class="footer-col" aria-label="Contribute">
           <h4>Contribute</h4>
           <a href="#" onclick="document.querySelector('#openUpload').click();return false">Upload a resource</a>
-          <a href="#" onclick="document.querySelector('#openSupport').click();return false">Support the project ♥</a>
           <a href="https://github.com/kumarmohit69948-hub/theciae" target="_blank" rel="noopener">GitHub repository ↗</a>
         </nav>
         <div class="footer-col">
@@ -140,7 +139,6 @@
     <div id="toast" class="toast" hidden></div>
     <dialog id="lectureDialog"><div class="lecture-modal"><div class="modal-heading"><div><p class="eyebrow" id="lecCode"></p><h2 id="lecTitle"></h2></div><button type="button" class="close" id="closeLecture" aria-label="Close">×</button></div><div id="lecProg" hidden><div class="progress"><i id="lecProgBar"></i></div><span id="lecProgText"></span></div><div id="lecBody"></div></div></dialog>
     <dialog id="pdfDialog"><div class="pdf-modal"><div class="modal-heading"><p class="eyebrow" id="pdfName"></p><span class="pdf-actions"><a class="button button-plain" id="pdfDownload" href="#" download>Download ↓</a><button type="button" class="close" id="closePdf" aria-label="Close">×</button></span></div><iframe id="pdfFrame" title="PDF preview"></iframe></div></dialog>
-    <dialog id="supportDialog"><div class="lecture-modal"><div class="modal-heading"><div><p class="eyebrow">SUPPORT THECIAE</p><h2>Keep this project growing</h2></div><button type="button" class="close" id="closeSupport" aria-label="Close">×</button></div><p class="modal-note">theciae.com is free for every agricultural engineering student. If it helps you, a small contribution covers hosting and helps us add more notes, papers and quizzes.</p><div class="support-actions"><img class="upi-qr" src="assets/upi-qr.png" alt="UPI QR code for mbishnoi108-4@okaxis" width="180" height="180" /><p class="syl-note">Scan with any UPI app, or use the ID below.</p><p class="upi-row">UPI ID: <strong id="upiId">mbishnoi108-4@okaxis</strong> <button type="button" class="button button-plain" id="copyUpi">Copy</button></p><a class="button button-primary upi-paylink" href="upi://pay?pa=mbishnoi108-4%40okaxis&pn=Mk&cu=INR">📱 Pay via UPI app</a></div></div></dialog>
     <script src="app.js"></script>
   </body>
 </html>

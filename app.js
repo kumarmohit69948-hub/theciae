@@ -353,7 +353,9 @@ bindCalc(['seedPop','seedTgw','seedGerm','seedPur'],(pop,tgw,g,p)=>{
 },'seedOut');
 
 // ---- upload dialog (commits to GitHub via /api/upload) ----
-const dialog=document.querySelector('#uploadDialog');['openUpload','heroUpload','ctaUpload','navUpload'].forEach(id=>{const el=document.querySelector('#'+id);if(el)el.onclick=e=>{e.preventDefault();dialog.showModal();document.querySelector('.site-header').classList.remove('nav-open')}});document.querySelector('#closeUpload').onclick=()=>dialog.close();document.querySelector('#cancelUpload').onclick=()=>dialog.close();
+const dialog=document.querySelector('#uploadDialog');document.querySelector('#closeUpload').onclick=()=>dialog.close();document.querySelector('#cancelUpload').onclick=()=>dialog.close();
+// Owner-only quiet access: visiting #upload (or #admin) opens the upload box. Still password-protected server-side, so the link is safe to leave discoverable.
+const openUploadByHash=()=>{if(/^#(upload|admin)$/.test(location.hash)&&!dialog.open){dialog.showModal();}};window.addEventListener('hashchange',openUploadByHash);openUploadByHash();
 // mobile hamburger menu
 (function(){const hdr=document.querySelector('.site-header'),tog=document.querySelector('#navToggle');
   if(!tog)return;

@@ -16,16 +16,10 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 <style>
-  .nb-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0 1.5rem}
-  .nb-chip{border:1px solid rgba(20,40,25,.18);background:#fff;color:#1c3a24;border-radius:999px;padding:.4rem .9rem;font:inherit;font-size:.85rem;font-weight:600;cursor:pointer}
-  .nb-chip.active{background:#1c3a24;color:#eef3ea;border-color:#1c3a24}
-  .nb-list{display:grid;gap:1rem;margin-top:.5rem}
+  .nb-list{display:grid;gap:1rem;margin-top:1.25rem}
   .nb-card{border:1px solid rgba(20,40,25,.14);border-radius:16px;padding:1.1rem 1.2rem;background:#fff;display:flex;flex-direction:column;gap:.5rem}
   .nb-card.expired{opacity:.6}
   .nb-top{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
-  .nb-badge{font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.2rem .55rem;border-radius:6px;background:#e5efe0;color:#1c3a24}
-  .nb-badge.JRF{background:#dcecff;color:#13406e}.nb-badge.SRF{background:#e3e0ff;color:#3a2f8f}
-  .nb-badge.Post-Doc{background:#ffe8d6;color:#8a4a16}.nb-badge.Admission{background:#d9f3e4;color:#14603a}.nb-badge.Other{background:#eceae4;color:#444}
   .nb-status{font-size:.75rem;font-weight:700;padding:.2rem .5rem;border-radius:6px}
   .nb-status.soon{background:#fff0d6;color:#8a5a00}.nb-status.closed{background:#f3dede;color:#8a1c1c}.nb-status.open{background:#e4f3e4;color:#1c6b2a}
   .nb-title{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;margin:0;color:#14281a}
@@ -57,15 +51,6 @@
   <h1>JRF, SRF, Post-Doc &amp; admission notifications</h1>
   <p class="cp-meta">Latest openings and notifications from ICAR, agricultural universities and research institutes — updated regularly. Newest first.</p>
 
-  <div class="nb-filters" id="nbFilters">
-    <button class="nb-chip active" data-cat="all">All</button>
-    <button class="nb-chip" data-cat="JRF">JRF</button>
-    <button class="nb-chip" data-cat="SRF">SRF</button>
-    <button class="nb-chip" data-cat="Post-Doc">Post-Doc</button>
-    <button class="nb-chip" data-cat="Admission">Admission</button>
-    <button class="nb-chip" data-cat="Other">Other</button>
-  </div>
-
   <div class="nb-disclaimer">⚠️ Always verify full details and eligibility on the official website/notification before applying. Deadlines and terms can change — theciae is not responsible for errors or missed deadlines.</div>
 
   <div class="nb-list" id="nbList"><p class="nb-empty">Loading notices…</p></div>
@@ -77,13 +62,10 @@
       <label>Title<input name="title" required maxlength="200" placeholder="e.g. SRF position in Precision Agriculture" /></label>
       <label>Institution<input name="institution" required maxlength="120" placeholder="e.g. ICAR-CIAE, Bhopal" /></label>
       <div class="nb-row">
-        <label>Category<select name="category"><option>JRF</option><option>SRF</option><option>Post-Doc</option><option>Admission</option><option>Other</option></select></label>
+        <label>Posted date<input name="posted" type="date" /></label>
         <label>Deadline (to apply)<input name="deadline" type="date" /></label>
       </div>
-      <div class="nb-row">
-        <label>Posted date<input name="posted" type="date" /></label>
-        <label>Official source link<input name="sourceUrl" type="url" placeholder="https://..." /></label>
-      </div>
+      <label>Official source link<input name="sourceUrl" type="url" placeholder="https://..." /></label>
       <label>Direct PDF link (optional)<input name="pdfUrl" type="url" placeholder="https://.../notification.pdf" /></label>
       <label>Short note (optional)<textarea name="notes" rows="2" maxlength="400" placeholder="e.g. Walk-in interview; M.Tech Ag Engg required"></textarea></label>
       <label>Admin password<input name="password" type="password" required autocomplete="off" placeholder="Only the site owner" /></label>
@@ -101,7 +83,7 @@
 (function(){
   const list=document.getElementById('nbList');
   const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  let all=[], filter='all', adminPw='';
+  let all=[], adminPw='';
   const today=new Date(); today.setHours(0,0,0,0);
 
   function status(deadline){
@@ -115,15 +97,13 @@
   function fmt(d){ if(!d) return '—'; const x=new Date(d+'T00:00:00'); return isNaN(x)?d:x.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}); }
 
   function render(){
-    const items=all.filter(n=>filter==='all'||n.category===filter);
-    if(!items.length){ list.innerHTML='<p class="nb-empty">'+(all.length?'No notices in this category yet.':'No notices yet — check back soon.')+'</p>'; return; }
+    const items=all;
+    if(!items.length){ list.innerHTML='<p class="nb-empty">No notices yet — check back soon.</p>'; return; }
     list.innerHTML=items.map(n=>{
       const st=status(n.deadline);
       const expired=st&&st.cls==='closed';
-      const cat=esc(n.category||'Other');
       return '<article class="nb-card'+(expired?' expired':'')+'">'
-        +'<div class="nb-top"><span class="nb-badge '+cat+'">'+cat+'</span>'
-        +(st?'<span class="nb-status '+st.cls+'">'+esc(st.txt)+'</span>':'')+'</div>'
+        +(st?'<div class="nb-top"><span class="nb-status '+st.cls+'">'+esc(st.txt)+'</span></div>':'')
         +'<h2 class="nb-title">'+esc(n.title)+'</h2>'
         +'<div class="nb-inst">'+esc(n.institution)+'</div>'
         +'<div class="nb-meta"><span>Posted: '+fmt(n.posted)+'</span>'+(n.deadline?'<span>Last date: '+fmt(n.deadline)+'</span>':'')+'</div>'
@@ -142,13 +122,6 @@
     fetch('notices.json?t='+Date.now()).then(r=>r.json()).then(d=>{ all=Array.isArray(d)?d:[]; render(); })
       .catch(()=>{ list.innerHTML='<p class="nb-empty">Could not load notices right now.</p>'; });
   }
-
-  // filters
-  document.getElementById('nbFilters').addEventListener('click',e=>{
-    const b=e.target.closest('.nb-chip'); if(!b) return;
-    document.querySelectorAll('.nb-chip').forEach(c=>c.classList.remove('active'));
-    b.classList.add('active'); filter=b.dataset.cat; render();
-  });
 
   // owner admin reveal
   function maybeAdmin(){ if(/^#(post|admin)$/.test(location.hash)){ document.getElementById('nbAdmin').hidden=false; render(); } }
@@ -174,7 +147,7 @@
     e.preventDefault();
     const f=new FormData(form);
     const pw=f.get('password'); adminPw=pw;
-    const notice={title:f.get('title'),institution:f.get('institution'),category:f.get('category'),posted:f.get('posted'),deadline:f.get('deadline'),sourceUrl:f.get('sourceUrl'),pdfUrl:f.get('pdfUrl'),notes:f.get('notes')};
+    const notice={title:f.get('title'),institution:f.get('institution'),posted:f.get('posted'),deadline:f.get('deadline'),sourceUrl:f.get('sourceUrl'),pdfUrl:f.get('pdfUrl'),notes:f.get('notes')};
     const btn=form.querySelector('button[type=submit]'); btn.disabled=true; msg.textContent='Posting…'; msg.style.color='#5a6b5f';
     try{
       const r=await fetch('/api/notice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw,action:'add',notice})});

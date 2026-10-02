@@ -143,12 +143,11 @@ function Url($loc,$pri){ "<url><loc>$loc</loc><changefreq>weekly</changefreq><pr
 [void]$urls.Append((Url 'https://theciae.com/' '1.0'))
 [void]$urls.Append((Url 'https://theciae.com/syllabus.html' '0.9'))
 [void]$urls.Append((Url 'https://theciae.com/reels.html' '0.7'))
-[void]$urls.Append((Url 'https://theciae.com/app.html' '0.7'))
 foreach($c in $all){ [void]$urls.Append((Url "https://theciae.com/course/$($c.code).html" '0.8')) }
 $sitemap = '<?xml version="1.0" encoding="UTF-8"?>' + "`n" + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + "`n" + $urls.ToString() + "`n</urlset>`n"
 [System.IO.File]::WriteAllText((Join-Path $root 'sitemap.xml'), $sitemap, (New-Object System.Text.UTF8Encoding($false)))
 
-"Generated $n course pages + syllabus.html + sitemap ($($all.Count+4) urls)"
+"Generated $n course pages + syllabus.html + sitemap ($($all.Count+3) urls)"
 
 
 

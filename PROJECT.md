@@ -24,8 +24,9 @@ notes / syllabus / notifications hub, grow Google traffic, and eventually moneti
 - `syllabus.html` — full course directory (generated).
 - `course/*.html` — per-course SEO pages (generated; ~175).
 - `links.html` — curated global + India resource directory (societies, universities, journals, exams).
-- `notices.html` — **Notice Board** (JRF/SRF/Post-Doc/admission). Single newest-first list with deadline
-  status (Open / Closing soon / Expired).
+- `notices.html` — **Openings Directory**: links to the official recruitment pages of ICAR institutes, ASRB/NTA,
+  IIT Kharagpur, agricultural universities and fellowship schemes (no daily posting needed). An optional
+  **Featured notices** section (from `notices.json`, with deadline status) appears only when something is posted.
 - `app.html` — PWA-style study app (streaks, quizzes, reels, calculators). **noindex** (kept out of search).
 - `reels.html` — study reels.
 - **Data:** `courses.json` (B.Tech), `mtech.json` (5 M.Tech disciplines: FMPE, ASPE, SWCE, IDE, REE),
@@ -39,8 +40,10 @@ notes / syllabus / notifications hub, grow Google traffic, and eventually moneti
 ## Owner workflows (no coding needed)
 - **Upload notes:** `theciae.com/#upload` → fill form → admin password. Files commit to `courses/`, live in ~1 min.
   (≤ ~3 MB each; PDF/DOCX/PPTX/XLSX/JPG/PNG/ZIP/JSON.)
-- **Post a notice:** `theciae.com/notices.html#post` → fill form (title, institution, dates, official link) →
-  admin password → saves to `notices.json`, live in ~1 min. Delete via the Delete button in admin mode.
+- **Feature a notice (optional, occasional):** `theciae.com/notices.html#post` → fill form (title, institution, dates,
+  official link) → admin password → saves to `notices.json`, live in ~1 min; also shows in the homepage ticker.
+  Delete via the Delete button in admin mode. With no notices, the section and ticker stay hidden.
+- **Openings directory upkeep:** recheck the recruitment links every month or two; ICAR institute sites move often.
 - These `#upload` / `#post` entry points are password-protected server-side, so they are safe to leave discoverable.
 
 ## Content rules (legal + SEO + AdSense)

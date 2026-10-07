@@ -26,6 +26,22 @@
       .nt-track span{opacity:.95}
       @keyframes nt-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
       @media (prefers-reduced-motion:reduce){.nt-track{animation:none}.nt-viewport{overflow-x:auto}}
+      .news-panel{position:absolute;z-index:3;top:40px;left:6%;width:min(330px,64%);background:rgba(255,255,255,.74);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.7);border-radius:16px;padding:12px 14px 10px;box-shadow:0 12px 32px rgba(20,60,40,.16);color:#14281a}
+      .news-panel[hidden]{display:none}
+      .np-head{margin:0 0 6px;display:flex;align-items:center;gap:8px;font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#1c3a24}
+      .np-dot{width:8px;height:8px;border-radius:50%;background:#2f9e5e;animation:np-pulse 2s ease-out infinite}
+      .np-viewport{height:228px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(180deg,transparent,#000 7%,#000 93%,transparent)}
+      .np-list{list-style:none;margin:0;padding:0;animation:np-scroll var(--np-dur,60s) linear infinite}
+      .news-panel:hover .np-list,.news-panel:focus-within .np-list{animation-play-state:paused}
+      .np-list li{padding:9px 0;border-bottom:1px solid rgba(20,40,25,.09)}
+      .np-list a{display:block;color:inherit;text-decoration:none;font-size:.86rem;font-weight:600;line-height:1.3}
+      .np-list a:hover{text-decoration:underline}
+      .np-meta{display:block;margin-top:3px;font-size:.72rem;font-weight:500;color:#5a6b5f}
+      .np-foot{margin:6px 0 0;font-size:.66rem;color:#5a6b5f}
+      @keyframes np-scroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+      @keyframes np-pulse{0%{box-shadow:0 0 0 0 rgba(47,158,94,.55)}100%{box-shadow:0 0 0 8px rgba(47,158,94,0)}}
+      @media (max-width:750px){.news-panel{left:16px;right:16px;width:auto;top:20px}.np-viewport{height:150px}}
+      @media (prefers-reduced-motion:reduce){.np-list{animation:none}.np-viewport{overflow-y:auto}.np-dot{animation:none}}
     </style>
   </head>
   <body>
@@ -51,9 +67,14 @@
           <div class="hero-actions"><a class="button button-primary" href="#resources">Explore resources <span>→</span></a><a class="text-button" href="mailto:theciaenotes@gmail.com?subject=Notes%20for%20theciae">Share a resource <span>↗</span></a></div>
           <div class="stats"><div><strong id="resourceCount">115</strong><span>syllabus courses</span></div><div><strong>8</strong><span>semesters mapped</span></div><div><strong>30</strong><span>quiz questions</span></div></div>
         </div>
-        <div class="hero-art" aria-hidden="true">
+        <div class="hero-art">
           <div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div>
           <div class="plant"><i></i><i></i><i></i><b></b></div><div class="plant plant-small"><i></i><i></i><b></b></div>
+          <aside class="news-panel" id="newsPanel" hidden aria-label="Latest agricultural engineering news">
+            <p class="np-head"><span class="np-dot" aria-hidden="true"></span>Latest in Ag-Engineering</p>
+            <div class="np-viewport"><ul class="np-list" id="npList"></ul></div>
+            <p class="np-foot">Updated hourly · headlines via Google News</p>
+          </aside>
         </div>
       </section>
 
@@ -173,6 +194,20 @@
           var track=document.getElementById('ntTrack');
           track.innerHTML=html+html; // duplicate for a seamless loop
           document.getElementById('noticeTicker').hidden=false;
+        }).catch(function(){});
+      })();
+      // Hero news panel: latest ag-engineering headlines from /api/news (cached hourly). Stays hidden if unavailable.
+      (function(){
+        var panel=document.getElementById('newsPanel'), list=document.getElementById('npList');
+        if(!panel||!window.fetch)return;
+        var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});};
+        var ago=function(iso){var h=Math.floor((Date.now()-new Date(iso).getTime())/36e5);if(h<1)return 'just now';if(h<24)return h+'h ago';var d=Math.floor(h/24);return d+(d>1?' days ago':' day ago');};
+        var row=function(n,copy){return '<li'+(copy?' aria-hidden="true"':'')+'><a href="'+esc(n.link)+'" target="_blank" rel="noopener"'+(copy?' tabindex="-1"':'')+'>'+esc(n.title)+'<span class="np-meta">'+esc(n.source)+' · '+ago(n.date)+'</span></a></li>';};
+        fetch('/api/news').then(function(r){return r.ok?r.json():null;}).then(function(d){
+          if(!d||!d.items||!d.items.length)return;
+          list.innerHTML=d.items.map(function(n){return row(n,false);}).join('')+d.items.map(function(n){return row(n,true);}).join(''); // second copy makes the scroll loop seamless
+          list.style.setProperty('--np-dur',(d.items.length*6)+'s');
+          panel.hidden=false;
         }).catch(function(){});
       })();
     </script>

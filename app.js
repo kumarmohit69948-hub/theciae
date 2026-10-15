@@ -6,7 +6,6 @@ const PILLS=[['all','All'],['starred','★ My courses'],['Semester 1','Sem 1'],[
 let MTECH_SECTIONS=[];
 const MTECH_PILLS=[['all','All units'],['starred','★ My saved']];
 const mtechShort=s=>s.split('—').pop().trim().replace('Farm Machinery & Power','FMPE').replace('Agricultural Structures & Process Engineering','ASPE').replace('Soil and Water Conservation Engineering','SWCE').replace('Soil & Water Conservation Engineering','SWCE').replace('Irrigation & Drainage Engineering','IDE').replace('Irrigation and Drainage Engineering','IDE').replace('Renewable Energy Engineering','REE');
-const ICONS={'Semester 1':'S1','Semester 2':'S2','Semester 3':'S3','Semester 4':'S4','Semester 5':'S5','Semester 6':'S6','Semester 7':'S7','Semester 8':'S8','Semester 8 — Electives':'EL','Skill Enhancement Courses (Semester 2)':'SK'};
 const grid=document.querySelector('#courseGrid'), search=document.querySelector('#searchInput'), pillBox=document.querySelector('#semPills'), emptyState=document.querySelector('#emptyState');
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const dept=code=>DEPTS[code.replace(/[^A-Z].*$/,'')]||'Agricultural Engineering';
@@ -15,13 +14,22 @@ let courses=[], activePill='all', activeProg='btech', activeDisc='', filesIdx={}
 let progress=load('theciae-progress','{}'), stars=new Set(load('theciae-stars','[]'));
 const doneCount=c=>{const p=progress[c.code]||{};return c.lectures.filter(l=>p[l.n]).length};
 
-// Discover uploaded files by reading the repo tree from the GitHub API.
-// Any file dropped into courses/<Semester>/<Course>/<Lecture>/ on GitHub
-// shows up here automatically on the next page load.
-const REPO='kumarmohit69948-hub/theciae', BRANCHES=['main','feat/syllabus-course-folders'];
+// Discover uploaded files from the repo tree. Any file dropped into
+// courses/<Semester>/<Course>/<Lecture>/ on GitHub shows up here automatically.
+// /api/files serves a cached copy (GitHub allows a browser only 60 calls an hour);
+// the direct GitHub API is the fallback, and is used right after an admin upload.
+const REPO='kumarmohit69948-hub/theciae', BRANCHES=['main','feat/syllabus-course-folders'], FILES_KEY='theciae-files-v3';
+// notes are served from this site's own copy of the repo; raw GitHub is the fallback for brand-new uploads
+const site=p=>'/'+p.split('/').map(encodeURIComponent).join('/');
 async function loadFiles(){
-  const cached=sessionStorage.getItem('theciae-files-v2');
+  const cached=sessionStorage.getItem(FILES_KEY);
   if(cached)return JSON.parse(cached);
+  if(!sessionStorage.getItem('theciae-direct')){
+    try{
+      const r=await fetch('/api/files');
+      if(r.ok){const out=await r.json();if(out.dirs&&out.dirs.length){sessionStorage.setItem(FILES_KEY,JSON.stringify(out));return out}}
+    }catch(e){}
+  }
   for(const br of BRANCHES){
     try{
       const r=await fetch(`https://api.github.com/repos/${REPO}/git/trees/${br}?recursive=1`);
@@ -29,7 +37,7 @@ async function loadFiles(){
       const t=await r.json();
       const files=(t.tree||[]).filter(e=>e.type==='blob'&&e.path.startsWith('courses/')&&!/(\.gitkeep|README\.md)$/.test(e.path)).map(e=>e.path);
       const dirs=(t.tree||[]).filter(e=>e.type==='tree'&&e.path.startsWith('courses/')).map(e=>e.path);
-      if(dirs.length){const out={branch:br,files,dirs};sessionStorage.setItem('theciae-files-v2',JSON.stringify(out));return out}
+      if(dirs.length){const out={branch:br,files,dirs};sessionStorage.setItem(FILES_KEY,JSON.stringify(out));return out}
     }catch(e){}
   }
   return {branch:'main',files:[],dirs:[]};
@@ -37,14 +45,13 @@ async function loadFiles(){
 function indexFiles({branch,files}){
   const idx={};
   files.forEach(path=>{
-    const seg=path.split('/');if(seg.length<4)return;
+    const seg=path.split('/');if(seg.length<4||/(\.gitkeep|README\.md)$/.test(path))return;
     const code=seg[2].split(' - ')[0].trim();
     idx[code]=idx[code]||{course:[],lectures:{}};
     const name=seg[seg.length-1];
     const enc=seg.map(encodeURIComponent).join('/');
-    const raw=`https://raw.githubusercontent.com/${REPO}/${branch}/${enc}`;
-    const cdn=`https://cdn.jsdelivr.net/gh/${REPO}@${branch}/${enc}`;
-    const f={name,raw,cdn,path};
+    // fallbacks for files not deployed yet: jsDelivr, then raw GitHub (blocked on some Indian networks)
+    const f={name,url:site(path),cdn:`https://cdn.jsdelivr.net/gh/${REPO}@${branch}/${enc}`,raw:`https://raw.githubusercontent.com/${REPO}/${branch}/${enc}`,path};
     // quiz.json / flashcards.json in a course folder power the practice features
     if(seg.length===4&&/^(quiz|flashcards)\.json$/i.test(name)){
       specialsIdx[code]=specialsIdx[code]||{};
@@ -58,20 +65,31 @@ function indexFiles({branch,files}){
 }
 const fileCount=code=>{const f=filesIdx[code];return f?f.course.length+Object.values(f.lectures).reduce((a,b)=>a+b.length,0):0};
 
+const groupLabel=c=>c.prog==='mtech'?'ICAR-NET · '+mtechShort(c.section):c.section;
+function courseRow(c){
+  const nf=fileCount(c.code), dn=doneCount(c), tot=c.lectures.length, sp=specialsIdx[c.code];
+  const word=c.prog==='mtech'?'topic':'lecture';
+  const status=c.practical?'Practical / skill module':tot?(dn?`${dn} of ${tot} ${word}s done`:`${tot} ${word}s`):'Plan coming soon';
+  const tags=(nf?`<span class="tg tg-files">${nf} file${nf>1?'s':''}</span>`:'')+(sp&&sp.quiz?'<span class="tg">Quiz</span>':'')+(sp&&sp.flash?'<span class="tg">Cards</span>':'');
+  return `<article class="course-row" data-i="${c.i}"><span class="cr-code">${esc(c.code)}</span><div class="cr-main"><h3><a href="#course=${encodeURIComponent(c.code)}" data-i="${c.i}">${esc(c.title)}</a></h3><p>${esc(dept(c.code))} · ${status}</p>${dn?`<div class="mini-progress"><i style="width:${Math.round(dn/tot*100)}%"></i></div>`:''}</div><div class="cr-tags">${tags}</div><div class="cr-actions"><a class="card-reel" href="reels.html?course=${encodeURIComponent(c.code)}" title="Study reels for this course" aria-label="Study reels for ${esc(c.code)}">▶</a><button class="star${stars.has(c.code)?' on':''}" data-star="${esc(c.code)}" title="Save to My courses" aria-label="Save ${esc(c.code)} to My courses">★</button></div></article>`;
+}
 function renderCourses(){
   const q=search.value.trim().toLowerCase();
-  const matches=courses.filter(c=>c.prog===activeProg
+  // a search looks across both programmes; otherwise the tabs and pills choose the shelf
+  const matches=q?courses.filter(c=>c.text.includes(q)):courses.filter(c=>c.prog===activeProg
     &&(activeProg!=='mtech'||c.section===activeDisc)
-    &&(activePill==='all'||(activePill==='starred'?stars.has(c.code):c.section===activePill))
-    &&(!q||c.text.includes(q)));
-  grid.innerHTML=matches.map(c=>{
-    const nf=fileCount(c.code), dn=doneCount(c), tot=c.lectures.length, sp=specialsIdx[c.code];
-    const word=c.prog==='mtech'?'topic':'lecture';
-    let status=c.practical?'Practical / skill module':tot?(dn?`${dn}/${tot} done`:tot+' '+word+'s'):'Plan coming soon';
-    if(sp)status+=(sp.quiz?' · <b class="has-files">quiz</b>':'')+(sp.flash?' · <b class="has-files">cards</b>':'');
-    return `<article class="resource-card course-card" data-i="${c.i}"><div class="card-top"><span class="file-icon">${esc(c.icon||ICONS[c.section]||'—')}</span><span class="card-top-right"><span class="tag">${esc(c.code)}</span><a class="card-reel" href="reels.html?course=${encodeURIComponent(c.code)}" title="Study reels for this course">▶</a><button class="star${stars.has(c.code)?' on':''}" data-star="${esc(c.code)}" title="Save to My courses">★</button></span></div><h3>${esc(c.title)}</h3><p>${esc(dept(c.code))}</p>${dn?`<div class="mini-progress"><i style="width:${Math.round(dn/tot*100)}%"></i></div>`:''}<div class="card-bottom"><span>${status}${nf?` · <b class="has-files">${nf} file${nf>1?'s':''}</b>`:''}</span><a href="#" data-i="${c.i}">View details →</a></div></article>`}).join('');
+    &&(activePill==='all'||(activePill==='starred'?stars.has(c.code):c.section===activePill)));
+  const grouped=q||activePill==='starred'||(activeProg==='btech'&&activePill==='all');
+  if(grouped){
+    const groups=new Map();
+    matches.forEach(c=>{const k=groupLabel(c);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(c)});
+    grid.innerHTML=[...groups].map(([k,list])=>`<h3 class="group-h">${esc(k)}<span>${list.length} course${list.length>1?'s':''}</span></h3>`+list.map(courseRow).join('')).join('');
+  }else grid.innerHTML=matches.map(courseRow).join('');
+  const sum=document.querySelector('#dirSummary');
+  sum.hidden=!q;
+  if(q)sum.innerHTML=`${matches.length} result${matches.length===1?'':'s'} for “${esc(search.value.trim())}” across B.Tech. and M.Tech / ICAR-NET · <button type="button" class="text-link" id="clearSearch">Clear search</button>`;
   emptyState.hidden=!!matches.length;
-  if(activePill==='starred'&&!matches.length&&!q){emptyState.textContent='No saved courses yet — tap the ★ on any course card to pin it here.'}
+  if(activePill==='starred'&&!matches.length&&!q){emptyState.textContent='No saved courses yet — tap the ★ on any course to pin it here.'}
   else emptyState.textContent='No matching courses yet. Try another search.';
 }
 let openCourse=null;
@@ -82,8 +100,8 @@ function updateLectureProgress(c){
 }
 function fileLinks(list){
   return `<span class="syl-files">${list.map(x=>(/\.pdf$/i.test(x.name)
-    ?`<a href="${esc(x.cdn)}" class="pdf-chip" data-name="${esc(x.name)}" data-dl="${esc(x.raw)}">${esc(x.name)} — view ⤢</a>`
-    :`<a href="${esc(x.raw)}" target="_blank" rel="noopener" download>${esc(x.name)} ↓</a>`)
+    ?`<a href="view.html?f=${encodeURIComponent(x.path)}" class="pdf-chip" data-path="${esc(x.path)}">${esc(x.name.replace(/\.pdf$/i,''))} <b>Read ⤢</b></a>`
+    :`<a href="${esc(x.url)}" download>${esc(x.name)} ↓</a>`)
     +`<button class="file-del" data-path="${esc(x.path)}" data-fname="${esc(x.name)}" title="Delete this file (admin only)">🗑</button>`).join('')}</span>`;
 }
 function openLecture(i){
@@ -99,12 +117,25 @@ function openLecture(i){
     (f.course.length?`<p class="syl-note"><strong>Course resources:</strong></p>${fileLinks(f.course)}`:'')+
     (c.lectures.length?`<ol class="syl-lectures">${c.lectures.map(l=>`<li class="${p[l.n]?'done':''}"><i class="lec-n">${String(l.n).padStart(2,'0')}</i>${esc(l.t)}${f.lectures[l.n]?fileLinks(f.lectures[l.n]):''}<label class="lec-check" title="Mark as completed"><input type="checkbox" data-n="${l.n}"${p[l.n]?' checked':''}></label></li>`).join('')}</ol>`:`<p class="syl-note">${c.practical?'Hands-on skill module — resources will be added directly under this course.':'Lecture-wise plan will be added soon.'}</p>`)+
     `<p class="syl-hint">Tick lectures as you complete them — your progress is saved on this device. Files uploaded to this course's folders on GitHub appear here automatically.</p>`;
-  document.querySelector('#lectureDialog').showModal();
+  const dlg=document.querySelector('#lectureDialog');
+  if(!dlg.open)dlg.showModal();
+  // keep the course in the address bar, so Back from the notes reader reopens it
+  history.replaceState(null,'','#course='+encodeURIComponent(c.code));
 }
+document.querySelector('#lectureDialog').addEventListener('close',()=>{
+  if(location.hash.startsWith('#course='))history.replaceState(null,'',location.pathname+location.search);
+});
 function renderPills(){
   const list=activeProg==='mtech'?MTECH_PILLS:PILLS;
   pillBox.innerHTML=list.map(([v,l])=>`<button class="pill${v===activePill?' active':''}" data-v="${esc(v)}">${esc(l)}</button>`).join('');
-  pillBox.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));b.classList.add('active');activePill=b.dataset.v;renderCourses()});
+  pillBox.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));b.classList.add('active');activePill=b.dataset.v;rememberShelf();renderCourses()});
+}
+// B.Tech. opens on the student's last semester (Semester 1 the first time) instead of all 115 courses
+const savedShelf=()=>{const v=localStorage.getItem('theciae-shelf');return PILLS.some(p=>p[0]===v)?v:'Semester 1'};
+const rememberShelf=()=>{if(activeProg==='btech')try{localStorage.setItem('theciae-shelf',activePill)}catch(e){}};
+function showShelf(){
+  document.querySelectorAll('.prog-tab').forEach(x=>x.classList.toggle('active',x.dataset.prog===activeProg));
+  renderDiscTabs();renderPills();renderCourses();
 }
 function renderDiscTabs(){
   const box=document.querySelector('#discTabs');
@@ -124,16 +155,19 @@ Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=
   MTECH_SECTIONS=msections.map(s=>s.section);
   activeDisc=MTECH_SECTIONS[0]||'';
   msections.forEach(sec=>sec.courses.forEach(c=>{courses.push({...c,prog:'mtech',section:sec.section,i:i++,text:(c.code+' '+c.title+' '+c.lectures.map(l=>l.t).join(' ')).toLowerCase()})}));
-  document.querySelector('#resourceCount').textContent=courses.length;
+  activePill=savedShelf();
+  // key figures, counted from what is actually on the site
+  const sp=Object.values(specialsIdx);
+  document.querySelector('#figCourses').textContent=courses.length;
+  document.querySelector('#figNotes').textContent=(tree.files||[]).filter(p=>/\.pdf$/i.test(p)).length||'—';
+  document.querySelector('#figQuiz').textContent=sp.filter(s=>s.quiz).length||'—';
+  document.querySelector('#figCards').textContent=sp.filter(s=>s.flash).length||'—';
   document.querySelectorAll('.prog-tab').forEach(b=>b.onclick=()=>{
-    document.querySelectorAll('.prog-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-    activeProg=b.dataset.prog;activePill='all';
+    activeProg=b.dataset.prog;activePill=activeProg==='btech'?savedShelf():'all';
     if(activeProg==='mtech'&&!activeDisc)activeDisc=MTECH_SECTIONS[0]||'';
-    renderDiscTabs();renderPills();renderCourses();
+    showShelf();
   });
-  renderDiscTabs();
-  renderPills();
-  renderCourses();
+  showShelf();
   renderStreak();
   grid.addEventListener('click',e=>{
     if(e.target.closest('.card-reel'))return; // let the reels link navigate
@@ -143,67 +177,88 @@ Promise.all([fetch('courses.json').then(r=>r.json()),fetch('mtech.json').then(r=
     e.preventDefault();openLecture(+t.dataset.i);
   });
   search.addEventListener('input',renderCourses);
-  // deep link: index.html#course=CODE opens that course's popup (used by Study Reels)
+  document.querySelector('#dirSummary').addEventListener('click',e=>{
+    if(!e.target.closest('#clearSearch'))return;
+    search.value='';document.querySelector('#introQuery').value='';renderCourses();search.focus();
+  });
+  // the search box at the top of the page searches the directory below it
+  const introQuery=document.querySelector('#introQuery');
+  const runIntroSearch=()=>{search.value=introQuery.value;renderCourses()};
+  introQuery.addEventListener('input',runIntroSearch);
+  document.querySelector('#introSearch').addEventListener('submit',e=>{
+    e.preventDefault();runIntroSearch();
+    document.querySelector('#resources').scrollIntoView({behavior:'smooth'});
+  });
+  // deep link: index.html#course=CODE opens that course's popup (used by Study Reels and the notes reader)
   const openFromHash=()=>{
     const m=location.hash.match(/^#course=(.+)$/);if(!m)return;
     const c=courses.find(x=>x.code===decodeURIComponent(m[1]));
     if(!c)return;
-    if(c.prog==='mtech'){activeProg='mtech';activeDisc=c.section;document.querySelectorAll('.prog-tab').forEach(x=>x.classList.toggle('active',x.dataset.prog==='mtech'));renderDiscTabs();renderPills();renderCourses()}
+    activeProg=c.prog;
+    if(c.prog==='mtech'){activeDisc=c.section;activePill='all'}else activePill=c.section;
+    showShelf();
     document.querySelector('#resources').scrollIntoView();
     openLecture(c.i);
   };
   window.addEventListener('hashchange',openFromHash);
   openFromHash();
-  // "What are you looking for?" chips route straight to the right shelf
-  document.querySelectorAll('.find-chip[data-route]').forEach(b=>b.onclick=()=>{
+  // "Start here" links and the ICAR-NET menu item route straight to the right shelf
+  document.querySelectorAll('[data-route]').forEach(b=>b.addEventListener('click',e=>{
+    e.preventDefault();
     if(b.dataset.route==='sem'){
-      activeProg='btech';activePill=b.dataset.v;activeDisc=activeDisc||MTECH_SECTIONS[0]||'';
+      activeProg='btech';activePill=b.dataset.v;rememberShelf();
     }else{
       activeProg='mtech';activePill='all';
       activeDisc=MTECH_SECTIONS.find(s=>mtechShort(s).includes(b.dataset.v))||MTECH_SECTIONS[0]||'';
     }
-    document.querySelectorAll('.prog-tab').forEach(x=>x.classList.toggle('active',x.dataset.prog===activeProg));
-    renderDiscTabs();renderPills();renderCourses();
+    search.value='';introQuery.value='';
+    showShelf();
     document.querySelector('#resources').scrollIntoView({behavior:'smooth'});
-  });
+  }));
+  loadFresh(tree);
 }).catch(()=>{grid.innerHTML='<p class="empty-state">Could not load the syllabus. Please refresh the page.</p>'});
 
-// ---- "New this week": latest uploads, straight from the repo's commits ----
-async function loadFresh(){
-  const box=document.querySelector('#freshStrip');if(!box)return;
+// ---- "New on theciae": latest uploads (from /api/files, else straight from the repo's commits) ----
+async function loadFresh(tree){
+  const list=document.querySelector('#freshList');if(!list)return;
   try{
-    let items=null;
-    const cached=sessionStorage.getItem('theciae-fresh-v1');
-    if(cached)items=JSON.parse(cached);
+    let items=tree&&Array.isArray(tree.fresh)?tree.fresh:null;
     if(!items){
-      const commits=await (await fetch(`https://api.github.com/repos/${REPO}/commits?path=courses&per_page=8`)).json();
+      const cached=sessionStorage.getItem('theciae-fresh-v2');
+      if(cached)items=JSON.parse(cached);
+    }
+    if(!items){
+      const commits=await (await fetch(`https://api.github.com/repos/${REPO}/commits?path=courses&per_page=3`)).json();
       if(!Array.isArray(commits))throw 0;
       items=[];const seen=new Set();
       for(const c of commits){
-        if(items.length>=4)break;
+        if(items.length>=5)break;
         const det=await (await fetch(c.url)).json();
         for(const f of (det.files||[])){
-          if(items.length>=4)break;
-          if(f.status!=='added')continue;
-          if(!f.filename.startsWith('courses/'))continue;
-          if(/(\.gitkeep|README\.md)$/.test(f.filename))continue;
-          const seg=f.filename.split('/');if(seg.length<4)continue;
-          if(seen.has(f.filename))continue;seen.add(f.filename);
-          items.push({name:seg[seg.length-1],code:seg[2].split(' - ')[0].trim(),date:det.commit.author.date});
+          if(items.length>=5)break;
+          if(f.status!=='added'||!f.filename.startsWith('courses/')||/(\.gitkeep|README\.md|\.json)$/.test(f.filename))continue;
+          if(f.filename.split('/').length<4||seen.has(f.filename))continue;
+          seen.add(f.filename);
+          items.push({path:f.filename,date:det.commit.author.date});
         }
       }
-      sessionStorage.setItem('theciae-fresh-v1',JSON.stringify(items));
+      sessionStorage.setItem('theciae-fresh-v2',JSON.stringify(items));
     }
-    if(!items.length)return;
+    if(!items.length)throw 0;
     const ago=d=>{const days=Math.floor((Date.now()-new Date(d).getTime())/864e5);
       if(days<1)return 'today';if(days===1)return 'yesterday';if(days<7)return days+' days ago';
       const w=Math.floor(days/7);return w<5?w+' week'+(w>1?'s':'')+' ago':Math.floor(days/30)+' month(s) ago'};
-    document.querySelector('#freshRow').innerHTML=items.map(it=>
-      `<a class="fresh-item" href="#course=${encodeURIComponent(it.code)}"><span class="fresh-ico">📄</span><span class="fresh-body"><b>${esc(it.name)}</b><span>${esc(it.code)} · ${esc(ago(it.date))}</span></span></a>`).join('');
-    box.hidden=false;
-  }catch(e){}
+    list.innerHTML=items.slice(0,4).map(it=>{
+      const seg=it.path.split('/'), name=seg[seg.length-1], code=seg[2].split(' - ')[0].trim();
+      const pdf=/\.pdf$/i.test(name), base=name.replace(/\.[a-z0-9]+$/i,'');
+      // "FMPE-U2 T11a - Construction of …" → title "Construction of …", meta "FMPE-U2 · T11a"
+      const m=base.match(/^(\S+)\s+(\S+)\s+-\s+(.+)$/), title=m&&m[1]===code?m[3]:base, part=m&&m[1]===code?' · '+m[2]:'';
+      return `<li><a ${pdf?`href="view.html?f=${encodeURIComponent(it.path)}" class="pdf-chip" data-path="${esc(it.path)}"`:`href="#course=${encodeURIComponent(code)}"`}><b>${esc(title)}</b><span>${esc(code+part)} · ${esc(ago(it.date))}</span></a></li>`;
+    }).join('');
+  }catch(e){
+    list.innerHTML='<li class="fc-empty">New notes appear here as they are added. Open the course directory to read everything published so far.</li>';
+  }
 }
-loadFresh();
 document.querySelector('#closeLecture').onclick=()=>document.querySelector('#lectureDialog').close();
 document.querySelector('#lecBody').addEventListener('change',e=>{
   const cb=e.target.closest('input[data-n]');if(!cb||!openCourse)return;
@@ -222,14 +277,14 @@ document.querySelector('#lecBody').addEventListener('click',async e=>{
     pr.disabled=true;
     try{
       if(pr.dataset.practice==='quiz'){
-        const data=await (await fetch(sp.quiz.raw)).json();
+        const data=await getJSON(sp.quiz);
         if(!Array.isArray(data)||!data.length)throw new Error('quiz.json is empty or invalid');
         quizzes.__custom=data;QUIZ_TITLES.__custom=openCourse.code+' practice';
         document.querySelector('#lectureDialog').close();
         startQuiz('__custom');
         document.querySelector('#quizzes').scrollIntoView({behavior:'smooth'});
       }else{
-        const data=await (await fetch(sp.flash.raw)).json();
+        const data=await getJSON(sp.flash);
         if(!Array.isArray(data)||!data.length)throw new Error('flashcards.json is empty or invalid');
         openFlashcards(openCourse.code,data);
       }
@@ -249,20 +304,42 @@ document.querySelector('#lecBody').addEventListener('click',async e=>{
       const r=await fetch('/api/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw,path:del.dataset.path})});
       const j=await r.json().catch(()=>({}));
       if(!r.ok)throw new Error(j.error||('Delete failed ('+r.status+')'));
-      sessionStorage.removeItem('theciae-files-v2');
+      sessionStorage.removeItem(FILES_KEY);sessionStorage.setItem('theciae-direct','1');
       alert('"'+name+'" deleted.');
       location.reload();
     }catch(err){alert('⚠ '+err.message);del.disabled=false}
     return;
   }
-  const a=e.target.closest('.pdf-chip');if(!a)return;
-  e.preventDefault();
-  document.querySelector('#pdfName').textContent=a.dataset.name;
-  document.querySelector('#pdfDownload').href=a.dataset.dl;
-  document.querySelector('#pdfFrame').src=a.href;
-  document.querySelector('#pdfDialog').showModal();
 });
-document.querySelector('#closePdf').onclick=()=>{document.querySelector('#pdfDialog').close();document.querySelector('#pdfFrame').src='about:blank'};
+// PDF notes. Laptops and desktops open them in the browser's own PDF viewer inside a popup;
+// phones and tablets (whose browsers download a PDF instead of showing it in a frame)
+// follow the link to view.html, a full-screen reader that draws the pages with PDF.js.
+const pdfDialog=document.querySelector('#pdfDialog'), pdfFrame=document.querySelector('#pdfFrame');
+const NATIVE_PDF=navigator.pdfViewerEnabled===true&&!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)&&!(navigator.maxTouchPoints>1&&/Macintosh/.test(navigator.userAgent));
+async function openPdf(path){
+  const seg=path.split('/'), name=seg[seg.length-1], url=site(path), reader='view.html?f='+encodeURIComponent(path);
+  document.querySelector('#pdfName').textContent=name.replace(/\.pdf$/i,'');
+  document.querySelector('#pdfCode').textContent=(seg[2]||'').split(' - ')[0].trim();
+  const dl=document.querySelector('#pdfDownload');dl.href=url;dl.setAttribute('download',name);
+  const tab=document.querySelector('#pdfNewTab');tab.href=url;
+  pdfFrame.src='about:blank';
+  if(!pdfDialog.open)pdfDialog.showModal();
+  // a file uploaded a minute ago is on GitHub before this site redeploys; the reader falls back to GitHub
+  let here=false;try{here=(await fetch(url,{method:'HEAD'})).ok}catch(e){}
+  if(!here){tab.href=reader;dl.href=`https://cdn.jsdelivr.net/gh/${REPO}@main/${seg.map(encodeURIComponent).join('/')}`}
+  pdfFrame.src=here?url+'#view=FitH':reader+'&embed=1';
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a.pdf-chip');
+  if(!a||!NATIVE_PDF||innerWidth<760||e.ctrlKey||e.metaKey||e.shiftKey||e.button)return;
+  e.preventDefault();openPdf(a.dataset.path);
+});
+document.querySelector('#closePdf').onclick=()=>pdfDialog.close();
+pdfDialog.addEventListener('close',()=>{pdfFrame.src='about:blank'});
+const getJSON=async f=>{
+  for(const u of [f.url,f.cdn]){try{const r=await fetch(u);if(r.ok)return await r.json()}catch(e){}}
+  return (await fetch(f.raw)).json();
+};
 
 // ---- flashcards ----
 let flashDeck=[],flashIdx=0;
@@ -418,7 +495,7 @@ document.querySelector('#uploadForm').addEventListener('submit',async e=>{
       if(/password/i.test(err.message)){status.textContent='⚠ '+err.message;sessionStorage.removeItem('theciae-pw');break}
     }
   }
-  if(uploadedSomething)sessionStorage.removeItem('theciae-files-v2');
+  if(uploadedSomething){sessionStorage.removeItem(FILES_KEY);sessionStorage.setItem('theciae-direct','1')}
   btn.disabled=false;btn.textContent='Upload to site';
   if(ok===files.length&&ok>0){status.textContent='';toast(`${ok} file${ok>1?'s':''} uploaded ✓ — same course selected for more`);upFile.value='';document.querySelector('#uploadList').innerHTML=''}
   else if(ok>0)status.textContent=`Uploaded ${ok} of ${files.length} — see the list above.`;
@@ -478,9 +555,9 @@ nextBtn.onclick=()=>{
 document.querySelectorAll('.quiz-option').forEach(b=>b.onclick=()=>{document.querySelectorAll('.quiz-option').forEach(x=>x.classList.remove('active'));b.classList.add('active');startQuiz(b.dataset.quiz)});
 startQuiz('irrigation');
 document.querySelector('#year').textContent=new Date().getFullYear();
-
-// ---- gentle reveal-on-scroll for sections ----
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
-  document.querySelectorAll('.section, .cta').forEach(el=>{el.classList.add('fade-up');io.observe(el)});
-}
+// header Search block: jump to the search box at the top of the page
+document.querySelector('#headerSearch').addEventListener('click',e=>{
+  e.preventDefault();
+  scrollTo({top:0,behavior:'smooth'});
+  document.querySelector('#introQuery').focus({preventScroll:true});
+});

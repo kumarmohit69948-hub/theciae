@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#14503a" />
+<title>Notes viewer | theciae</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#12271e;--muted:#5d6f66;--green:#1e6b4e;--green-deep:#14503a;--lime:#dcec6a;--desk:#e4e7df;--line:#d5dbd0}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--desk);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .vw-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;height:58px;padding:0 max(2vw,10px);background:var(--green-deep);color:#fff;box-shadow:0 2px 10px rgba(12,28,21,.25)}
+  .vw-back{flex:none;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 12px;border-radius:8px;color:#fff;text-decoration:none;font-weight:700;font-size:.88rem;background:rgba(255,255,255,.1)}
+  .vw-back:hover{background:rgba(255,255,255,.18)}
+  body.embed .vw-back{display:none}
+  .vw-title{flex:1;min-width:0;display:grid;gap:1px}
+  .vw-title b{font-size:.95rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .vw-title span{font-size:.72rem;color:#b9d3c4;letter-spacing:.04em}
+  .vw-tools{flex:none;display:flex;align-items:center;gap:4px}
+  .vw-tools button,.vw-tools a{display:inline-grid;place-items:center;min-width:38px;height:38px;padding:0 10px;border:0;border-radius:8px;background:rgba(255,255,255,.1);color:#fff;font:700 .95rem "DM Sans",system-ui,sans-serif;text-decoration:none;cursor:pointer}
+  .vw-tools button:hover,.vw-tools a:hover{background:rgba(255,255,255,.2)}
+  .vw-tools #zoomReset{font-size:.75rem;min-width:52px}
+  .vw-tools .vw-dl{background:var(--lime);color:var(--ink);margin-left:6px}
+  .vw-tools .vw-dl:hover{background:#e8f388}
+  .vw-dl .long{margin-left:6px}
+  .vw-stack{width:max-content;min-width:100%;padding:16px 8px 40px}
+  .vw-page{display:block;position:relative;width:var(--page-w,90vw);aspect-ratio:var(--ar,595 / 842);margin:0 auto 12px;background:#fff;box-shadow:0 1px 3px rgba(12,28,21,.14),0 8px 24px rgba(12,28,21,.08)}
+  .vw-page canvas{position:absolute;inset:0;width:100%;height:100%}
+  .vw-page:not(.ready)::after{content:attr(data-n);position:absolute;inset:0;display:grid;place-items:center;color:#c3cbc0;font:700 1.4rem "DM Sans",system-ui,sans-serif}
+  .vw-status{max-width:440px;margin:18vh auto 0;padding:0 20px;text-align:center;color:var(--muted);line-height:1.6}
+  .vw-status[hidden]{display:none}
+  .vw-status strong{display:block;color:var(--ink);font-size:1.05rem;margin-bottom:6px}
+  .vw-status .row{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+  .vw-status a,.vw-status button{border:0;border-radius:8px;padding:11px 18px;font:700 .88rem "DM Sans",system-ui,sans-serif;text-decoration:none;cursor:pointer;background:var(--green);color:#fff}
+  .vw-status button{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .spin{width:34px;height:34px;margin:0 auto 14px;border-radius:50%;border:3px solid #cdd6ca;border-top-color:var(--green);animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (max-width:640px){
+    .vw-bar{gap:8px;height:54px}
+    .vw-back .long,.vw-dl .long,#zoomReset{display:none}
+    .vw-tools button,.vw-tools a{min-width:36px;padding:0 8px}
+    .vw-stack{padding:10px 0 32px}
+    .vw-page{margin-bottom:8px}
+  }
+  @media (prefers-reduced-motion:reduce){.spin{animation:none}}
+</style>
+</head>
+<body>
+<header class="vw-bar">
+  <a class="vw-back" id="vwBack" href="index.html" aria-label="Back to the course">←<span class="long">Back</span></a>
+  <div class="vw-title"><b id="vwName">Loading…</b><span id="vwMeta"></span></div>
+  <div class="vw-tools">
+    <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+    <button type="button" id="zoomReset" aria-label="Fit page to width">100%</button>
+    <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+    <a class="vw-dl" id="vwDownload" href="#" download aria-label="Download PDF">↓<span class="long">Download</span></a>
+  </div>
+</header>
+<div class="vw-status" id="vwStatus"><div class="spin"></div>Opening the notes…</div>
+<main class="vw-stack" id="vwPages" aria-label="PDF pages"></main>
+
+<script type="module">
+import * as pdfjsLib from './vendor/pdfjs/pdf.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('./vendor/pdfjs/pdf.worker.min.js', import.meta.url).href;
+
+// Reads courses/… PDFs from this site first; a file uploaded in the last minute may not be
+// deployed yet, so the repo copy is the fallback — via jsDelivr first, because some Indian
+// networks block raw.githubusercontent.com.
+const REPO = 'kumarmohit69948-hub/theciae';
+const $ = s => document.querySelector(s);
+const qs = new URLSearchParams(location.search);
+const path = qs.get('f') || '';
+if (qs.get('embed') === '1') document.body.classList.add('embed');
+const parts = path.split('/');
+const valid = /^courses\/.+\.pdf$/i.test(path) && !parts.some(s => s === '..' || s === '.' || s === '');
+const enc = parts.map(encodeURIComponent).join('/');
+const name = parts[parts.length - 1] || 'Document';
+const code = parts.length > 3 ? parts[2].split(' - ')[0].trim() : '';
+const title = name.replace(/\.pdf$/i, '');
+const sources = ['/' + enc, `https://cdn.jsdelivr.net/gh/${REPO}@main/${enc}`, `https://raw.githubusercontent.com/${REPO}/main/${enc}`];
+
+$('#vwName').textContent = title;
+$('#vwMeta').textContent = code;
+document.title = title + ' | theciae';
+const dl = $('#vwDownload');
+dl.href = sources[0];
+dl.setAttribute('download', name);
+
+// Back returns to the page the reader came from; opened directly, it goes to the course.
+const back = $('#vwBack');
+back.href = 'index.html' + (code ? '#course=' + encodeURIComponent(code) : '');
+back.addEventListener('click', e => {
+  try { if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) { e.preventDefault(); history.back(); } } catch (err) {}
+});
+
+const status = $('#vwStatus');
+const stack = $('#vwPages');
+function fail(msg) {
+  status.innerHTML = '<strong>' + msg + '</strong>You can still download it and open it in any PDF app.<div class="row"><a href="' + dl.href + '" download>Download PDF</a><button type="button" id="retry">Try again</button></div>';
+  status.hidden = false;
+  $('#retry').onclick = () => location.reload();
+}
+
+let pdf = null, zoom = 1, gen = 0;
+const visible = new Set();
+
+function fitWidth() { return Math.min(document.documentElement.clientWidth - (innerWidth < 640 ? 0 : 48), 980); }
+function layout() {
+  stack.style.setProperty('--page-w', Math.round(fitWidth() * zoom) + 'px');
+  $('#zoomReset').textContent = Math.round(zoom * 100) + '%';
+}
+
+async function draw(el) {
+  if (el.dataset.gen === String(gen) || el._busy) return;
+  el._busy = true;
+  const mine = gen;
+  try {
+    const page = await pdf.getPage(+el.dataset.n);
+    const base = page.getViewport({ scale: 1 });
+    el.style.setProperty('--ar', base.width + ' / ' + base.height);
+    const cssW = el.getBoundingClientRect().width;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);   // sharp text without exhausting phone memory
+    const vp = page.getViewport({ scale: cssW / base.width * dpr });
+    const c = document.createElement('canvas');
+    c.width = Math.ceil(vp.width); c.height = Math.ceil(vp.height);
+    await page.render({ canvasContext: c.getContext('2d', { alpha: false }), viewport: vp }).promise;
+    const old = el.querySelector('canvas');
+    if (old) { old.width = old.height = 0; old.remove(); }
+    el.appendChild(c);
+    el.dataset.gen = String(mine);
+    el.classList.add('ready');
+    page.cleanup();
+  } catch (err) { console.warn(err); }
+  finally {
+    el._busy = false;
+    if (mine !== gen && visible.has(el)) draw(el);
+  }
+}
+
+// draw pages as they come near the screen, and free the ones far away
+const near = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { visible.add(e.target); draw(e.target); } else visible.delete(e.target);
+}), { rootMargin: '150% 0px' });
+const far = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) return;
+  const c = e.target.querySelector('canvas');
+  if (c) { c.width = c.height = 0; c.remove(); }
+  e.target.dataset.gen = '';
+  e.target.classList.remove('ready');
+}), { rootMargin: '600% 0px' });
+
+function setZoom(z) {
+  const y = scrollY / Math.max(1, document.documentElement.scrollHeight);
+  zoom = Math.min(3, Math.max(0.5, Math.round(z * 100) / 100));
+  gen++;
+  layout();
+  scrollTo(scrollX, y * document.documentElement.scrollHeight);
+  visible.forEach(draw);
+}
+$('#zoomIn').onclick = () => setZoom(zoom * 1.25);
+$('#zoomOut').onclick = () => setZoom(zoom / 1.25);
+$('#zoomReset').onclick = () => setZoom(1);
+
+let lastW = innerWidth, rt;
+addEventListener('resize', () => {
+  if (innerWidth === lastW) return;   // phones fire resize when the address bar hides
+  lastW = innerWidth;
+  clearTimeout(rt);
+  rt = setTimeout(() => { gen++; layout(); visible.forEach(draw); }, 200);
+});
+
+let ticking = false;
+addEventListener('scroll', () => {
+  if (ticking || !pdf) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    ticking = false;
+    const mid = innerHeight / 2;
+    let cur = 1;
+    for (const el of stack.children) { if (el.getBoundingClientRect().top <= mid) cur = +el.dataset.n; else break; }
+    $('#vwMeta').textContent = (code ? code + ' · ' : '') + 'page ' + cur + ' / ' + pdf.numPages;
+  });
+}, { passive: true });
+
+async function open() {
+  if (!valid) return fail('This link does not point to a note on theciae.');
+  let lastErr;
+  for (const url of sources) {
+    try {
+      const task = pdfjsLib.getDocument({ url, isEvalSupported: false });
+      task.onProgress = p => { if (p.total) status.lastChild.textContent = 'Opening the notes… ' + Math.min(99, Math.round(p.loaded / p.total * 100)) + '%'; };
+      pdf = await task.promise;
+      if (url !== sources[0]) dl.href = url;
+      break;
+    } catch (err) { lastErr = err; }
+  }
+  if (!pdf) { console.warn(lastErr); return fail('This PDF could not be opened here.'); }
+  status.hidden = true;
+  const first = (await pdf.getPage(1)).getViewport({ scale: 1 });
+  stack.style.setProperty('--ar', first.width + ' / ' + first.height);
+  layout();
+  for (let n = 1; n <= pdf.numPages; n++) {
+    const el = document.createElement('div');
+    el.className = 'vw-page';
+    el.dataset.n = n;
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', 'Page ' + n + ' of ' + pdf.numPages);
+    stack.appendChild(el);
+    near.observe(el);
+    far.observe(el);
+    if (n <= 2) { visible.add(el); draw(el); }   // first pages straight away, without waiting for a scroll check
+  }
+  $('#vwMeta').textContent = (code ? code + ' · ' : '') + 'page 1 / ' + pdf.numPages;
+}
+open();
+</script>
+</body>
+</html>

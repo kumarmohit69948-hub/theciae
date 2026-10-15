@@ -39,7 +39,7 @@
   ["Metering unit musts", "Cutoff device + positive unloading"],
   ["Fluted roller rate control", "Exposed flute length (near-linear)"],
   ["Helical flutes", "Steadier, more uniform flow than straight"],
-  ["Planter spacing", "s = πD_w(1−σ)/(n_c·i)"],
+  ["Planter spacing", "s = πD_w/[n_c·i·(1−σ)] — σ = drive-wheel skid; skid widens spacing"],
   ["Hopper wall slope", "> angle of repose (design ≥35–40° for grain)"],
   ["Double-disc opener angle", "7–10° between discs"],
   ["Fertilizer metering challenge", "Hygroscopic + corrosive + variable flow"],
@@ -69,6 +69,6 @@
   ["ISOBUS", "ISO 11783 — CAN-based tractor–implement interface; one terminal controls any ISOBUS implement."],
   ["NDVI", "(NIR − R)/(NIR + R); healthy vegetation ≈ +0.6–0.9."],
   ["Drone Rules 2021 classes", "Nano <250 g; micro 250 g–2 kg; small 2–25 kg (agri spray); medium 25–150 kg; large >150 kg."],
-  ["Drone spray operation (SOP)", "20–40 L/ha, 2–3 m above canopy, 3–6 m/s; avoid wind > ~10 km/h, temperature > 35 °C, rain."],
+  ["Drone spray operation (crop-specific SOP, 2023)", "~20–25 L/ha by crop stage; ~1.5–2.5 m above canopy (3–4 m sugarcane); ~3.5–5 m/s; avoid wind > ~10 km/h, temperature > 35 °C, rain."],
   ["Namo Drone Didi", "80% subsidy up to ₹8 lakh to 15,000 women SHGs; ₹1,261 crore (2023-24 to 2025-26)."]
 ]

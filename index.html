@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Free B.Tech & M.Tech / ICAR-NET agricultural engineering study hub — full syllabus, notes, previous-year papers, quizzes and quick-revision reels for every course." />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#14503a" />
     <link rel="canonical" href="https://theciae.com/" />
     <title>Agricultural Engineering Notes, Syllabus & NET Prep | theciae</title>
     <meta property="og:title" content="Agricultural Engineering Notes, Syllabus & NET Prep | theciae" />
@@ -15,110 +16,112 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <style>
-      .notice-ticker{display:flex;align-items:center;gap:.75rem;background:#1c3a24;color:#eef3ea;padding:.5rem 1rem;text-decoration:none;overflow:hidden;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.08)}
-      .notice-ticker[hidden]{display:none}
-      .nt-label{font-weight:700;white-space:nowrap;flex:none}
-      .nt-more{white-space:nowrap;flex:none;font-weight:600;opacity:.85}
-      .nt-viewport{overflow:hidden;flex:1;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
-      .nt-track{display:inline-flex;gap:3rem;white-space:nowrap;will-change:transform;animation:nt-scroll 36s linear infinite}
-      .notice-ticker:hover .nt-track{animation-play-state:paused}
-      .nt-track span{opacity:.95}
-      @keyframes nt-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-      @media (prefers-reduced-motion:reduce){.nt-track{animation:none}.nt-viewport{overflow-x:auto}}
-      .news-panel{position:absolute;z-index:3;top:40px;left:6%;width:min(420px,72%);background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.7);border-radius:18px;padding:16px 18px 12px;box-shadow:0 12px 32px rgba(20,60,40,.16);color:#14281a}
-      .news-panel[hidden]{display:none}
-      .np-head{margin:0 0 9px;display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#1c3a24}
-      .np-dot{width:8px;height:8px;border-radius:50%;background:#2f9e5e;animation:np-pulse 2s ease-out infinite}
-      .np-viewport{height:310px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(180deg,transparent,#000 7%,#000 93%,transparent)}
-      .np-list{list-style:none;margin:0;padding:0;animation:np-scroll var(--np-dur,60s) linear infinite}
-      .news-panel:hover .np-list,.news-panel:focus-within .np-list{animation-play-state:paused}
-      .np-list li{padding:11px 0;border-bottom:1px solid rgba(20,40,25,.09)}
-      .np-list a{display:block;color:inherit;text-decoration:none;font-size:.98rem;font-weight:600;line-height:1.35}
-      .np-list a:hover{text-decoration:underline}
-      .np-meta{display:block;margin-top:4px;font-size:.78rem;font-weight:500;color:#5a6b5f}
-      .np-foot{margin:9px 0 0;font-size:.7rem;color:#5a6b5f}
-      @keyframes np-scroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
-      @keyframes np-pulse{0%{box-shadow:0 0 0 0 rgba(47,158,94,.55)}100%{box-shadow:0 0 0 8px rgba(47,158,94,0)}}
-      @media (max-width:750px){.news-panel{left:16px;right:16px;width:auto;top:20px}.np-viewport{height:200px}}
-      @media (prefers-reduced-motion:reduce){.np-list{animation:none}.np-viewport{overflow-y:auto}.np-dot{animation:none}}
-    </style>
   </head>
   <body>
+    <a class="skip-link" href="#resources">Skip to the course directory</a>
     <header class="site-header">
       <a class="brand" href="#home" aria-label="The Concept in Agricultural Engineering home"><span class="brand-mark">✦</span> the<span>ciae</span>.com</a>
-      <nav id="siteNav"><a href="#resources">Syllabus</a><a href="reels.html" class="nav-reels">▶ Reels</a><a href="#quizzes">Quizzes</a><a href="#tools">Tools</a><a href="notices.html">Openings</a><a href="links.html">Links</a><a href="#about">About</a><a href="app.html" class="nav-app">📱 App</a></nav>
-      <a class="button button-dark" href="mailto:theciaenotes@gmail.com?subject=Notes%20for%20theciae">Contribute notes</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
+      <nav id="siteNav" aria-label="Main"><a href="#resources">Courses</a><a href="#resources" data-route="net" data-v="FMPE">ICAR-NET</a><a href="reels.html">Reels</a><a href="#quizzes">Quizzes</a><a href="#tools">Calculators</a><a href="notices.html">Openings</a><a href="links.html">Links</a><a href="#about">About</a></nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav">☰</button>
+      <a class="header-search" id="headerSearch" href="#search" aria-label="Search courses and topics"><span aria-hidden="true">⌕</span><b>Search</b></a>
     </header>
 
-    <a class="notice-ticker" id="noticeTicker" href="notices.html" hidden aria-label="Latest notices — open the notice board">
-      <span class="nt-label">📢 Latest notices</span>
-      <span class="nt-viewport"><span class="nt-track" id="ntTrack"></span></span>
-      <span class="nt-more">View all →</span>
-    </a>
-
     <main id="home">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">FOR AGRICULTURE ENGINEERING STUDENTS</p>
-          <h1>Grow your knowledge.<br /><em>Shape the future.</em></h1>
-          <p class="hero-text">Your place for organised notes, practical manuals, previous-year papers and quick quizzes—built for agriculture engineering.</p>
-          <div class="hero-actions"><a class="button button-primary" href="#resources">Explore resources <span>→</span></a><a class="text-button" href="mailto:theciaenotes@gmail.com?subject=Notes%20for%20theciae">Share a resource <span>↗</span></a></div>
-          <div class="stats"><div><strong id="resourceCount">115</strong><span>syllabus courses</span></div><div><strong>8</strong><span>semesters mapped</span></div><div><strong>30</strong><span>quiz questions</span></div></div>
-        </div>
-        <div class="hero-art">
-          <div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div>
-          <div class="plant"><i></i><i></i><i></i><b></b></div><div class="plant plant-small"><i></i><i></i><b></b></div>
-          <aside class="news-panel" id="newsPanel" hidden aria-label="Latest agricultural engineering news">
-            <p class="np-head"><span class="np-dot" aria-hidden="true"></span>Latest in Ag-Engineering</p>
-            <div class="np-viewport"><ul class="np-list" id="npList"></ul></div>
-            <p class="np-foot">Updated hourly · headlines via Google News</p>
-          </aside>
-        </div>
-      </section>
-
-      <section class="finder" id="finder">
-        <div class="finder-inner">
-          <p class="finder-q">What are you looking for?</p>
-          <div class="finder-chips">
-            <button class="find-chip" data-route="sem" data-v="Semester 1">Sem 1</button>
-            <button class="find-chip" data-route="sem" data-v="Semester 2">Sem 2</button>
-            <button class="find-chip" data-route="sem" data-v="Semester 3">Sem 3</button>
-            <button class="find-chip" data-route="sem" data-v="Semester 4">Sem 4</button>
-            <button class="find-chip" data-route="sem" data-v="Semester 5">Sem 5</button>
-            <button class="find-chip" data-route="sem" data-v="Semester 6">Sem 6</button>
-            <button class="find-chip" data-route="sem" data-v="Semester 7">Sem 7</button>
-            <button class="find-chip" data-route="sem" data-v="Semester 8">Sem 8</button>
-            <button class="find-chip chip-net" data-route="net" data-v="FMPE">NET · FMPE</button>
-            <button class="find-chip chip-net" data-route="net" data-v="ASPE">NET · ASPE</button>
-            <button class="find-chip chip-net" data-route="net" data-v="SWCE">NET · SWCE</button>
-            <button class="find-chip chip-net" data-route="net" data-v="IDE">NET · IDE</button>
-            <button class="find-chip chip-net" data-route="net" data-v="REE">NET · REE</button>
-            <a class="find-chip chip-go" href="reels.html">▶ Quick revision</a>
-            <a class="find-chip chip-go" href="#tools">🧮 Calculators</a>
-            <a class="find-chip chip-go" href="app.html">📱 Study app</a>
+      <section class="intro" id="search">
+        <div class="intro-panel">
+          <p class="eyebrow">THE CONCEPT IN AGRICULTURAL ENGINEERING</p>
+          <h1>Agricultural engineering, <em>organised.</em></h1>
+          <p class="intro-lede">Syllabus-mapped notes, MCQ banks and revision tools for B.Tech. and M.Tech / ICAR-NET students. Free to read on any device.</p>
+          <form class="intro-search" id="introSearch" role="search">
+            <label class="search"><span aria-hidden="true">⌕</span><input id="introQuery" type="search" placeholder="Course, topic or unit" aria-label="Search courses, lectures and units" autocomplete="off" /></label>
+            <button class="button button-primary" type="submit">Search</button>
+          </form>
+          <p class="start-h">Start here</p>
+          <div class="start-grid">
+            <div class="start-col">
+              <h2>B.Tech. (UG)</h2>
+              <div class="start-links start-sems">
+                <button type="button" data-route="sem" data-v="Semester 1">Sem 1</button>
+                <button type="button" data-route="sem" data-v="Semester 2">Sem 2</button>
+                <button type="button" data-route="sem" data-v="Semester 3">Sem 3</button>
+                <button type="button" data-route="sem" data-v="Semester 4">Sem 4</button>
+                <button type="button" data-route="sem" data-v="Semester 5">Sem 5</button>
+                <button type="button" data-route="sem" data-v="Semester 6">Sem 6</button>
+                <button type="button" data-route="sem" data-v="Semester 7">Sem 7</button>
+                <button type="button" data-route="sem" data-v="Semester 8">Sem 8</button>
+                <button type="button" data-route="sem" data-v="Semester 8 — Electives">Electives</button>
+                <button type="button" data-route="sem" data-v="Skill Enhancement Courses (Semester 2)">Skill modules</button>
+              </div>
+            </div>
+            <div class="start-col">
+              <h2>M.Tech / ICAR-NET</h2>
+              <div class="start-links start-stack">
+                <button type="button" data-route="net" data-v="FMPE">Farm Machinery &amp; Power</button>
+                <button type="button" data-route="net" data-v="ASPE">Structures &amp; Process Engg.</button>
+                <button type="button" data-route="net" data-v="SWCE">Soil &amp; Water Conservation</button>
+                <button type="button" data-route="net" data-v="IDE">Irrigation &amp; Drainage</button>
+                <button type="button" data-route="net" data-v="REE">Renewable Energy</button>
+              </div>
+            </div>
+            <div class="start-col">
+              <h2>Practise</h2>
+              <div class="start-links start-stack"><a href="reels.html">Study reels</a><a href="#quizzes">Quiz corner</a><a href="#tools">Calculators</a><a href="app.html">Study app</a></div>
+            </div>
+            <div class="start-col">
+              <h2>Careers &amp; links</h2>
+              <div class="start-links start-stack"><a href="notices.html">Openings directory</a><a href="links.html">Global resource links</a><a href="syllabus.html">Course index A–Z</a><a href="mailto:theciaenotes@gmail.com?subject=Notes%20for%20theciae">Contribute notes</a></div>
+            </div>
           </div>
         </div>
-        <div class="fresh-strip" id="freshStrip" hidden>
-          <p class="fresh-label">NEW THIS WEEK</p>
-          <div class="fresh-row" id="freshRow"></div>
+
+        <div class="intro-feature">
+          <article class="feature-card" id="newsCard" hidden aria-labelledby="newsH">
+            <p class="fc-h" id="newsH"><span class="np-dot" aria-hidden="true"></span>In the news</p>
+            <ul class="fc-list" id="npList"></ul>
+            <p class="fc-foot">Headlines via Google News · updated hourly</p>
+          </article>
+          <article class="feature-card" id="freshCard" aria-labelledby="freshH">
+            <p class="fc-h" id="freshH">New on theciae</p>
+            <ul class="fc-list" id="freshList"><li class="fc-empty">Loading the latest notes…</li></ul>
+            <a class="fc-more" href="#resources">Browse the course directory →</a>
+          </article>
+          <article class="feature-card" id="openCard" aria-labelledby="openH">
+            <p class="fc-h" id="openH">Openings &amp; exams</p>
+            <ul class="fc-list" id="openList">
+              <li><a href="https://www.asrb.org.in" target="_blank" rel="noopener">ASRB<span>ICAR-NET, ARS, SMS and STO notifications</span></a></li>
+              <li><a href="https://exams.nta.nic.in/icar/" target="_blank" rel="noopener">NTA · ICAR<span>AIEEA (PG) and AICE-JRF/SRF entrance exams</span></a></li>
+              <li><a href="https://ciae.res.in/announcements.html" target="_blank" rel="noopener">ICAR-CIAE, Bhopal<span>Young Professional, JRF and SRF walk-ins</span></a></li>
+              <li><a href="https://www.iari.res.in/bms/announcements/jobs.php" target="_blank" rel="noopener">ICAR-IARI, New Delhi<span>Every contractual post with its last date</span></a></li>
+            </ul>
+            <a class="fc-more" href="notices.html">All openings →</a>
+          </article>
         </div>
       </section>
 
-      <section class="section resources" id="resources">
-        <div class="section-heading"><div><p class="eyebrow">UG &amp; PG AGRICULTURAL ENGINEERING</p><h2>Find what you need</h2></div><p>Every course, lecture and exam unit — from the B.Tech. curriculum to the ICAR-NET syllabus.</p></div>
-        <div id="streakStrip" class="streak-strip" hidden></div>
-        <div class="prog-tabs" id="progTabs"><button class="prog-tab active" data-prog="btech">B.Tech. (UG)</button><button class="prog-tab" data-prog="mtech">M.Tech / ARS-NET</button></div>
+      <section class="figures" aria-label="theciae at a glance">
+        <div><strong id="figCourses">175</strong><span>courses &amp; NET units mapped</span></div>
+        <div><strong id="figNotes">—</strong><span>PDF notes to read</span></div>
+        <div><strong id="figQuiz">—</strong><span>quiz banks</span></div>
+        <div><strong id="figCards">—</strong><span>flashcard decks</span></div>
+        <div><strong>8 + 5</strong><span>semesters · NET disciplines</span></div>
+      </section>
+
+      <section class="section directory" id="resources">
+        <div class="section-heading"><div><p class="eyebrow">COURSE DIRECTORY</p><h2>Every course, lecture and unit</h2></div><p>The B.Tech. curriculum (ICAR 6th Deans' Committee) and the ICAR-NET syllabus. Open a course to read its notes.</p></div>
+        <div class="dir-bar">
+          <div class="prog-tabs" id="progTabs"><button class="prog-tab active" data-prog="btech">B.Tech. (UG)</button><button class="prog-tab" data-prog="mtech">M.Tech / ICAR-NET</button></div>
+          <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search courses, lectures, topics…" aria-label="Search the course directory" /></label>
+        </div>
         <div class="disc-tabs" id="discTabs" hidden></div>
-        <div class="filters"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search courses, lectures, topics..." /></label></div>
         <div class="sem-pills" id="semPills"></div>
-        <div class="resource-grid" id="courseGrid"><p class="empty-state">Loading syllabus…</p></div>
+        <div id="streakStrip" class="streak-strip" hidden></div>
+        <p class="dir-summary" id="dirSummary" hidden></p>
+        <div class="course-list" id="courseGrid"><p class="empty-state">Loading syllabus…</p></div>
         <p class="empty-state" id="emptyState" hidden>No matching courses yet. Try another search.</p>
       </section>
 
       <section class="section quiz-section" id="quizzes">
-        <div><p class="eyebrow">TEST YOURSELF</p><h2>Quick quiz corner</h2><p>Small quizzes to sharpen concepts before your next class or exam.</p><div class="quiz-list"><button class="quiz-option active" data-quiz="irrigation"><span>01</span> Irrigation basics <b>5 questions</b></button><button class="quiz-option" data-quiz="soil"><span>02</span> Soil mechanics <b>5 questions</b></button><button class="quiz-option" data-quiz="machinery"><span>03</span> Farm machinery <b>5 questions</b></button><button class="quiz-option" data-quiz="energy"><span>04</span> Renewable energy <b>5 questions</b></button><button class="quiz-option" data-quiz="food"><span>05</span> Food processing <b>5 questions</b></button><button class="quiz-option" data-quiz="surveying"><span>06</span> Surveying <b>5 questions</b></button></div></div>
+        <div><p class="eyebrow">TEST YOURSELF</p><h2>Quick quiz corner</h2><p>Small quizzes to sharpen concepts before your next class or exam. Each course with a quiz bank also has its own practice quiz.</p><div class="quiz-list"><button class="quiz-option active" data-quiz="irrigation"><span>01</span> Irrigation basics <b>5 questions</b></button><button class="quiz-option" data-quiz="soil"><span>02</span> Soil mechanics <b>5 questions</b></button><button class="quiz-option" data-quiz="machinery"><span>03</span> Farm machinery <b>5 questions</b></button><button class="quiz-option" data-quiz="energy"><span>04</span> Renewable energy <b>5 questions</b></button><button class="quiz-option" data-quiz="food"><span>05</span> Food processing <b>5 questions</b></button><button class="quiz-option" data-quiz="surveying"><span>06</span> Surveying <b>5 questions</b></button></div></div>
         <div class="quiz-card"><div class="quiz-progress"><span id="quizLabel">IRRIGATION BASICS</span><span id="questionNumber">1 / 5</span></div><div class="progress"><i id="progressBar"></i></div><h3 id="questionText"></h3><div class="answers" id="answers"></div><p id="quizFeedback" class="quiz-feedback"></p><button class="button button-primary" id="nextQuestion" disabled>Check answer</button></div>
       </section>
 
@@ -146,31 +149,32 @@
         <p class="syl-hint">Estimates for study and preliminary design — verify with your course methods for real projects.</p>
       </section>
 
-      <section class="cta" id="about"><div><p class="eyebrow">CONTRIBUTE TO THE COMMUNITY</p><h2>Have helpful notes to share?</h2><p>Email us your own original notes, lab work, or open resources and we'll add them for the next student. Please send only material you created or that is free to share.</p></div><a class="button button-light" href="mailto:theciaenotes@gmail.com?subject=Notes%20for%20theciae&body=Course%2Fsubject%3A%20%0AWhat%20the%20notes%20cover%3A%20%0A(attach%20your%20files%20to%20this%20email)">Email your notes <span>→</span></a></section>
+      <section class="cta" id="about"><div><p class="eyebrow">ABOUT THECIAE</p><h2>Notes by students, for students.</h2><p>theciae is a free, independent study hub for agricultural engineering. Have original notes, lab work or open resources? Email them and we'll add them for the next student — please send only material you created or that is free to share.</p></div><a class="button button-dark" href="mailto:theciaenotes@gmail.com?subject=Notes%20for%20theciae&body=Course%2Fsubject%3A%20%0AWhat%20the%20notes%20cover%3A%20%0A(attach%20your%20files%20to%20this%20email)">Email your notes <span>→</span></a></section>
     </main>
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="brand brand-light" href="#home"><span class="brand-mark">✦</span> the<span>ciae</span>.com</a>
-          <p>The Concept in Agricultural Engineering — organised notes, lecture plans, papers and quizzes for every B.Tech. Agricultural Engineering student.</p>
+          <p>The Concept in Agricultural Engineering — organised notes, lecture plans, MCQ banks and revision tools for B.Tech. and M.Tech / ICAR-NET agricultural engineering.</p>
         </div>
-        <nav class="footer-col" aria-label="Explore">
-          <h4>Explore</h4>
-          <a href="#resources">Syllabus &amp; resources</a>
-          <a href="syllabus.html">Full course directory (A–Z)</a>
-          <a href="reels.html">Study Reels ▶</a>
+        <nav class="footer-col" aria-label="Study">
+          <h4>Study</h4>
+          <a href="#resources">Course directory</a>
+          <a href="syllabus.html">Course index (A–Z)</a>
+          <a href="reels.html">Study reels</a>
           <a href="#quizzes">Quiz corner</a>
-          <a href="notices.html">Openings directory</a>
-          <a href="links.html">Global links</a>
-          <a href="#about">About</a>
+          <a href="#tools">Calculators</a>
+          <a href="app.html">Study app</a>
         </nav>
-        <nav class="footer-col" aria-label="Contribute">
-          <h4>Contribute</h4>
-          <a href="mailto:theciaenotes@gmail.com?subject=Notes%20for%20theciae">Email your notes</a>
+        <nav class="footer-col" aria-label="Careers and links">
+          <h4>Careers &amp; links</h4>
+          <a href="notices.html">Openings directory</a>
+          <a href="links.html">Global resource links</a>
+          <a href="mailto:theciaenotes@gmail.com?subject=Notes%20for%20theciae">Contribute notes</a>
         </nav>
         <div class="footer-col">
           <h4>Curriculum</h4>
-          <p class="footer-fine">Course structure follows the ICAR 6th Deans' Committee recommendations for the B.Tech. (Agricultural Engineering) degree programme.</p>
+          <p class="footer-fine">Course structure follows the ICAR 6th Deans' Committee recommendations for the B.Tech. (Agricultural Engineering) degree programme; M.Tech units follow the ICAR-NET syllabus.</p>
         </div>
       </div>
       <div class="footer-bottom"><span>© <span id="year"></span> The Concept in Agricultural Engineering</span><span>Built for the agriculture engineering community.</span></div>
@@ -180,34 +184,27 @@
     <dialog id="flashDialog"><div class="lecture-modal flash-modal"><div class="modal-heading"><div><p class="eyebrow" id="flashCode"></p><h2>Flashcards</h2></div><button type="button" class="close" id="closeFlash" aria-label="Close">×</button></div><div class="flashcard" id="flashCard"><div class="flash-inner"><div class="flash-front" id="flashFront"></div><div class="flash-back" id="flashBack"></div></div></div><div class="flash-nav"><button type="button" class="button button-plain" id="flashPrev">← Prev</button><span id="flashCount"></span><button type="button" class="button button-primary" id="flashNext">Next →</button></div><p class="syl-hint">Click the card to flip it. Cards come from this course's flashcards.json.</p></div></dialog>
     <div id="toast" class="toast" hidden></div>
     <dialog id="lectureDialog"><div class="lecture-modal"><div class="modal-heading"><div><p class="eyebrow" id="lecCode"></p><h2 id="lecTitle"></h2></div><button type="button" class="close" id="closeLecture" aria-label="Close">×</button></div><div id="lecProg" hidden><div class="progress"><i id="lecProgBar"></i></div><span id="lecProgText"></span></div><div id="lecBody"></div></div></dialog>
-    <dialog id="pdfDialog"><div class="pdf-modal"><div class="modal-heading"><p class="eyebrow" id="pdfName"></p><span class="pdf-actions"><a class="button button-plain" id="pdfDownload" href="#" download>Download ↓</a><button type="button" class="close" id="closePdf" aria-label="Close">×</button></span></div><iframe id="pdfFrame" title="PDF preview"></iframe></div></dialog>
+    <dialog id="pdfDialog" aria-labelledby="pdfName"><div class="pdf-modal"><div class="pdf-bar"><div class="pdf-title"><b id="pdfName"></b><span id="pdfCode"></span></div><span class="pdf-actions"><a class="button button-plain" id="pdfNewTab" href="#" target="_blank" rel="noopener">Open in new tab ↗</a><a class="button button-primary" id="pdfDownload" href="#" download>Download ↓</a><button type="button" class="close" id="closePdf" aria-label="Close">×</button></span></div><iframe id="pdfFrame" title="PDF preview"></iframe></div></dialog>
     <script src="app.js"></script>
     <script src="contact.js" defer></script>
     <script>
-      // Homepage notice ticker: pulls the latest notices and auto-scrolls. Hidden when there are none.
       (function(){
         var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});};
+        // Openings card: featured notices from notices.json replace the standing official links when any are posted.
         fetch('notices.json?t='+Date.now()).then(function(r){return r.json();}).then(function(list){
           if(!Array.isArray(list)||!list.length)return;
-          var items=list.slice(0,6).map(function(n){return '<span>📌 '+esc(n.title)+' — '+esc(n.institution)+'</span>';});
-          var html=items.join('');
-          var track=document.getElementById('ntTrack');
-          track.innerHTML=html+html; // duplicate for a seamless loop
-          document.getElementById('noticeTicker').hidden=false;
+          document.getElementById('openList').innerHTML=list.slice(0,4).map(function(n){
+            return '<li><a href="notices.html">'+esc(n.title)+'<span>'+esc(n.institution)+(n.deadline?' · last date '+esc(n.deadline):'')+'</span></a></li>';
+          }).join('');
         }).catch(function(){});
-      })();
-      // Hero news panel: latest ag-engineering headlines from /api/news (cached hourly). Stays hidden if unavailable.
-      (function(){
-        var panel=document.getElementById('newsPanel'), list=document.getElementById('npList');
-        if(!panel||!window.fetch)return;
-        var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});};
+        // News card: latest ag-engineering headlines from /api/news (cached hourly). Stays hidden if unavailable.
         var ago=function(iso){var h=Math.floor((Date.now()-new Date(iso).getTime())/36e5);if(h<1)return 'just now';if(h<24)return h+'h ago';var d=Math.floor(h/24);return d+(d>1?' days ago':' day ago');};
-        var row=function(n,copy){return '<li'+(copy?' aria-hidden="true"':'')+'><a href="'+esc(n.link)+'" target="_blank" rel="noopener"'+(copy?' tabindex="-1"':'')+'>'+esc(n.title)+'<span class="np-meta">'+esc(n.source)+' · '+ago(n.date)+'</span></a></li>';};
         fetch('/api/news').then(function(r){return r.ok?r.json():null;}).then(function(d){
           if(!d||!d.items||!d.items.length)return;
-          list.innerHTML=d.items.map(function(n){return row(n,false);}).join('')+d.items.map(function(n){return row(n,true);}).join(''); // second copy makes the scroll loop seamless
-          list.style.setProperty('--np-dur',(d.items.length*6)+'s');
-          panel.hidden=false;
+          document.getElementById('npList').innerHTML=d.items.slice(0,4).map(function(n){
+            return '<li><a href="'+esc(n.link)+'" target="_blank" rel="noopener"><b>'+esc(n.title)+'</b><span>'+esc(n.source)+' · '+ago(n.date)+'</span></a></li>';
+          }).join('');
+          document.getElementById('newsCard').hidden=false;
         }).catch(function(){});
       })();
     </script>

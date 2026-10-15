@@ -48,8 +48,13 @@ function renderScore(){
 function toast(msg){const t=document.querySelector('#toast');t.textContent=msg;t.hidden=false;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.hidden=true,300)},2600)}
 
 async function loadFiles(){
-  const cached=sessionStorage.getItem('theciae-files-v2');
+  const cached=sessionStorage.getItem('theciae-files-v3');
   if(cached)return JSON.parse(cached);
+  // cached list from /api/files first; the direct GitHub API allows only 60 calls an hour per IP
+  try{
+    const r=await fetch('/api/files');
+    if(r.ok){const out=await r.json();if(out.files&&out.files.length){sessionStorage.setItem('theciae-files-v3',JSON.stringify(out));return out}}
+  }catch(e){}
   try{
     const r=await fetch(`https://api.github.com/repos/${REPO}/git/trees/main?recursive=1`);
     if(!r.ok)return{files:[]};
@@ -57,7 +62,7 @@ async function loadFiles(){
     const files=(t.tree||[]).filter(e=>e.type==='blob'&&e.path.startsWith('courses/')).map(e=>e.path);
     const dirs=(t.tree||[]).filter(e=>e.type==='tree'&&e.path.startsWith('courses/')).map(e=>e.path);
     const out={branch:'main',files,dirs};
-    sessionStorage.setItem('theciae-files-v2',JSON.stringify(out));
+    sessionStorage.setItem('theciae-files-v3',JSON.stringify(out));
     return out;
   }catch(e){return{files:[]}}
 }

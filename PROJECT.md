@@ -1,6 +1,6 @@
 # theciae.com — Project Overview
 
-A living reference for how this site is built and run. _Snapshot: 2026-10-03._
+A living reference for how this site is built and run. _Snapshot: 2026-10-16._
 
 ## What this is
 **theciae.com** ("The Concept in Agricultural Engineering") — a free study-resource website for
@@ -16,11 +16,22 @@ notes / syllabus / notifications hub, grow Google traffic, and eventually moneti
   (sitemap submitted). Use the apex `theciae.com`.
 - **Serverless API (Vercel):** `api/upload.js` (notes), `api/delete.js`, `api/notice.js` (notice board).
   All gated by env vars **`ADMIN_PASSWORD`** + **`GITHUB_TOKEN`** — set in Vercel only, never in the repo.
+  Public, read-only: `api/files.js` (list of note files + newest uploads, cached 10 min on Vercel's CDN; uses
+  `GITHUB_TOKEN` when set) and `api/news.js` (homepage headlines, cached hourly).
+- **Where notes are read from:** this site's own copy of `courses/` (Vercel serves them as `application/pdf`,
+  inline). Fallbacks for a file uploaded in the last minute: jsDelivr, then raw GitHub.
+  ⚠️ Some Indian networks (e.g. Jio/Airtel) block `raw.githubusercontent.com` — never make it the first choice.
+  The browser-side GitHub API allows only 60 calls/hour per IP, so pages read `/api/files` first.
 - **Contributions:** students email `theciaenotes@gmail.com` (the owner is the sole curator).
 
 ## Key files
-- `index.html` — homepage; includes an auto-scrolling **notice ticker** under the header (latest items from
-  `notices.json`; hidden when empty).
+- `index.html` — homepage: brand header with a Search block; intro panel (search + "Start here" links by
+  programme, semester and NET discipline) beside a live panel (news, newest notes, openings — featured
+  `notices.json` items replace the standing official links when posted); key-figures bar (counted live);
+  course directory as compact rows (B.Tech opens on the student's last semester; search spans both programmes).
+- `view.html` — full-screen PDF reader for phones and tablets (PDF.js 4.10.38 legacy build, vendored in
+  `vendor/pdfjs/`, Apache-2.0). Laptops open PDFs in the browser's own viewer in a popup instead.
+  Links look like `view.html?f=courses/…/file.pdf`; Back returns to `index.html#course=CODE`.
 - `syllabus.html` — full course directory (generated).
 - `course/*.html` — per-course SEO pages (generated; ~175).
 - `links.html` — curated global + India resource directory (societies, universities, journals, exams).
@@ -41,8 +52,9 @@ notes / syllabus / notifications hub, grow Google traffic, and eventually moneti
 - **Upload notes:** `theciae.com/#upload` → fill form → admin password. Files commit to `courses/`, live in ~1 min.
   (≤ ~3 MB each; PDF/DOCX/PPTX/XLSX/JPG/PNG/ZIP/JSON.)
 - **Feature a notice (optional, occasional):** `theciae.com/notices.html#post` → fill form (title, institution, dates,
-  official link) → admin password → saves to `notices.json`, live in ~1 min; also shows in the homepage ticker.
-  Delete via the Delete button in admin mode. With no notices, the section and ticker stay hidden.
+  official link) → admin password → saves to `notices.json`, live in ~1 min; also shows in the homepage
+  "Openings & exams" card. Delete via the Delete button in admin mode. With no notices, the notice-board section
+  stays hidden and the homepage card shows the standing official links (ASRB, NTA, ICAR-CIAE, ICAR-IARI).
 - **Openings directory upkeep:** recheck the recruitment links every month or two; ICAR institute sites move often.
 - These `#upload` / `#post` entry points are password-protected server-side, so they are safe to leave discoverable.
 

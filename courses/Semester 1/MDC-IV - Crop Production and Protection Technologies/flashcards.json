@@ -1,0 +1,12 @@
+[
+  ["Field capacity", "Moisture after free drainage (24–36 h); ≈ 1/3-atmosphere percentage."],
+  ["Permanent wilting point", "Tension 7–32 atm, commonly 15 atm."],
+  ["Available water", "FC − PWP; fine sand 2–4, sandy loam 4–11, silt loam 6–13, clay loam 10–18, clay 16–30 cm/m."],
+  ["Particle sizes (USDA)", "Sand 0.05–2 mm, silt 0.002–0.05 mm, clay <0.002 mm."],
+  ["Darcy’s law", "v = K i; K = hydraulic conductivity (not intrinsic permeability)."],
+  ["Water requirement", "WR = ET + application losses + special needs = IR + ER + S."],
+  ["NIR and GIR", "NIR refills root zone to FC; GIR = NIR / field efficiency (8 cm at 75% → 10.67 cm)."],
+  ["Duty–delta", "D (ha/cumec) = 8.64 B (days) / Δ (m)."],
+  ["Moisture extraction pattern", "40-30-20-10% from successive quarters of the root zone."],
+  ["Critical stage", "Growth stage most sensitive to moisture stress; irrigate first here when water is scarce."]
+]

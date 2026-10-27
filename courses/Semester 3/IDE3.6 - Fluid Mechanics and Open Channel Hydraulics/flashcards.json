@@ -1,0 +1,14 @@
+[
+  ["Hectare-centimetre", "Water covering 1 ha to 1 cm depth = 100 m³."],
+  ["Float method", "Surface velocity over a ~30 m reach × 0.85 = average velocity; Q = V × A."],
+  ["Current meter", "Velocity from revolutions; mean velocity from readings at 0.2 and 0.8 depth; sub-areas 0.6–6 m wide."],
+  ["Orifice formula", "Q (L/s) = 0.61 × 10⁻³ a√(2gh); a in cm², g = 981 cm/s², h in cm."],
+  ["Francis weir formulas", "Suppressed Q = 0.0184 L H^1.5; contracted Q = 0.0184(L − 0.1nH)H^1.5 (L, H cm; Q L/s)."],
+  ["Cipolletti weir", "Trapezoidal, sides 1H:4V, Q = 0.0186 L H^1.5; no end-contraction correction."],
+  ["90° V-notch", "Q = 0.0138 H^2.5 (H ≥ 7.5 cm); best for small flows."],
+  ["Parshall flume free-flow limits", "Throat 2.5–7.5 cm: 0.5; 15–22.5 cm: 0.6; 30–240 cm: 0.7; 3–15 m: 0.8."],
+  ["Continuity equation", "Q = a₁v₁ = a₂v₂."],
+  ["Bernoulli with losses", "v₁²/2g + p₁/w + z₁ = v₂²/2g + p₂/w + z₂ + h_f + h_l."],
+  ["Pipe friction", "h_f = f l v²/(2gR) = 4f l v²/(2gd) for full pipes; f ≈ 0.005 new, 0.01 old steel."],
+  ["Chezy and Manning", "v = C√(RS); v = R^(2/3) S^(1/2)/n."]
+]

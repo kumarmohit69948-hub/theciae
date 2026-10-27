@@ -1,0 +1,6 @@
+[
+  ["Basic infiltration rate", "Nearly constant rate after prolonged wetting; >25 cm/h in very sandy soils, near zero in clays."],
+  ["Evaporation pan", "Class A pan ~120 cm dia; pan coefficient ≈ 0.7; ET = pan evaporation × crop coefficient."],
+  ["Peak-period use rate", "Average daily ET over the 6–10 days of highest use; the design rate."],
+  ["Crop coefficient", "Kc = ETcrop / reference ET (0.9–1.2 for common crops at full cover)."]
+]

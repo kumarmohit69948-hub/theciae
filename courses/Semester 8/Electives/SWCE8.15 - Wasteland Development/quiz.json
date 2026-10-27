@@ -1,0 +1,8 @@
+[
+  ["Typical emitter discharge in drip irrigation is", ["0.2–1 L/h", "2–10 L/h", "50–100 L/h", "1 m³/h"], 1],
+  ["Drip irrigation was developed in Israel in 1959 by", ["Simcha Blass", "Christiansen", "Israelsen", "Hazen"], 0],
+  ["Pump pressure for a drip system is about", ["0.25 kg/cm²", "2.5 kg/cm²", "10 kg/cm²", "25 kg/cm²"], 1],
+  ["Design limit for emitter flow variation along a lateral is about", ["5%", "10%", "20%", "40%"], 2],
+  ["For orifice-type emitters q = c√h, so q_var equals", ["h_var", "1 − (1 − h_var)^0.5", "h_var²", "2 h_var"], 1],
+  ["Irrigation efficiency of surge irrigation is about", ["40–50%", "60–70%", "85–95%", "100%"], 2]
+]

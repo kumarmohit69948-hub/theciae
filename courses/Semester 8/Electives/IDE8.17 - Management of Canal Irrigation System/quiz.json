@@ -3,5 +3,22 @@
   ["Water courses are maintained by", ["the State", "the farmers", "the Centre", "the Panchayat engineer"], 1],
   ["Capacity of a water course is about", ["30–120 L/s", "750 L/s–1 m³/s", "4–8.5 m³/s", "28–425 m³/s"], 0],
   ["In warabandi, the first turn goes to the farmer", ["with the largest holding", "whose land is nearest the water course", "at the tail end", "chosen by lottery"], 1],
-  ["Outlet whose opening can be adjusted for a desired discharge", ["pipe outlet", "APM outlet", "siphon outlet", "open flume"], 1]
+  ["Outlet whose opening can be adjusted for a desired discharge", ["pipe outlet", "APM outlet", "siphon outlet", "open flume"], 1],
+  ["One hectare-centimetre of water equals", ["10 m³", "100 m³", "1000 m³", "10,000 m³"], 1],
+  ["In the float method, surface velocity is multiplied by about", ["0.5", "0.65", "0.85", "1.15"], 2],
+  ["With a current meter, mean velocity is estimated from readings at", ["0.1 and 0.9 depth", "0.2 and 0.8 depth", "0.5 depth only", "surface only"], 1],
+  ["A water meter in a pipeline reads accurately only when the pipe", ["flows half full", "flows full", "is empty", "carries air"], 1],
+  ["A 200 L barrel fills in 25 s. The pump discharge is", ["5 L/s", "8 L/s", "12.5 L/s", "25 L/s"], 1],
+  ["The theoretically most efficient channel section is", ["rectangular", "triangular", "semicircular", "trapezoidal"], 2],
+  ["Best rectangular channel has depth equal to", ["breadth", "½ breadth", "¼ breadth", "2 × breadth"], 1],
+  ["Maximum permissible velocity in a sandy loam earth channel is about", ["45 cm/s", "60 cm/s", "90 cm/s", "150 cm/s"], 1],
+  ["Silting begins in earth channels when bed slope falls below about", ["0.05%", "0.5%", "1%", "2%"], 0],
+  ["Typical thickness of concrete lining for field channels is", ["1–2 cm", "4–5 cm", "10–15 cm", "25 cm"], 1],
+  ["Contraction-joint grooves are cut to a depth of about", ["the full thickness", "one-third of the thickness", "one-tenth", "none"], 1],
+  ["Field irrigation requirement IR equals", ["WR + ER + S", "WR − (ER + S)", "ET − WR", "WR × efficiency"], 1],
+  ["With NIR = 8 cm and field efficiency 75%, GIR is about", ["6 cm", "8.75 cm", "10.67 cm", "14 cm"], 2],
+  ["Duty D, base period B (days) and delta Δ (m) are related by", ["D = 8.64 Δ/B", "D = 8.64 B/Δ", "D = B Δ/8.64", "D = 864 B Δ"], 1],
+  ["Duty measured at the head of a water course is the", ["net duty", "gross duty", "outlet duty", "designed duty"], 2],
+  ["The top quarter of the root zone supplies about ___ of the water used", ["10%", "25%", "40%", "70%"], 2],
+  ["Effective root zone of lucerne and orchards is about", ["45 cm", "60 cm", "1 m", "2.0–2.5 m or more"], 3]
 ]

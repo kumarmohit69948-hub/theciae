@@ -3,5 +3,9 @@
   ["India per-capita water", "1951: 5177; 2011: 1545; 2021: 1486; 2031: 1367 m³/year."],
   ["India groundwater 2023", "Recharge 449.08 BCM; extractable 407.21; extraction 241.34; stage 59.26%."],
   ["Rajasthan groundwater 2024", "Stage of extraction 149.86%; 214 of 302 units over-exploited; extraction 17.05 vs extractable 11.37 BCM."],
-  ["India water resources (CWC 2019)", "Average annual 1999.20 BCM; utilisable ≈1137 BCM (690 surface + 447 ground)."]
+  ["India water resources (CWC 2019)", "Average annual 1999.20 BCM; utilisable ≈1137 BCM (690 surface + 447 ground)."],
+  ["Basic infiltration rate", "Nearly constant rate after prolonged wetting; >25 cm/h in very sandy soils, near zero in clays."],
+  ["Evaporation pan", "Class A pan ~120 cm dia; pan coefficient ≈ 0.7; ET = pan evaporation × crop coefficient."],
+  ["Peak-period use rate", "Average daily ET over the 6–10 days of highest use; the design rate."],
+  ["Crop coefficient", "Kc = ETcrop / reference ET (0.9–1.2 for common crops at full cover)."]
 ]

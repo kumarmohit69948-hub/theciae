@@ -13,5 +13,16 @@
   ["6th MI Census (2017–18)", "23.14 million schemes; 21.93 million groundwater (~94.8%)."],
   ["Geo-hydrological units (GSI)", "Hard rock (~120 Mha, low yield), semi-consolidated (~5 Mha, moderate), alluvial (high yield, Indo-Gangetic)."],
   ["Conjunctive use", "Combined use of canal water and groundwater: augments supply, controls waterlogging, allows blending of poor-quality water."],
-  ["Groundwater legislation", "Model Bill 1970; Irrigation Commission 1972 urged State laws; CGWB Ground Water Year Book annually."]
+  ["Groundwater legislation", "Model Bill 1970; Irrigation Commission 1972 urged State laws; CGWB Ground Water Year Book annually."],
+  ["Best hydraulic sections", "Semicircle ideal; rectangle depth = ½ breadth; trapezoid b = 2d tan(θ/2)."],
+  ["Permissible velocities (earth channels)", "Loamy sand 45, sandy loam 60, loam/silt 75, clay loam 90, gravel & clay 100 cm/s."],
+  ["Earth channel side slopes", "Permanent ≤1½:1; stiff clay ½:1; loose sand 2:1; normal bed slope 0.1%, silting <0.05%."],
+  ["Concrete lining", "4–5 cm thick, joints every 2–3 m, groove ⅓ depth sealed with bitumen; cure by sprinkling."],
+  ["Pipeline structures", "Pump stand (75 cm), air vents (~150 m), gate stands, end plug, riser valves (~60 m), hydrants, gated pipes."],
+  ["Closed-loop PVC system", "Two loops per well, one valve open per loop, ~40 m pipe/ha, ≤50 ha per loop; surge riser 50 cm above HGL."],
+  ["Water requirement", "WR = ET + application losses + special needs = IR + ER + S."],
+  ["NIR and GIR", "NIR refills root zone to FC; GIR = NIR / field efficiency (8 cm at 75% → 10.67 cm)."],
+  ["Duty–delta", "D (ha/cumec) = 8.64 B (days) / Δ (m)."],
+  ["Moisture extraction pattern", "40-30-20-10% from successive quarters of the root zone."],
+  ["Critical stage", "Growth stage most sensitive to moisture stress; irrigate first here when water is scarce."]
 ]

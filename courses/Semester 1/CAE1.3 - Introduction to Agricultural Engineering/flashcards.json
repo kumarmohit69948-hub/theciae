@@ -1,0 +1,9 @@
+[
+  ["Contour interval", "Vertical distance between successive contours; usually 20–200 cm."],
+  ["Ridge vs valley contours", "Ridge: V/U with higher values inside. Valley: sharp V with lower values inside, pointing upstream."],
+  ["Contour interval by slope", "0–1% → 5–15 cm; 1–2% → 15–30 cm; 2–5% → 30–60 cm; 5–10% → 60–150 cm."],
+  ["Grid survey", "Squares of 3–30 m (15/20/30 m common); corner RLs by profile levelling; contours by interpolation."],
+  ["Underground pipeline advantages", "No seepage/evaporation/breach loss, no land lost, uniform outlet discharge, flexible alignment, low maintenance."],
+  ["Branching vs looped network", "Branching for undulating land (~50% costlier pipeline); looped for plains (pipes ~30% smaller)."],
+  ["Warabandi", "Rotational canal-water allocation in proportion to land holding; Punjab, Haryana, western UP."]
+]

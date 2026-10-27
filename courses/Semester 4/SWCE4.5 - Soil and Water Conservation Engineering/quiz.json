@@ -1,0 +1,8 @@
+[
+  ["Grade rod reading equals", ["HI + formation level", "HI − formation level", "formation level − ground level", "ground level − HI"], 1],
+  ["With HI = 103.80 m and formation level = 100.00 m, the grade rod is", ["1.50 m", "3.80 m", "5.30 m", "103.80 m"], 1],
+  ["In blue-top levelling, at a fill point the blue line is", ["below the red line", "above the red line", "at ground level", "absent"], 1],
+  ["Fills are built higher than marked by about", ["1–2%", "10–15%", "25–30%", "50%"], 1],
+  ["Stakes for a graded terrace are set every", ["5 m", "15 m", "30 m", "50 m"], 1],
+  ["For a 0.4% channel, rod readings on successive stakes 15 m apart differ by", ["0.006 m", "0.06 m", "0.6 m", "6 m"], 1]
+]

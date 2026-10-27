@@ -1,0 +1,13 @@
+[
+  ["Grade stake (top at grade)", "Drive until the rod reads HI − formation level; stake top then marks the grade."],
+  ["Blue-top levelling", "Blue line = formation, red line = ground; fill if blue above red, cut if below."],
+  ["Cut/fill stakes", "Short stakes = cut, long stakes = fill; C 8 / F 12; fills 10–15% extra for settling."],
+  ["Graded terrace layout", "Start at the outlet; stakes every 15 m (7.5 m on sharp turns); rise = grade × 15 m."],
+  ["Phases of land levelling", "Rough grading → land levelling → land smoothing."],
+  ["Plane method", "Centroid at average elevation of grid points; plane through it with chosen slopes gives equal cut and fill; + fill, − cut."],
+  ["Cut–fill ratio", ">1, usually 1.2–1.6 (1.1–2.0); fill heights +10% for settlement."],
+  ["Field channel layout", "Along upper reaches, ⟂ to irrigation; water 20–30 cm above field; slope <0.1%."],
+  ["Underground pipeline advantages", "No seepage/evaporation/breach loss, no land lost, uniform outlet discharge, flexible alignment, low maintenance."],
+  ["Branching vs looped network", "Branching for undulating land (~50% costlier pipeline); looped for plains (pipes ~30% smaller)."],
+  ["Warabandi", "Rotational canal-water allocation in proportion to land holding; Punjab, Haryana, western UP."]
+]

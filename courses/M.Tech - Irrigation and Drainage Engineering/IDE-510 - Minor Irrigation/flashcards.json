@@ -1,0 +1,11 @@
+[
+  ["Drawdown", "Lowering of the water level in a well due to pumping (static − pumping level)."],
+  ["Thiem/Dupuit yield", "Unconfined: Q = Kπ(H²−h²)/[2.3 log(R/r)]; confined: Q = 2πKT(H−h)/[2.3 log(R/r)]."],
+  ["Well diameter vs yield", "Doubling diameter → only ~10% more yield, but halves approach velocity and cuts drag by ¾."],
+  ["Screen entrance velocity", "≈3 cm/s (3–6 cm/s) to limit friction loss, incrustation and corrosion."],
+  ["Cable-tool drilling", "Bit dropped on a cable; bailer removes cuttings; for 10–60 cm wells in consolidated rock; slow."],
+  ["Direct rotary drilling", "Rotating bit with drilling mud; fastest in unconsolidated strata; up to 45 cm dia."],
+  ["Reverse circulation drilling", "Clear water down the annulus, up the drill pipe; large holes ≥35 cm; needs 5× water."],
+  ["Well development", "Removing fines around the screen by compressed air (7–11 kg/cm²) or surging to raise yield."],
+  ["Gravel pack", "8–15 cm of rounded pea gravel slightly coarser than the slots."]
+]

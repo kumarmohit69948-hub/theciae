@@ -1,0 +1,13 @@
+[
+  ["The most commonly used method of land levelling design is the", ["profile method", "plane method", "plan inspection method", "contour adjustment method"], 1],
+  ["Any plane through the centroid at the average elevation gives", ["more cut", "more fill", "equal cut and fill", "zero slope"], 2],
+  ["In land levelling computations, a + sign denotes", ["cut", "fill", "error", "datum"], 1],
+  ["The usual cut–fill ratio is", ["0.6–0.8", "1.0", "1.2–1.6", "2.5–3.0"], 2],
+  ["Field channel water surface should be above the field by", ["5–10 cm", "20–30 cm", "50–60 cm", "1 m"], 1],
+  ["The final operation of land levelling that leaves a plane surface is", ["rough grading", "land smoothing", "sub-soiling", "bunding"], 1],
+  ["In open-channel systems, water courses are laid along", ["valley lines", "ridge lines", "field centres", "drains"], 1],
+  ["Warabandi allots canal water in proportion to", ["crop type", "land holding", "distance from outlet", "family size"], 1],
+  ["A looped pipeline network allows pipe diameters smaller by about", ["10%", "30%", "50%", "70%"], 1],
+  ["Pipe preferred for underground distribution because of leak-proof joints and pressure resistance", ["RCC", "PVC", "cast iron", "asbestos cement"], 1],
+  ["Contour interval for designing a deep-tubewell pipeline network is about", ["5 cm", "30 cm", "1 m", "5 m"], 1]
+]

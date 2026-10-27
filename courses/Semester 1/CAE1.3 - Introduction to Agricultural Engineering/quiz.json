@@ -1,0 +1,13 @@
+[
+  ["Closely spaced contours indicate", ["flat ground", "steep ground", "a depression", "a valley floor only"], 1],
+  ["Contour lines cross each other only at", ["a ridge", "a valley", "an overhanging cliff", "a saddle"], 2],
+  ["A closed contour with higher values inside indicates", ["a depression", "a summit", "a valley", "a cliff"], 1],
+  ["Recommended contour interval for land with 1–2% slope is", ["5–15 cm", "15–30 cm", "30–60 cm", "60–150 cm"], 1],
+  ["The most common method of topographic survey for farm work is the", ["grid system", "plane table", "stadia traverse", "aerial survey"], 0],
+  ["Every ___ contour is drawn thicker", ["second", "third", "fifth", "tenth"], 2],
+  ["In open-channel systems, water courses are laid along", ["valley lines", "ridge lines", "field centres", "drains"], 1],
+  ["Warabandi allots canal water in proportion to", ["crop type", "land holding", "distance from outlet", "family size"], 1],
+  ["A looped pipeline network allows pipe diameters smaller by about", ["10%", "30%", "50%", "70%"], 1],
+  ["Pipe preferred for underground distribution because of leak-proof joints and pressure resistance", ["RCC", "PVC", "cast iron", "asbestos cement"], 1],
+  ["Contour interval for designing a deep-tubewell pipeline network is about", ["5 cm", "30 cm", "1 m", "5 m"], 1]
+]

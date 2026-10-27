@@ -1,0 +1,7 @@
+[
+  ["Farm pond types", "Impounding (dam across a stream, preferred), dug-out (excavated, costlier), combination."],
+  ["Spillway by watershed", "<4 ha vegetative; 4–12 ha pipe + vegetative; >12 ha engineered design."],
+  ["Farm-pond dam", "Slopes 3:1 u/s, 2:1 d/s; top ≥1.8 m (≤3.5 m high) +30 cm per extra 60 cm; freeboard ≥60 cm; settlement ≥5%."],
+  ["Core trench", "≥60 cm into watertight soil, bottom ≥120 cm, side slopes 1:1, best soil compacted."],
+  ["Anti-seep collar", "≥2.5 m × 2 m, ~20 cm concrete; two collars if the pipe under the dam exceeds 18 m."]
+]

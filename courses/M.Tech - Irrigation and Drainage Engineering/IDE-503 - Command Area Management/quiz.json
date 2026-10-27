@@ -9,5 +9,16 @@
   ["Warabandi allots canal water in proportion to", ["crop type", "land holding", "distance from outlet", "family size"], 1],
   ["A looped pipeline network allows pipe diameters smaller by about", ["10%", "30%", "50%", "70%"], 1],
   ["Pipe preferred for underground distribution because of leak-proof joints and pressure resistance", ["RCC", "PVC", "cast iron", "asbestos cement"], 1],
-  ["Contour interval for designing a deep-tubewell pipeline network is about", ["5 cm", "30 cm", "1 m", "5 m"], 1]
+  ["Contour interval for designing a deep-tubewell pipeline network is about", ["5 cm", "30 cm", "1 m", "5 m"], 1],
+  ["CCA equals", ["GCA + unculturable area", "GCA − unculturable area", "GCA × intensity", "irrigated area − GCA"], 1],
+  ["A project with CCA of 5000 ha is classed as", ["major", "medium", "minor", "micro"], 1],
+  ["Major irrigation projects have a CCA of at least", ["2000 ha", "5000 ha", "10,000 ha", "50,000 ha"], 2],
+  ["Irrigation potential created can be up to ___ the CCA", ["half", "equal to", "twice", "four times"], 2],
+  ["AIBP was launched in", ["1951–52", "1978–79", "1996–97", "2015–16"], 2],
+  ["A diversion weir is called \"bandhara\" in", ["Tamil Nadu", "Maharashtra and Gujarat", "Assam", "Punjab"], 1],
+  ["Hard rock areas of India cover about", ["5 million ha", "50 million ha", "120 million ha", "300 million ha"], 2],
+  ["Alluvial formations with substantial groundwater yield are found mainly in", ["Deccan plateau", "Indo-Gangetic plains", "Western Ghats", "Kutch"], 1],
+  ["The model Ground Water Control and Regulation Bill was first circulated in", ["1951", "1970", "1987", "2012"], 1],
+  ["Tubewells along the Western Yamuna Canal banks are an example of", ["artificial recharge", "conjunctive use", "drip irrigation", "sub-surface drainage"], 1],
+  ["Supply in many northern canal systems is only about ___ of intensive needs", ["¼ to ⅓", "½ to ¾", "all", "twice"], 0]
 ]

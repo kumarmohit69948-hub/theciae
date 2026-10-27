@@ -9,5 +9,22 @@
   ["Field channel layout", "Along upper reaches, ⟂ to irrigation; water 20–30 cm above field; slope <0.1%."],
   ["Underground pipeline advantages", "No seepage/evaporation/breach loss, no land lost, uniform outlet discharge, flexible alignment, low maintenance."],
   ["Branching vs looped network", "Branching for undulating land (~50% costlier pipeline); looped for plains (pipes ~30% smaller)."],
-  ["Warabandi", "Rotational canal-water allocation in proportion to land holding; Punjab, Haryana, western UP."]
+  ["Warabandi", "Rotational canal-water allocation in proportion to land holding; Punjab, Haryana, western UP."],
+  ["Water stress thresholds", "Stressed <1700, scarce <1000, absolute scarcity <500 m³/person/year."],
+  ["India per-capita water", "1951: 5177; 2011: 1545; 2021: 1486; 2031: 1367 m³/year."],
+  ["India groundwater 2023", "Recharge 449.08 BCM; extractable 407.21; extraction 241.34; stage 59.26%."],
+  ["Rajasthan groundwater 2024", "Stage of extraction 149.86%; 214 of 302 units over-exploited; extraction 17.05 vs extractable 11.37 BCM."],
+  ["India water resources (CWC 2019)", "Average annual 1999.20 BCM; utilisable ≈1137 BCM (690 surface + 447 ground)."],
+  ["Flow vs lift irrigation", "Flow: water reaches the field by gravity. Lift: water raised from a source below the field."],
+  ["River basin classes", "Large ≥20,000 km²; medium 2,000–20,000 km²; minor <2,000 km²."],
+  ["India river basins", "20 major, 45 medium (24 east-, 17 west-flowing, 4 to neighbours); major+medium give >90% of runoff."],
+  ["Bhakra dam (notes)", "Straight gravity concrete; 225.55 m high; Govind Sagar reservoir."],
+  ["GCA vs CCA", "GCA = total commandable area; CCA = its culturable part (GCA − unculturable area)."],
+  ["Project classes (since 1978)", "Major CCA ≥10,000 ha; medium 2000–10,000 ha; minor ≤2000 ha."],
+  ["Irrigation potential", "Gross area irrigable with available water; can reach 2 × CCA (one kharif + one rabi watering)."],
+  ["Weir local names", "Anicut (South India), bandhara (Maharashtra, Gujarat), thingel (Assam)."],
+  ["6th MI Census (2017–18)", "23.14 million schemes; 21.93 million groundwater (~94.8%)."],
+  ["First Irrigation Commission", "1901; recommended private works and a 20-year plan to irrigate 2.6 million ha by public works."],
+  ["Irrigation in 1950–51", "Net 20.85, gross 22.60 million ha; gross potential grew to 90 million ha by 1996–97."],
+  ["Irrigated area by source (end 19th c.)", "Canals 45%, wells 35%, tanks 15%, others 5% of 13.2 million ha."]
 ]

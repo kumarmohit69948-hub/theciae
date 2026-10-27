@@ -1,0 +1,14 @@
+[
+  ["The distance from a pumped well to where drawdown becomes zero is the", ["drawdown", "radius of influence", "cone of depression", "specific yield"], 1],
+  ["Doubling the diameter of a well increases its yield by only about", ["2%", "10%", "50%", "100%"], 1],
+  ["Recommended maximum screen entrance velocity is about", ["0.3 cm/s", "3 cm/s", "30 cm/s", "3 m/s"], 1],
+  ["Radius of influence in coarse sand and gravel without silt and clay is about", ["30–90 m", "90–180 m", "180–300 m", "300–600 m"], 3],
+  ["In the confined-aquifer yield equation, Q is proportional to", ["H² − h²", "H − h", "(H − h)²", "H/h"], 1],
+  ["Doubling a well’s diameter reduces drag force on aquifer particles by", ["¼", "½", "¾", "nothing"], 2],
+  ["The fastest drilling method in unconsolidated strata is", ["cable-tool percussion", "direct rotary", "hand boring", "core drilling"], 1],
+  ["In reverse-circulation drilling, water and cuttings return through the", ["annular space", "drill pipe", "casing", "bailer"], 1],
+  ["A down-the-hole hammer delivers about", ["60–120 blows/min", "600–1200 blows/min", "6000 blows/min", "15–50 blows/min"], 1],
+  ["Recommended thickness of a gravel pack is", ["1–2 cm", "8–15 cm", "30–45 cm", "1 m"], 1],
+  ["Wells for drinking water should be at least ___ from septic tanks and animal houses", ["3–5 m", "15–30 m", "100 m", "300 m"], 1],
+  ["The first ___ of drilling must be truly vertical because it guides the rest of the well", ["1–2 m", "6–12 m", "30–40 m", "100 m"], 1]
+]

@@ -62,5 +62,20 @@
   ["Emitter variation", "q_var = 1 − (1 − h_var)^0.5; lateral q_var <20% (h_var ≈40%); sub-main <5% (≈10%)."],
   ["Hazen–Williams (drip)", "Main: ΔH = 15.27 Q^1.852 D^−4.871 L; lateral (multiple outlets): coefficient ≈5.35."],
   ["Pitcher irrigation", "15–20 L earthen pots with wicks/tubes; modified pitcher 2–2.5 L/day per nozzle."],
-  ["Surge irrigation", "ON–OFF cycles of 5–10 min in long furrows; efficiency 85–95%; losses ≤20%."]
+  ["Surge irrigation", "ON–OFF cycles of 5–10 min in long furrows; efficiency 85–95%; losses ≤20%."],
+  ["Waterlogging norms (GoI 1991)", "Waterlogged <2 m; potential 2–3 m; safe >3 m water-table depth."],
+  ["Saline / alkali / saline-alkali", "Saline: EC>4, ESP<15, pH<8.5. Alkali: EC<4, ESP>15, pH>8.5. Saline-alkali: EC>4, ESP>15."],
+  ["Waterlogged area in India (NCA 1976)", "6.0 Mha = 3.4 Mha surface stagnation + 2.6 Mha high water table."],
+  ["Why drains cannot over-drain", "They remove only gravitational water, never capillary water."],
+  ["SAR", "Sodium Adsorption Ratio — sodium relative to Ca and Mg; measures sodicity hazard."],
+  ["Drainage coefficient", "Depth of water removed in 24 h; 6–25 mm/day for small projects."],
+  ["Observation well vs piezometer", "Well: perforated over its length → water table. Piezometer: open at bottom only → pressure head at a point."],
+  ["Excess water and water table", "1 cm of excess percolation raises the water table 8–10 cm; canal seepage 10–30% of delivery."],
+  ["Design storms", "Surface drains 5–15 yr; major works 25 yr; minor crossings 10 yr; field structures 5 yr."],
+  ["Interceptor vs relief drain", "Interceptor: across (⊥) groundwater flow, cuts off seepage from outside. Relief: parallel to flow, drains water already in the field."],
+  ["CN runoff", "S = (1000/CN − 10) × 25.4 mm; Q = (R − Iₐ)²/(R − Iₐ + S); Iₐ usually 0.2S."],
+  ["Efficient trapezoid", "b = 2d·tan(θ/2); for 1 : 1 slope, b = 0.828d."],
+  ["Open-drain clearances", "HGL ~30 cm below field; tile outlet ditches ≥ 1.2 m deep with 30 cm clearance; berm ≥ 3 m."],
+  ["Bedding system", "Beds 7–15 m wide, 15–45 cm deep, 90–300 m long; collectors 90–300 m apart."],
+  ["Parallel field ditches", "Min depth 22.5 cm, min area 0.5 m², side slopes 8 : 1; rows ≤ 180 m one way, ditches ≤ 360 m apart."]
 ]

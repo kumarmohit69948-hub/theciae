@@ -22,5 +22,13 @@
   ["Efficiency of a flat-belt drive is about", ["50–60%", "80–90%", "95–98%", "100%"], 1],
   ["Standard tractor PTO speed is", ["540 ± 10 rpm", "1000 rpm", "1450 rpm", "2900 rpm"], 0],
   ["An engine for a pump should be rated above the calculated BHP by about", ["5%", "20%", "50%", "100%"], 1],
-  ["Average fuel consumption of a high-speed diesel engine is about", ["0.32 L/hp-hr", "0.5 L/hp-hr", "1.0 L/hp-hr", "3.2 L/hp-hr"], 0]
+  ["Average fuel consumption of a high-speed diesel engine is about", ["0.32 L/hp-hr", "0.5 L/hp-hr", "1.0 L/hp-hr", "3.2 L/hp-hr"], 0],
+  ["Mole drains are best suited to soils with clay content above", ["5%", "15%", "30%", "60%"], 2],
+  ["Typical mole drain spacing is", ["0.5–1 m", "1.5–9 m", "15–30 m", "30–60 m"], 1],
+  ["Safe gradient for mole drains is", ["0.01–0.05%", "0.2–3.0%", "5–8%", "10–15%"], 1],
+  ["Moles are usually re-laid every", ["1 year", "3–7 years", "15–20 years", "50 years"], 1],
+  ["Below the critical depth, a mole plough", ["cracks the soil upward", "compacts the soil sideways", "has no effect", "creates surface ridges"], 1],
+  ["Vertical drainage controls the water table by", ["open ditches", "pumping from wells", "trees", "mole channels"], 1],
+  ["Before leaching a non-saline alkali soil you must", ["add gypsum or another amendment", "add nitrogen", "irrigate with saline water", "plant eucalyptus"], 0],
+  ["Drainage wells work best in", ["heavy clay with a hard pan", "deep, highly permeable sandy soils", "peat over rock", "shallow saline crusts"], 1]
 ]

@@ -8,5 +8,15 @@
   ["NIR and GIR", "NIR refills root zone to FC; GIR = NIR / field efficiency (8 cm at 75% → 10.67 cm)."],
   ["Duty–delta", "D (ha/cumec) = 8.64 B (days) / Δ (m)."],
   ["Moisture extraction pattern", "40-30-20-10% from successive quarters of the root zone."],
-  ["Critical stage", "Growth stage most sensitive to moisture stress; irrigate first here when water is scarce."]
+  ["Critical stage", "Growth stage most sensitive to moisture stress; irrigate first here when water is scarce."],
+  ["Waterlogging norms (GoI 1991)", "Waterlogged <2 m; potential 2–3 m; safe >3 m water-table depth."],
+  ["Saline / alkali / saline-alkali", "Saline: EC>4, ESP<15, pH<8.5. Alkali: EC<4, ESP>15, pH>8.5. Saline-alkali: EC>4, ESP>15."],
+  ["Waterlogged area in India (NCA 1976)", "6.0 Mha = 3.4 Mha surface stagnation + 2.6 Mha high water table."],
+  ["Why drains cannot over-drain", "They remove only gravitational water, never capillary water."],
+  ["SAR", "Sodium Adsorption Ratio — sodium relative to Ca and Mg; measures sodicity hazard."],
+  ["Mole drain numbers", "7.5–10 cm dia., 1.5–9 m apart, 50–75 cm deep, > 30% clay, 20–80 m long, 0.2–3.0% grade, re-lay every 3–7 yr."],
+  ["Critical depth (moling)", "Above it soil cracks upward (good); below it soil compacts sideways (bad). Set the mole just below it — about 5–7 × tine width."],
+  ["Vertical drainage", "Water-table control by pumping a well network; pumped water can supplement irrigation."],
+  ["Bio-drainage", "High water-use trees (eucalyptus, poplar) lower the water table; an alternative land use, not full reclamation."],
+  ["Alkali soil reclamation", "Amend first (gypsum, CaCl₂, sulphur, H₂SO₄ by lab test), then leach and drain."]
 ]

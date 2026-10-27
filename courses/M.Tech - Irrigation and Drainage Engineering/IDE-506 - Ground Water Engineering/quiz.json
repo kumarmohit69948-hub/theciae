@@ -15,5 +15,13 @@
   ["Recommended maximum screen entrance velocity is about", ["0.3 cm/s", "3 cm/s", "30 cm/s", "3 m/s"], 1],
   ["Radius of influence in coarse sand and gravel without silt and clay is about", ["30–90 m", "90–180 m", "180–300 m", "300–600 m"], 3],
   ["In the confined-aquifer yield equation, Q is proportional to", ["H² − h²", "H − h", "(H − h)²", "H/h"], 1],
-  ["Doubling a well’s diameter reduces drag force on aquifer particles by", ["¼", "½", "¾", "nothing"], 2]
+  ["Doubling a well’s diameter reduces drag force on aquifer particles by", ["¼", "½", "¾", "nothing"], 2],
+  ["Darcy’s law states that", ["v = k/i", "v = k·i", "v = k·i²", "Q = k/a"], 1],
+  ["At the water table the hydraulic head equals", ["zero", "the pressure head", "the elevation head Z", "p/w + 2Z"], 2],
+  ["The auger-hole method mainly measures", ["vertical k", "horizontal k", "unsaturated k", "intrinsic permeability"], 1],
+  ["Laboratory permeameter values of k are unsuitable for tile design mainly because", ["they are too slow", "samples are disturbed", "water is too pure", "they ignore temperature"], 1],
+  ["Between parallel tile lines the water table is roughly", ["flat", "triangular", "semi-elliptical", "parabolic upward"], 2],
+  ["In the auger-hole formula k = 5,23,000·a²·log(y₀/y₁)/Δt, a and Δt are in", ["cm and min", "m and s", "mm and h", "m and h"], 1],
+  ["Drainable porosity is also called", ["effective porosity of clay", "specific yield", "void ratio", "field capacity"], 1],
+  ["Lateral tile drains are usually laid at depths of", ["0.3–0.5 m", "1–1.5 m", "2–3 m", "4–5 m"], 1]
 ]

@@ -10,5 +10,10 @@
   ["Drawdown", "Lowering of the water level in a well due to pumping (static − pumping level)."],
   ["Thiem/Dupuit yield", "Unconfined: Q = Kπ(H²−h²)/[2.3 log(R/r)]; confined: Q = 2πKT(H−h)/[2.3 log(R/r)]."],
   ["Well diameter vs yield", "Doubling diameter → only ~10% more yield, but halves approach velocity and cuts drag by ¾."],
-  ["Screen entrance velocity", "≈3 cm/s (3–6 cm/s) to limit friction loss, incrustation and corrosion."]
+  ["Screen entrance velocity", "≈3 cm/s (3–6 cm/s) to limit friction loss, incrustation and corrosion."],
+  ["Hydraulic head", "H = p/w + Z; kinetic energy negligible; at water table H = Z."],
+  ["Darcy’s law", "v = k·i; Q = a·k·i; k has units of velocity (cm/hr or m/day)."],
+  ["Auger-hole formula", "k = 5,23,000·a²·log₁₀(y₀/y₁)/Δt — a in m, Δt in s, k in m/day (hole on impervious layer, S = ad/0.19)."],
+  ["Auger-hole procedure", "7.5–10 cm hole; bail out; time rises of ~2 cm until ⅓ of drawdown recovered; repeat 2–3 times."],
+  ["Tile system sizes", "Tiles 10–15 cm dia., 30/60/65 cm long; PVC 200–250 m rolls; laterals 1–1.5 m deep, 30–60 m apart."]
 ]

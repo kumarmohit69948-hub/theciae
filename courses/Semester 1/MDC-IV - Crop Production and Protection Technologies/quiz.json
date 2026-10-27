@@ -10,5 +10,19 @@
   ["Duty D, base period B (days) and delta Δ (m) are related by", ["D = 8.64 Δ/B", "D = 8.64 B/Δ", "D = B Δ/8.64", "D = 864 B Δ"], 1],
   ["Duty measured at the head of a water course is the", ["net duty", "gross duty", "outlet duty", "designed duty"], 2],
   ["The top quarter of the root zone supplies about ___ of the water used", ["10%", "25%", "40%", "70%"], 2],
-  ["Effective root zone of lucerne and orchards is about", ["45 cm", "60 cm", "1 m", "2.0–2.5 m or more"], 3]
+  ["Effective root zone of lucerne and orchards is about", ["45 cm", "60 cm", "1 m", "2.0–2.5 m or more"], 3],
+  ["Under the 1991 GoI norms, an area is waterlogged when the water table is within", ["1 m", "2 m", "3 m", "5 m"], 1],
+  ["Normal crop growth needs an oxygen diffusion rate above about", ["4 × 10⁻⁷ g/cm²/min", "4 × 10⁻³ g/cm²/min", "4 g/cm²/min", "0.4 g/cm²/min"], 0],
+  ["Saline soils have", ["pH > 8.5, ESP > 15", "EC > 4 dS/m, ESP < 15, pH < 8.5", "EC < 4, ESP > 15", "EC < 1, pH < 7"], 1],
+  ["The NCA (1976) put India’s waterlogged area at about", ["0.6 Mha", "2.46 Mha", "6.0 Mha", "16 Mha"], 2],
+  ["Which crop is salt-sensitive?", ["Barley", "Date palm", "Sugarbeet", "Field beans"], 3],
+  ["Drainage became mandatory in irrigation project design from the", ["Third Plan", "Sixth Plan", "Eighth Plan", "Twelfth Plan"], 2],
+  ["Mole drains are best suited to soils with clay content above", ["5%", "15%", "30%", "60%"], 2],
+  ["Typical mole drain spacing is", ["0.5–1 m", "1.5–9 m", "15–30 m", "30–60 m"], 1],
+  ["Safe gradient for mole drains is", ["0.01–0.05%", "0.2–3.0%", "5–8%", "10–15%"], 1],
+  ["Moles are usually re-laid every", ["1 year", "3–7 years", "15–20 years", "50 years"], 1],
+  ["Below the critical depth, a mole plough", ["cracks the soil upward", "compacts the soil sideways", "has no effect", "creates surface ridges"], 1],
+  ["Vertical drainage controls the water table by", ["open ditches", "pumping from wells", "trees", "mole channels"], 1],
+  ["Before leaching a non-saline alkali soil you must", ["add gypsum or another amendment", "add nitrogen", "irrigate with saline water", "plant eucalyptus"], 0],
+  ["Drainage wells work best in", ["heavy clay with a hard pan", "deep, highly permeable sandy soils", "peat over rock", "shallow saline crusts"], 1]
 ]

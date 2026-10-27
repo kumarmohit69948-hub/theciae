@@ -18,5 +18,10 @@
   ["Brake horsepower", "BHP = WHP / (pump eff. × drive eff.); motor input = BHP / motor eff.; kW = BHP × 0.746 / motor eff."],
   ["Drive efficiencies", "Direct ~100%; right-angle gear ~95%; V-belt 90–95%; flat belt 80–90%."],
   ["Pumping cost — fixed", "Interest = value × rate / 2 (≈12%); depreciation = (cost − salvage)/life."],
-  ["Fuel use", "Petrol 0.5 (air-cooled) / 0.4 (water-cooled); HSD 0.32 L/hp-hr; lube oil 4.5 L per 1000 hp-hr."]
+  ["Fuel use", "Petrol 0.5 (air-cooled) / 0.4 (water-cooled); HSD 0.32 L/hp-hr; lube oil 4.5 L per 1000 hp-hr."],
+  ["Mole drain numbers", "7.5–10 cm dia., 1.5–9 m apart, 50–75 cm deep, > 30% clay, 20–80 m long, 0.2–3.0% grade, re-lay every 3–7 yr."],
+  ["Critical depth (moling)", "Above it soil cracks upward (good); below it soil compacts sideways (bad). Set the mole just below it — about 5–7 × tine width."],
+  ["Vertical drainage", "Water-table control by pumping a well network; pumped water can supplement irrigation."],
+  ["Bio-drainage", "High water-use trees (eucalyptus, poplar) lower the water table; an alternative land use, not full reclamation."],
+  ["Alkali soil reclamation", "Amend first (gypsum, CaCl₂, sulphur, H₂SO₄ by lab test), then leach and drain."]
 ]

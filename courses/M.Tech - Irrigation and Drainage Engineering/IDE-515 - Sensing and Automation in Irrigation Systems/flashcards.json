@@ -2,5 +2,14 @@
   ["Gravimetric moisture", "(Wm − Wd)/Wd × 100, oven-drying at 105°C; the standard method."],
   ["Moisture depth", "cm per m = bulk density × moisture %; bulk density 1.1–1.6 g/cm³."],
   ["Tensiometer", "Porous cup + gauge; reads tension; fails above 0.85 atm; for sandy soils."],
-  ["Neutron moisture meter", "Fast neutrons slowed by hydrogen; in-situ, rapid, whole root zone."]
+  ["Neutron moisture meter", "Fast neutrons slowed by hydrogen; in-situ, rapid, whole root zone."],
+  ["Waterlogging norms (GoI 1991)", "Waterlogged <2 m; potential 2–3 m; safe >3 m water-table depth."],
+  ["Saline / alkali / saline-alkali", "Saline: EC>4, ESP<15, pH<8.5. Alkali: EC<4, ESP>15, pH>8.5. Saline-alkali: EC>4, ESP>15."],
+  ["Waterlogged area in India (NCA 1976)", "6.0 Mha = 3.4 Mha surface stagnation + 2.6 Mha high water table."],
+  ["Why drains cannot over-drain", "They remove only gravitational water, never capillary water."],
+  ["SAR", "Sodium Adsorption Ratio — sodium relative to Ca and Mg; measures sodicity hazard."],
+  ["Drainage coefficient", "Depth of water removed in 24 h; 6–25 mm/day for small projects."],
+  ["Observation well vs piezometer", "Well: perforated over its length → water table. Piezometer: open at bottom only → pressure head at a point."],
+  ["Excess water and water table", "1 cm of excess percolation raises the water table 8–10 cm; canal seepage 10–30% of delivery."],
+  ["Design storms", "Surface drains 5–15 yr; major works 25 yr; minor crossings 10 yr; field structures 5 yr."]
 ]

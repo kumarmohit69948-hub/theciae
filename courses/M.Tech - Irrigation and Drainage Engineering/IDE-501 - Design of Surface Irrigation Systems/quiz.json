@@ -51,5 +51,20 @@
   ["Pump pressure for a drip system is about", ["0.25 kg/cm²", "2.5 kg/cm²", "10 kg/cm²", "25 kg/cm²"], 1],
   ["Design limit for emitter flow variation along a lateral is about", ["5%", "10%", "20%", "40%"], 2],
   ["For orifice-type emitters q = c√h, so q_var equals", ["h_var", "1 − (1 − h_var)^0.5", "h_var²", "2 h_var"], 1],
-  ["Irrigation efficiency of surge irrigation is about", ["40–50%", "60–70%", "85–95%", "100%"], 2]
+  ["Irrigation efficiency of surge irrigation is about", ["40–50%", "60–70%", "85–95%", "100%"], 2],
+  ["Under the 1991 GoI norms, an area is waterlogged when the water table is within", ["1 m", "2 m", "3 m", "5 m"], 1],
+  ["Normal crop growth needs an oxygen diffusion rate above about", ["4 × 10⁻⁷ g/cm²/min", "4 × 10⁻³ g/cm²/min", "4 g/cm²/min", "0.4 g/cm²/min"], 0],
+  ["Saline soils have", ["pH > 8.5, ESP > 15", "EC > 4 dS/m, ESP < 15, pH < 8.5", "EC < 4, ESP > 15", "EC < 1, pH < 7"], 1],
+  ["The NCA (1976) put India’s waterlogged area at about", ["0.6 Mha", "2.46 Mha", "6.0 Mha", "16 Mha"], 2],
+  ["Which crop is salt-sensitive?", ["Barley", "Date palm", "Sugarbeet", "Field beans"], 3],
+  ["Drainage became mandatory in irrigation project design from the", ["Third Plan", "Sixth Plan", "Eighth Plan", "Twelfth Plan"], 2],
+  ["Hooghoudt’s spacing equation for an empty drain is", ["S² = 4kH(2d + H)/v", "S = 4kH/v", "S² = 8kdH/v", "S² = kH²/v"], 0],
+  ["A lower soil layer can be treated as impermeable if its permeability is at most", ["half", "one-fifth", "one-tenth", "one-hundredth"], 2],
+  ["In the leaching-requirement formula, if effective rainfall exceeds ET then LR is", ["maximum", "negative — no drainage needed for leaching", "equal to ET", "infinite"], 1],
+  ["Tile drainage coefficient for 750–1500 mm annual rainfall is about", ["2–4 mm/day", "10–13 mm/day", "20–25 mm/day", "50 mm/day"], 1],
+  ["Manning’s n for clay and concrete tile is", ["0.010", "0.013", "0.020", "0.035"], 1],
+  ["Minimum velocity in a tile drain to avoid silting is about", ["0.1 m/s", "0.4 m/s", "1.0 m/s", "2.0 m/s"], 1],
+  ["Doubling the crack width between tiles increases inflow by about", ["10%", "50%", "100%", "200%"], 0],
+  ["Concrete tiles are made with a cement : sand ratio of", ["1 : 1", "1 : 2", "1 : 3–4", "1 : 8"], 2],
+  ["Typical tile spacing in sandy loam (Table 11.1) is", ["9–15 m", "12–21 m", "18–30 m", "30–60 m"], 3]
 ]

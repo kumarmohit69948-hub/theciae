@@ -4,5 +4,11 @@
   ["Stage of groundwater extraction for India in the 2023 assessment was", ["39.5%", "59.26%", "75.1%", "149.86%"], 1],
   ["Rajasthan’s stage of groundwater extraction in the 2024 assessment was about", ["59%", "96%", "150%", "200%"], 2],
   ["About what share of the world’s water is fresh?", ["0.5%", "2.5%", "10%", "29.2%"], 1],
-  ["The ideal unit for water budgeting is the", ["river basin", "micro-watershed", "district", "state"], 1]
+  ["The ideal unit for water budgeting is the", ["river basin", "micro-watershed", "district", "state"], 1],
+  ["The nearly constant infiltration rate reached after long wetting is the", ["initial rate", "basic infiltration rate", "percolation rate", "hydraulic conductivity"], 1],
+  ["The outer ring of a double-ring infiltrometer serves as a", ["measuring ring", "buffer pond", "rain gauge", "drain"], 1],
+  ["Pan coefficient used to convert pan evaporation is about", ["0.3", "0.5", "0.7", "1.2"], 2],
+  ["Peak-period use rate is the average daily use over the ___ of highest use", ["1–2 days", "6–10 days", "30 days", "whole season"], 1],
+  ["Consumptive use is the sum of", ["infiltration and runoff", "evaporation and transpiration", "percolation and seepage", "rainfall and irrigation"], 1],
+  ["Very sandy soils can infiltrate more than", ["0.5 cm/h", "2.5 cm/h", "25 cm/h", "250 cm/h"], 2]
 ]

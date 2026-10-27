@@ -1,0 +1,7 @@
+[
+  ["Irrigation of most crops should begin when about ___ of available moisture is depleted", ["10%", "25%", "50%", "90%"], 2],
+  ["Soil samples for gravimetric moisture are dried at", ["60°C", "80°C", "105°C", "150°C"], 2],
+  ["A moist sample weighs 110 g and 94 g oven-dry; moisture content is", ["14.5%", "16.0%", "17.02%", "21.3%"], 2],
+  ["A tensiometer stops working when tension exceeds about", ["0.1 atm", "0.85 atm", "5 atm", "15 atm"], 1],
+  ["The neutron moisture meter works on", ["electrical resistance", "neutron scattering by hydrogen", "capillarity", "osmosis"], 1]
+]

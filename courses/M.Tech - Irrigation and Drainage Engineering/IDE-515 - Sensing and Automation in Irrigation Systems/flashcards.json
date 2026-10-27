@@ -1,0 +1,6 @@
+[
+  ["Gravimetric moisture", "(Wm − Wd)/Wd × 100, oven-drying at 105°C; the standard method."],
+  ["Moisture depth", "cm per m = bulk density × moisture %; bulk density 1.1–1.6 g/cm³."],
+  ["Tensiometer", "Porous cup + gauge; reads tension; fails above 0.85 atm; for sandy soils."],
+  ["Neutron moisture meter", "Fast neutrons slowed by hydrogen; in-situ, rapid, whole root zone."]
+]

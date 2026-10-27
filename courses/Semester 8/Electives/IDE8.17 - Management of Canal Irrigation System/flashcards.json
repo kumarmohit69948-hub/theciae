@@ -2,5 +2,17 @@
   ["Canal hierarchy", "Main canal → branch → major distributary → minor → water course → field channel."],
   ["Warabandi", "Weekly rotational turns in proportion to holding; minutes/ha = 10,080 ÷ CCA (ha); nearest farmer first."],
   ["Water course", "Channel from a canal outlet, maintained by farmers; 30–120 L/s."],
-  ["APM outlet", "Adjustable Proportionate Module — opening adjustable to the desired discharge."]
+  ["APM outlet", "Adjustable Proportionate Module — opening adjustable to the desired discharge."],
+  ["Hectare-centimetre", "Water covering 1 ha to 1 cm depth = 100 m³."],
+  ["Float method", "Surface velocity over a ~30 m reach × 0.85 = average velocity; Q = V × A."],
+  ["Current meter", "Velocity from revolutions; mean velocity from readings at 0.2 and 0.8 depth; sub-areas 0.6–6 m wide."],
+  ["Best hydraulic sections", "Semicircle ideal; rectangle depth = ½ breadth; trapezoid b = 2d tan(θ/2)."],
+  ["Permissible velocities (earth channels)", "Loamy sand 45, sandy loam 60, loam/silt 75, clay loam 90, gravel & clay 100 cm/s."],
+  ["Earth channel side slopes", "Permanent ≤1½:1; stiff clay ½:1; loose sand 2:1; normal bed slope 0.1%, silting <0.05%."],
+  ["Concrete lining", "4–5 cm thick, joints every 2–3 m, groove ⅓ depth sealed with bitumen; cure by sprinkling."],
+  ["Water requirement", "WR = ET + application losses + special needs = IR + ER + S."],
+  ["NIR and GIR", "NIR refills root zone to FC; GIR = NIR / field efficiency (8 cm at 75% → 10.67 cm)."],
+  ["Duty–delta", "D (ha/cumec) = 8.64 B (days) / Δ (m)."],
+  ["Moisture extraction pattern", "40-30-20-10% from successive quarters of the root zone."],
+  ["Critical stage", "Growth stage most sensitive to moisture stress; irrigate first here when water is scarce."]
 ]

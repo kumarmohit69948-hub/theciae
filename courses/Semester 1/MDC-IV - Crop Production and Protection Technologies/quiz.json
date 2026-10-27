@@ -1,0 +1,14 @@
+[
+  ["Available water lies between", ["saturation and field capacity", "field capacity and permanent wilting point", "PWP and hygroscopic coefficient", "zero and saturation"], 1],
+  ["Permanent wilting point is commonly taken at a tension of", ["1/3 atm", "1 atm", "15 atm", "31 atm"], 2],
+  ["Field capacity corresponds closely to the moisture held at", ["0.1 atm", "1/3 atm", "15 atm", "0 atm"], 1],
+  ["Clay particles are smaller than", ["0.002 mm", "0.02 mm", "0.05 mm", "2 mm"], 0],
+  ["Water held by surface tension and available to plants is", ["hygroscopic", "capillary", "gravitational", "combined"], 1],
+  ["Available water-holding capacity of clay loam is about", ["2–4 cm/m", "4–11 cm/m", "10–18 cm/m", "30–50 cm/m"], 2],
+  ["Field irrigation requirement IR equals", ["WR + ER + S", "WR − (ER + S)", "ET − WR", "WR × efficiency"], 1],
+  ["With NIR = 8 cm and field efficiency 75%, GIR is about", ["6 cm", "8.75 cm", "10.67 cm", "14 cm"], 2],
+  ["Duty D, base period B (days) and delta Δ (m) are related by", ["D = 8.64 Δ/B", "D = 8.64 B/Δ", "D = B Δ/8.64", "D = 864 B Δ"], 1],
+  ["Duty measured at the head of a water course is the", ["net duty", "gross duty", "outlet duty", "designed duty"], 2],
+  ["The top quarter of the root zone supplies about ___ of the water used", ["10%", "25%", "40%", "70%"], 2],
+  ["Effective root zone of lucerne and orchards is about", ["45 cm", "60 cm", "1 m", "2.0–2.5 m or more"], 3]
+]

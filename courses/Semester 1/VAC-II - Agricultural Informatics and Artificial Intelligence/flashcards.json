@@ -54,5 +54,12 @@
   ["IP addresses", "IPv4 32 bits (about 4.3 billion addresses), e.g. 192.168.1.10; IPv6 128 bits."],
   ["DNS look-up", "Browser → resolver → root → TLD → authoritative server → IP address → HTTPS request to the web server."],
   ["Parts of a URL", "Scheme, host (subdomain, domain, TLD), port, path, query string, fragment."],
-  ["Internet in Indian agriculture", "e-NAM (1,656 mandis, March 2026), Kisan Call Centre 1800-180-1551 (2004), mKisan, AGMARKNET, weather advisories."]
+  ["Internet in Indian agriculture", "e-NAM (1,656 mandis, March 2026), Kisan Call Centre 1800-180-1551 (2004), mKisan, AGMARKNET, weather advisories."],
+  ["Program development steps", "Define problem → design algorithm → code → compile/run → test and debug → document and maintain."],
+  ["Algorithm properties", "Finiteness, definiteness, input, output, effectiveness (Knuth)."],
+  ["Flowchart symbols", "Oval start/end; parallelogram input/output; rectangle process; diamond decision; arrow flow; circle connector."],
+  ["Control structures", "Sequence, selection, iteration — enough for any algorithm (Böhm and Jacopini, 1966)."],
+  ["Visual Basic essentials", "Microsoft, event-driven, Visual Studio IDE; controls with properties, methods, events; Dim; If, Select Case, For, Do While."],
+  ["How Java runs", ".java source → javac → .class bytecode → JVM on any OS; JDK = JRE + tools; JRE = JVM + libraries."],
+  ["OOP concepts", "Class, object, encapsulation, inheritance, polymorphism, abstraction."]
 ]

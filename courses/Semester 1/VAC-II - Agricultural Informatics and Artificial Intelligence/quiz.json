@@ -190,5 +190,17 @@
   ["A soil information system links soil data to", ["a GIS and a database", "a word processor", "only paper maps", "a spreadsheet chart"], 0],
   ["SoilGrids 2.0 maps global soil properties at a resolution of", ["10 m", "250 m", "1 km", "10 km"], 1],
   ["In land capability classification, limitations increase", ["from class VIII to class I", "from class I to class VIII", "only in class IV", "randomly"], 1],
-  ["In land capability subclasses, \"w\" stands for", ["wind", "excess water", "weeds", "wilting"], 1]
+  ["In land capability subclasses, \"w\" stands for", ["wind", "excess water", "weeds", "wilting"], 1],
+  ["A crop calendar mainly shows", ["crop prices", "the timing of sowing, operations and harvest", "soil types", "farm boundaries"], 1],
+  ["Wheat, mustard and chickpea in India are typically", ["kharif crops", "rabi crops", "zaid crops", "perennial crops"], 1],
+  ["Crops sown with the south-west monsoon belong to the", ["rabi season", "zaid season", "kharif season", "winter season"], 2],
+  ["The main weakness of timing operations by days after sowing is that it", ["is hard to calculate", "ignores weather variation", "needs satellites", "cannot be put in a spreadsheet"], 1],
+  ["In the Zadoks scale, principal stage 6 is", ["tillering", "booting", "flowering (anthesis)", "ripening"], 2],
+  ["The first critical irrigation stage of wheat is", ["dough", "crown root initiation", "milk", "booting"], 1],
+  ["If the sowing date is in F1 and the DAS in B2, the operation date is", ["=F1 − B2", "=$F$1 + B2", "=B2 ÷ F1", "=TODAY()"], 1],
+  ["A warmer-than-normal season makes a GDD-based calendar schedule flowering", ["later", "earlier", "at the same date", "not at all"], 1],
+  ["The standard file format for exporting events to calendar apps is", [".csv", ".ics (iCalendar)", ".shp", ".pdf"], 1],
+  ["The FAO Crop Calendar provides", ["mandi prices", "planting, sowing and harvesting periods by crop and zone", "soil-test values", "weather radar"], 1],
+  ["Sacks et al. (2010) compiled global planting and harvesting dates for", ["5 crops", "19 major crops", "100 crops", "500 crops"], 1],
+  ["A Gantt chart shows", ["tasks against time", "yield against rainfall", "price against quantity", "soil depth"], 0]
 ]

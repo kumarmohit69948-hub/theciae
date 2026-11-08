@@ -125,5 +125,13 @@
   ["Certainty factors", "Range −1 to +1; CF(conclusion) = CF(rule) × CF(condition); combine CF₁ + CF₂(1 − CF₁)."],
   ["Agricultural expert systems", "COMAX (cotton management, rules + simulation + sensors); AgriDaksh (ICAR-IASRI tool), e.g. Tobacco Agridaksh."],
   ["Soil information system", "Soil maps + soil-test database (SHC, 12 parameters) + global data (SoilGrids 250 m) in GIS, with interpretation rules."],
-  ["Land capability classes", "I–VIII, limitations increase; subclasses e (erosion), w (water), s (root zone), c (climate); most limiting factor decides."]
+  ["Land capability classes", "I–VIII, limitations increase; subclasses e (erosion), w (water), s (root zone), c (climate); most limiting factor decides."],
+  ["Crop calendar", "Schedule of sowing, operations and harvest for a crop, region and season: what, when, how much."],
+  ["Types of crop calendar", "Crop operation, regional, cropping-system, pest and disease, input and labour calendars."],
+  ["Indian cropping seasons", "Kharif (monsoon-sown), rabi (post-monsoon, harvested in spring), zaid (summer, between them)."],
+  ["Timing methods", "DAS (simple, ignores weather), growth stages (observed), GDD (thermal time, weather-adjusted)."],
+  ["Zadoks scale", "Two-digit code: 0 germination, 1 seedling, 2 tillering, 3 jointing, 4 booting, 5 ear emergence, 6 flowering, 7 milk, 8 dough, 9 ripening."],
+  ["Wheat critical irrigation stages", "Crown root initiation, tillering, jointing, flowering, milk, dough."],
+  ["Spreadsheet calendar", "Date = sowing date + DAS ($F$1 + B2); Gantt by conditional formatting; change sowing date once."],
+  ["Digital calendar tools", "Python + iCalendar (.ics), FAO Crop Calendar (100+ crops), Sacks et al. global dates, advisories and apps."]
 ]

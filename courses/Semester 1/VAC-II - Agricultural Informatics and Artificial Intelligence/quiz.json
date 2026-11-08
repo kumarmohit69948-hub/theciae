@@ -202,5 +202,17 @@
   ["The standard file format for exporting events to calendar apps is", [".csv", ".ics (iCalendar)", ".shp", ".pdf"], 1],
   ["The FAO Crop Calendar provides", ["mandi prices", "planting, sowing and harvesting periods by crop and zone", "soil-test values", "weather radar"], 1],
   ["Sacks et al. (2010) compiled global planting and harvesting dates for", ["5 crops", "19 major crops", "100 crops", "500 crops"], 1],
-  ["A Gantt chart shows", ["tasks against time", "yield against rainfall", "price against quantity", "soil depth"], 0]
+  ["A Gantt chart shows", ["tasks against time", "yield against rainfall", "price against quantity", "soil depth"], 0],
+  ["The OECD describes an AI system as a machine-based system that", ["stores files", "infers from input how to generate outputs such as predictions or decisions", "only follows fixed instructions", "connects computers to the Internet"], 1],
+  ["The approach that builds systems to do the right thing given what they perceive is", ["thinking humanly", "acting humanly", "acting rationally", "thinking emotionally"], 2],
+  ["The term \"artificial intelligence\" comes from the", ["Turing paper of 1950", "Dartmouth proposal of 1955", "ImageNet contest", "OECD in 2023"], 1],
+  ["Arthur Samuel’s checkers program (1959) is an early example of", ["expert systems", "machine learning", "robotics", "GIS"], 1],
+  ["Deep learning is a part of", ["robotics only", "machine learning", "database management", "fuzzy logic only"], 1],
+  ["In PEAS, the \"A\" stands for", ["Accuracy", "Actuators", "Algorithms", "Agents"], 1],
+  ["Grouping fields into management zones without labels is", ["supervised learning", "unsupervised learning", "reinforcement learning", "overfitting"], 1],
+  ["A model that performs well on training data but poorly on new data is", ["generalising", "overfitting", "clustering", "labelling"], 1],
+  ["The k-NN classifier predicts the class of a new case by", ["the average of all data", "majority vote among the k most similar cases", "a fixed rule", "random choice"], 1],
+  ["Recall is calculated as", ["TP ÷ (TP + FP)", "TP ÷ (TP + FN)", "(TP + TN) ÷ total", "FP ÷ (FP + TN)"], 1],
+  ["In Mohanty et al. (2016), accuracy on images from other conditions was about", ["99%", "85%", "31%", "3%"], 2],
+  ["The IndiaAI Mission approved in 2024 has an outlay of about", ["₹1,037 crore", "₹10,372 crore", "₹1,00,000 crore", "₹372 crore"], 1]
 ]

@@ -1,0 +1,14 @@
+[
+  ["The word \"computer\" comes from the Latin computare, meaning", ["to store", "to calculate", "to control", "to communicate"], 1],
+  ["GIGO stands for", ["Gigabyte input, gigabyte output", "Garbage in, garbage out", "General input, general output", "Graphics in, graphics out"], 1],
+  ["In Babbage’s Analytical Engine, the \"mill\" corresponds to the modern", ["memory", "input unit", "processor (ALU)", "printer"], 2],
+  ["First-generation computers used", ["transistors", "integrated circuits", "vacuum tubes", "microprocessors"], 2],
+  ["ENIAC was built at the", ["Massachusetts Institute of Technology", "Moore School, University of Pennsylvania", "Bell Laboratories", "Cambridge University"], 1],
+  ["The transistor was invented at Bell Laboratories in", ["1937", "1947", "1958", "1971"], 1],
+  ["The Intel 4004 microprocessor (1971) had about", ["250 transistors", "2,250 transistors", "22,500 transistors", "2.25 million transistors"], 1],
+  ["Hollerith’s punched-card machines were first used for the US census of", ["1850", "1870", "1890", "1910"], 2],
+  ["The stored-program concept is associated with", ["Charles Babbage", "John von Neumann", "Blaise Pascal", "Herman Hollerith"], 1],
+  ["A tractor’s engine control unit is an example of a(n)", ["supercomputer", "mainframe", "embedded computer", "analog computer"], 2],
+  ["India’s first indigenous supercomputer is", ["TIFRAC", "HEC-2M", "PARAM 8000", "ISIJU"], 2],
+  ["A computer that works with continuously varying quantities is", ["digital", "analog", "hybrid", "embedded"], 1]
+]

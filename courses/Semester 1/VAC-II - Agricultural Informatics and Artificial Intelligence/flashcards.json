@@ -77,5 +77,13 @@
   ["Rainfall probability", "Weibull P = m/(n+1); return period T = 1/P; 75% dependable rainfall for crop planning."],
   ["Growing degree days", "GDD = Σ[(Tmax+Tmin)/2 − T_base]; predicts crop stages; state the method used when Tmin < T_base."],
   ["IMD forecasts and GKMS", "Nowcast <24 h; short 1–3 d; medium 4–10 d; extended/long >10 d. GKMS advisories every Tuesday and Friday."],
-  ["Crop simulation models", "Daily loop of phenology, light interception, biomass (RUE), partitioning, water and N balance. DSSAT, APSIM, AquaCrop, InfoCrop."]
+  ["Crop simulation models", "Daily loop of phenology, light interception, biomass (RUE), partitioning, water and N balance. DSSAT, APSIM, AquaCrop, InfoCrop."],
+  ["Computer-controlled device", "Sensors → signal conditioning/ADC → controller → drivers → actuators; plus interface, communication and feedback."],
+  ["Open vs closed loop", "Open loop: no check of result (timer). Closed loop: feedback compares measured value with setpoint."],
+  ["On–off with hysteresis", "Separate on/off thresholds (e.g. on below 25%, off above 35%) prevent rapid switching."],
+  ["PID control", "u = Kp·e + Ki·∫e dt + Kd·de/dt; P present error, I accumulated error, D rate of change."],
+  ["Soil-moisture measurement", "Gravimetric (reference), tensiometer (tension), TDR, capacitance, resistance blocks; calibrate for each soil."],
+  ["Fertigation injectors", "Venturi (suction, no power), by-pass tank (pressure differential), dosing pump (accurate, proportional)."],
+  ["Sprayer calibration", "L/ha = L/min × 600 ÷ (km/h × spacing m); speed = m × 3.6 ÷ s; rate controller keeps L/ha as speed changes."],
+  ["VRT and ISOBUS", "Map-based (prescription map + GNSS) or sensor-based (real time); ISOBUS = ISO 11783 tractor–implement standard."]
 ]

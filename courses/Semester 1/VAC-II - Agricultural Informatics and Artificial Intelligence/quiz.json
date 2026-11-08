@@ -178,5 +178,17 @@
   ["A constraint whose resource is fully used at the optimum is", ["binding", "non-binding", "infeasible", "redundant"], 0],
   ["The extra profit from one more unit of a scarce resource is its", ["opportunity cost", "shadow price", "expected value", "weight"], 1],
   ["Examining how results change when prices or rainfall change is called", ["goal seeking", "what-if analysis", "normalisation", "compilation"], 1],
-  ["Rose et al. (2016) found that the uptake of agricultural decision support tools was", ["very high", "disappointingly low", "compulsory", "unmeasured"], 1]
+  ["Rose et al. (2016) found that the uptake of agricultural decision support tools was", ["very high", "disappointingly low", "compulsory", "unmeasured"], 1],
+  ["An expert system mainly encodes", ["a fixed sequence of calculations", "specialist knowledge as facts and rules", "only images", "only a database of prices"], 1],
+  ["The component that applies rules to the facts of a case is the", ["knowledge base", "inference engine", "user interface", "working memory"], 1],
+  ["The person who elicits knowledge from experts and encodes it as rules is the", ["domain expert", "end user", "knowledge engineer", "database administrator"], 2],
+  ["Reasoning that starts from known facts and derives conclusions is", ["backward chaining", "forward chaining", "normalisation", "compilation"], 1],
+  ["Backward chaining is especially suited to", ["diagnosis of a suspected cause", "storing soil maps", "printing reports", "drawing charts"], 0],
+  ["Two rules give the same conclusion CF 0.6 and 0.5. The combined CF is", ["0.30", "0.55", "0.80", "1.10"], 2],
+  ["Which part of an expert system answers \"how did you reach this conclusion?\"", ["explanation facility", "knowledge acquisition facility", "compiler", "GIS"], 0],
+  ["COMAX was an expert system for", ["rice irrigation", "cotton crop management", "dairy feeding", "wheat marketing"], 1],
+  ["A soil information system links soil data to", ["a GIS and a database", "a word processor", "only paper maps", "a spreadsheet chart"], 0],
+  ["SoilGrids 2.0 maps global soil properties at a resolution of", ["10 m", "250 m", "1 km", "10 km"], 1],
+  ["In land capability classification, limitations increase", ["from class VIII to class I", "from class I to class VIII", "only in class IV", "randomly"], 1],
+  ["In land capability subclasses, \"w\" stands for", ["wind", "excess water", "weeds", "wilting"], 1]
 ]

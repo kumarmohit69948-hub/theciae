@@ -38,5 +38,13 @@
   ["Choosing a chart", "Compare → column/bar; time → line; parts → pie; relationship → scatter; distribution → histogram."],
   ["Trendline calibration", "Scatter + linear trendline → y = mx + c and R²; e.g. moisture % = 0.076 × reading − 5.1."],
   ["PowerPoint design", "One idea per slide, few words, large text, high contrast, visuals, PDF backup."],
-  ["Office file formats", ".docx/.xlsx/.pptx = ISO/IEC 29500; .odt/.ods/.odp = ISO/IEC 26300; .csv = plain text data."]
+  ["Office file formats", ".docx/.xlsx/.pptx = ISO/IEC 29500; .odt/.ods/.odp = ISO/IEC 26300; .csv = plain text data."],
+  ["DBMS vs files", "DBMS removes redundancy and inconsistency, enforces integrity and security, supports concurrent use and recovery."],
+  ["Three-schema architecture", "External (views), conceptual (logical design), internal (storage); gives physical and logical data independence."],
+  ["Data models", "Hierarchical (tree), network (graph), relational (tables), object-oriented, NoSQL."],
+  ["Relational terms", "Relation = table; tuple = row; attribute = column; degree = columns; cardinality = rows."],
+  ["Keys", "Primary (unique ID), candidate, super, foreign (links tables), composite (several columns)."],
+  ["Normal forms", "1NF single values; 2NF no partial dependency; 3NF no transitive dependency."],
+  ["SQL groups", "DDL CREATE/ALTER/DROP; DML INSERT/UPDATE/DELETE; DQL SELECT; DCL GRANT/REVOKE; TCL COMMIT/ROLLBACK."],
+  ["Agricultural databases", "Soil Health Card (2015), AgriStack registries (DAM 2024), Bharat Pashudhan, market and weather databases."]
 ]

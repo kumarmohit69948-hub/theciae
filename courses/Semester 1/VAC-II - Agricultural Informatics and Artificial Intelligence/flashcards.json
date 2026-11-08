@@ -69,5 +69,13 @@
   ["Kerala fishermen (Jensen, 2007)", "Mobile phones cut price differences between markets, ended waste and benefited fishermen and consumers."],
   ["ITC e-Choupal", "Village Internet kiosks (from 2000); about 6,100 kiosks, 35,000+ villages, 4 million+ farmers; higher soybean prices (Goyal, 2010)."],
   ["Bhoomi land records", "Karnataka: 20 million records computerised; RTC printed at taluk kiosks for ₹15; less delay and bribery."],
-  ["Digital divide", "Rural 49.07 vs urban 129.03 Internet subscriptions per 100 people (June 2026); also by income, age, gender, education."]
+  ["Digital divide", "Rural 49.07 vs urban 129.03 Internet subscriptions per 100 people (June 2026); also by income, age, gender, education."],
+  ["Types of models", "Empirical vs mechanistic; deterministic vs stochastic; static vs dynamic; descriptive, explanatory, optimisation."],
+  ["Model building steps", "Real system → conceptual → mathematical → program → calibration → validation (independent data) → application; sensitivity analysis."],
+  ["Model evaluation statistics", "MBE (bias), RMSE and nRMSE (error size), Willmott’s d (0–1 agreement), R²."],
+  ["Linear regression", "ŷ = a + bx; b = Sxy/Sxx; a = ȳ − b·x̄; R² = share of variation explained; valid only within the data range."],
+  ["Rainfall probability", "Weibull P = m/(n+1); return period T = 1/P; 75% dependable rainfall for crop planning."],
+  ["Growing degree days", "GDD = Σ[(Tmax+Tmin)/2 − T_base]; predicts crop stages; state the method used when Tmin < T_base."],
+  ["IMD forecasts and GKMS", "Nowcast <24 h; short 1–3 d; medium 4–10 d; extended/long >10 d. GKMS advisories every Tuesday and Friday."],
+  ["Crop simulation models", "Daily loop of phenology, light interception, biomass (RUE), partitioning, water and N balance. DSSAT, APSIM, AquaCrop, InfoCrop."]
 ]

@@ -58,5 +58,17 @@
   ["A Word feature that records edits for review is", ["Find and Replace", "Track Changes", "Mail Merge", "Format Painter"], 1],
   ["The PowerPoint view that shows speaker notes only to the presenter is", ["Slide Sorter", "Reading View", "Presenter View", "Outline View"], 2],
   ["The open standard behind .docx, .xlsx and .pptx files is", ["ISO 9001", "ISO/IEC 29500", "ISO 32000", "ISO 14001"], 1],
-  ["Total cost ₹36,000 and gross return ₹1,08,000 give a benefit–cost ratio of", ["0.33", "2.0", "3.0", "72,000"], 2]
+  ["Total cost ₹36,000 and gross return ₹1,08,000 give a benefit–cost ratio of", ["0.33", "2.0", "3.0", "72,000"], 2],
+  ["DBMS stands for", ["Data Backup Management System", "Database Management System", "Digital Base Memory System", "Data Bus Management System"], 1],
+  ["Storing the same data in several files is called", ["integrity", "redundancy", "normalisation", "independence"], 1],
+  ["The ANSI/SPARC level that describes physical storage is the", ["external level", "conceptual level", "internal level", "view level"], 2],
+  ["In a hierarchical database each child record has", ["no parent", "exactly one parent", "many parents", "two parents"], 1],
+  ["The relational model was proposed by", ["Charles Babbage", "E. F. Codd", "John von Neumann", "Tim Berners-Lee"], 1],
+  ["A row of a relational table is also called a", ["tuple", "domain", "attribute", "schema"], 0],
+  ["A column that refers to the primary key of another table is a", ["candidate key", "super key", "foreign key", "composite key"], 2],
+  ["A many-to-many relationship is implemented using", ["one table", "a linking table", "a primary key only", "a view"], 1],
+  ["Which SQL command retrieves data?", ["INSERT", "UPDATE", "SELECT", "CREATE"], 2],
+  ["GRANT and REVOKE belong to", ["DDL", "DML", "DCL", "TCL"], 2],
+  ["In ACID, \"A\" stands for", ["Accuracy", "Atomicity", "Availability", "Authentication"], 1],
+  ["Which is NOT one of AgriStack’s foundational registries?", ["Farmers’ Registry", "Crop Sown Registry", "Geo-referenced Village Maps", "Mandi Price Registry"], 3]
 ]

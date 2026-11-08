@@ -214,5 +214,17 @@
   ["The k-NN classifier predicts the class of a new case by", ["the average of all data", "majority vote among the k most similar cases", "a fixed rule", "random choice"], 1],
   ["Recall is calculated as", ["TP ÷ (TP + FP)", "TP ÷ (TP + FN)", "(TP + TN) ÷ total", "FP ÷ (FP + TN)"], 1],
   ["In Mohanty et al. (2016), accuracy on images from other conditions was about", ["99%", "85%", "31%", "3%"], 2],
-  ["The IndiaAI Mission approved in 2024 has an outlay of about", ["₹1,037 crore", "₹10,372 crore", "₹1,00,000 crore", "₹372 crore"], 1]
+  ["The IndiaAI Mission approved in 2024 has an outlay of about", ["₹1,037 crore", "₹10,372 crore", "₹1,00,000 crore", "₹372 crore"], 1],
+  ["Turing proposed the imitation game to replace the question", ["\"Can machines calculate?\"", "\"Can machines think?\"", "\"Can machines see?\"", "\"Can machines feel pain?\""], 1],
+  ["In the imitation game the answers are typewritten so that", ["they are faster", "tones of voice cannot help the interrogator", "the machine can read them", "they can be printed"], 1],
+  ["Turing predicted an average interrogator would have no more than what chance of a correct identification after five minutes?", ["50%", "70%", "90%", "100%"], 1],
+  ["\"Machines take me by surprise with great frequency\" was Turing’s reply to", ["the theological objection", "Lady Lovelace’s objection", "the mathematical objection", "the ESP objection"], 1],
+  ["Searle’s Chinese room argument claims that", ["machines will soon pass the Turing test", "symbol manipulation alone is not understanding", "Chinese is hard to translate", "computers cannot store text"], 1],
+  ["A CAPTCHA is best described as", ["a type of computer virus", "a reverse Turing test", "a search algorithm", "a database"], 1],
+  ["ELIZA (1966) produced replies by", ["understanding meaning", "keywords and reply templates", "searching the Internet", "deep learning"], 1],
+  ["The component of a production system that decides which rule to apply next is the", ["global database", "control strategy", "rule set", "printer"], 1],
+  ["The two requirements of a good control strategy are that it", ["is fast and cheap", "causes motion and is systematic", "uses heuristics and graphs", "is forward and backward"], 1],
+  ["A strategy that never reconsiders a rule once applied is", ["tentative", "irrevocable", "backtracking", "graph search"], 1],
+  ["In the water-jug problem with 4-L and 3-L cans, pouring the full 4-L can into the empty 3-L can gives", ["(0, 3)", "(1, 3)", "(4, 0)", "(3, 1)"], 1],
+  ["Breadth-first control guarantees", ["the fewest states expanded", "a solution with the fewest steps", "no memory use", "random order"], 1]
 ]

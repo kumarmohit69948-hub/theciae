@@ -22,5 +22,13 @@
   ["SRAM vs DRAM", "SRAM: flip-flops, no refresh, fast, cache. DRAM: capacitor, refresh, dense, main memory."],
   ["ROM family", "Mask ROM → PROM → EPROM (UV erase) → EEPROM (electrical) → flash (block erase)."],
   ["Cache access time", "T = h·T_c + (1 − h)(T_c + T_m); locality of reference makes h high."],
-  ["Disk access time", "Seek + rotational latency + transfer; 7200 rpm → 4.17 ms average latency."]
+  ["Disk access time", "Seek + rotational latency + transfer; 7200 rpm → 4.17 ms average latency."],
+  ["Operating system — three roles", "Interface to the hardware; resource manager; control program (protection)."],
+  ["Booting sequence", "Power on → POST → BIOS/UEFI → boot loader → kernel → login. Cold vs warm boot."],
+  ["Kernel vs shell", "Kernel: core resource manager. Shell: user interface — CLI or GUI."],
+  ["Process states", "New → ready → running → (waiting) → terminated; time-out returns running → ready."],
+  ["CPU scheduling", "FCFS, SJF (lowest average wait), priority, round robin (time quantum)."],
+  ["File systems", "FAT32 (4 GB file limit), exFAT, NTFS (Windows), ext4 (Linux), APFS (Apple)."],
+  ["Types of OS", "Batch, multiprogramming, time-sharing, multiprocessing, multi-user, real-time, distributed, network, mobile, embedded."],
+  ["RTOS", "Guaranteed response time; hard vs soft real-time; drones (PX4 on NuttX), machine controllers."]
 ]

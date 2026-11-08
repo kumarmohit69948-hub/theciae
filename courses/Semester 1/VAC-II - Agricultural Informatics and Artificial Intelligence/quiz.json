@@ -34,5 +34,17 @@
   ["With h = 0.9, T_c = 2 ns and T_m = 50 ns, the average access time T = h·T_c + (1 − h)(T_c + T_m) is", ["6.5 ns", "7.0 ns", "5.2 ns", "50 ns"], 1],
   ["Average rotational latency of a 7200 rpm disk is about", ["1.4 ms", "4.17 ms", "8.33 ms", "16.7 ms"], 1],
   ["An SDHC memory card can hold up to", ["2 GB", "32 GB", "2 TB", "128 TB"], 1],
-  ["Magnetic tape provides", ["random access", "sequential access", "direct access", "cache access"], 1]
+  ["Magnetic tape provides", ["random access", "sequential access", "direct access", "cache access"], 1],
+  ["The operating system acts as an interface between", ["two computers", "the user and the hardware", "RAM and ROM", "the CPU and the ALU"], 1],
+  ["POST stands for", ["Power-on self-test", "Primary operating system test", "Program output status table", "Power output system test"], 0],
+  ["The core of the operating system that manages resources is the", ["shell", "kernel", "driver", "boot loader"], 1],
+  ["A program in execution is called a", ["file", "thread", "process", "driver"], 2],
+  ["Which scheduling method gives the lowest average waiting time when run times are known?", ["FCFS", "SJF", "Round robin", "Priority"], 1],
+  ["Processes with CPU times 8, 4 and 2 ms are run FCFS in that order. Average waiting time is", ["2.67 ms", "5.33 ms", "6.67 ms", "8 ms"], 2],
+  ["With 4 KB pages, logical address 10,000 lies in page", ["1", "2", "3", "4"], 1],
+  ["Queuing print jobs on disk is called", ["paging", "spooling", "swapping", "booting"], 1],
+  ["A drone flight controller usually runs a(n)", ["batch OS", "real-time OS", "network OS", "multi-user OS"], 1],
+  ["BOSS Linux was developed by", ["ISRO", "C-DAC", "IIT Bombay", "NIC"], 1],
+  ["The largest single file on a FAT32 volume is about", ["2 GB", "4 GB", "32 GB", "2 TB"], 1],
+  ["The Linux command to list files is", ["dir", "ls", "cd", "pwd"], 1]
 ]

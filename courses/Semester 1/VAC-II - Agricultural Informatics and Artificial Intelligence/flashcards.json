@@ -109,5 +109,13 @@
   ["Satellites for agriculture", "Sentinel-2: 10 m, 13 bands, 5-day revisit. Resourcesat: LISS-IV 5.8 m, LISS-III 23.5 m, AWiFS 56 m."],
   ["GNSS and NavIC", "Distance from signal travel time; ≥4 satellites. NavIC: 7 satellites, India + 1,500 km, better than 20 m."],
   ["Vector, raster and GIS operations", "Vector = points/lines/polygons; raster = cells. Overlay, buffer, query, interpolation, map algebra."],
-  ["Geospatial applications in India", "FASAL crop forecasts and drought (MNCFC), YES-TECH crop insurance, AgriStack village maps, Bhuvan, precision farming."]
+  ["Geospatial applications in India", "FASAL crop forecasts and drought (MNCFC), YES-TECH crop insurance, AgriStack village maps, Bhuvan, precision farming."],
+  ["DSS", "Interactive system combining data, models and user judgement for semi-structured decisions; what-if and goal seeking."],
+  ["Simon’s decision phases", "Intelligence (define problem) → design (options) → choice (select) → implementation and monitoring."],
+  ["Components of a DSS", "Data management, model management (model base), knowledge management, user interface, user."],
+  ["Types of DSS (Power)", "Data-, model-, knowledge-, document- and communication-driven; plus spatial (GIS) DSS."],
+  ["MIS vs DSS vs ES", "MIS: routine reports. DSS: data + models, user explores. ES: rules + inference, expert-like advice."],
+  ["EMV and EVPI", "EMV = Σ(p × payoff); break-even probability; EVPI = EV with perfect info − best EMV."],
+  ["Linear programming", "Objective, decision variables, constraints; optimum at a corner; binding constraints; shadow price."],
+  ["Agricultural DSS", "DSSAT, CROPWAT, Nutrient Expert, Meghdoot, NPSS; uptake depends on usability, cost-effectiveness, performance, relevance."]
 ]

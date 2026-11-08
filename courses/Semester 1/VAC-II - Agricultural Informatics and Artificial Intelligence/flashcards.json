@@ -14,5 +14,13 @@
   ["Compiler vs interpreter", "Compiler: whole program before running. Interpreter: one statement at a time while running."],
   ["OCR / OMR / MICR", "OCR reads printed text; OMR reads marks in boxes; MICR reads magnetic-ink characters on cheques (E-13B)."],
   ["Printer types", "Dot-matrix (impact), inkjet, laser, thermal; plotters; 3D printers. Quality in dpi, speed in ppm."],
-  ["Actuator", "Output that acts physically under computer control — solenoid valve, relay, motor."]
+  ["Actuator", "Output that acts physically under computer control — solenoid valve, relay, motor."],
+  ["Bit / nibble / byte", "1 bit = 0 or 1; nibble = 4 bits; byte = 8 bits; n bits → 2ⁿ values."],
+  ["KB vs KiB", "Binary 1 KB (KiB) = 1024 B; SI 1 kB = 1000 B. 1 TB drive ≈ 931 GiB."],
+  ["Newest SI prefixes", "Ronna R = 10²⁷, quetta Q = 10³⁰ (CGPM 2022)."],
+  ["Memory hierarchy", "Registers → cache → RAM → SSD → HDD → archive: faster/costlier at top, larger/cheaper at bottom."],
+  ["SRAM vs DRAM", "SRAM: flip-flops, no refresh, fast, cache. DRAM: capacitor, refresh, dense, main memory."],
+  ["ROM family", "Mask ROM → PROM → EPROM (UV erase) → EEPROM (electrical) → flash (block erase)."],
+  ["Cache access time", "T = h·T_c + (1 − h)(T_c + T_m); locality of reference makes h high."],
+  ["Disk access time", "Seek + rotational latency + transfer; 7200 rpm → 4.17 ms average latency."]
 ]

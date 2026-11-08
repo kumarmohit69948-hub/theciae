@@ -166,5 +166,17 @@
   ["A GIS data model that represents features as points, lines and polygons is", ["raster", "vector", "grid", "pixel"], 1],
   ["Creating a zone of fixed width around a well in GIS is called", ["overlay", "buffer", "interpolation", "classification"], 1],
   ["The accuracy of a classified crop map is assessed using a", ["confusion matrix", "flowchart", "histogram only", "pie chart"], 0],
-  ["YES-TECH uses satellite and weather data to estimate yields for", ["crop insurance under PMFBY", "soil-health cards", "mandi prices", "land registration"], 0]
+  ["YES-TECH uses satellite and weather data to estimate yields for", ["crop insurance under PMFBY", "soil-health cards", "mandi prices", "land registration"], 0],
+  ["Decision support systems are most useful for", ["fully structured decisions", "semi-structured decisions", "decisions with no data", "routine bookkeeping"], 1],
+  ["In Simon’s model, developing and analysing possible courses of action is the", ["intelligence phase", "design phase", "choice phase", "implementation phase"], 1],
+  ["The DSS component that stores and runs crop and optimisation models is the", ["data management subsystem", "model management subsystem", "user interface", "operating system"], 1],
+  ["A DSS that works mainly from rules and expert knowledge is", ["data-driven", "model-driven", "knowledge-driven", "document-driven"], 2],
+  ["Expected monetary value is calculated as", ["the largest payoff", "the average of all payoffs", "Σ (probability × payoff)", "the smallest payoff"], 2],
+  ["In worked example 1, spraying is better when the outbreak probability exceeds about", ["0.05", "0.185", "0.5", "0.9"], 1],
+  ["The expected value of perfect information is", ["the cost of spraying", "the most worth paying for a perfect forecast", "the probability of an outbreak", "the maximin payoff"], 1],
+  ["Linear programming is used to", ["draw maps", "find the best allocation of limited resources", "store data", "forecast weather"], 1],
+  ["A constraint whose resource is fully used at the optimum is", ["binding", "non-binding", "infeasible", "redundant"], 0],
+  ["The extra profit from one more unit of a scarce resource is its", ["opportunity cost", "shadow price", "expected value", "weight"], 1],
+  ["Examining how results change when prices or rainfall change is called", ["goal seeking", "what-if analysis", "normalisation", "compilation"], 1],
+  ["Rose et al. (2016) found that the uptake of agricultural decision support tools was", ["very high", "disappointingly low", "compulsory", "unmeasured"], 1]
 ]

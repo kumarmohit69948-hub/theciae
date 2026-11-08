@@ -94,5 +94,17 @@
   ["Java source code is compiled into", ["machine code for one processor", "bytecode", "HTML", "assembly language"], 1],
   ["Java bytecode is executed by the", ["JDK compiler", "Java Virtual Machine", "web browser only", "operating system kernel"], 1],
   ["Keeping data and methods together and hiding the data inside a class is called", ["inheritance", "polymorphism", "encapsulation", "iteration"], 2],
-  ["Which of these is a long-term-support (LTS) release of Java?", ["Java 22", "Java 23", "Java 25", "Java 26"], 2]
+  ["Which of these is a long-term-support (LTS) release of Java?", ["Java 22", "Java 23", "Java 25", "Java 26"], 2],
+  ["ICT differs from IT mainly by adding", ["data storage", "communication networks", "programming", "printing"], 1],
+  ["Which is NOT a component of an ICT system?", ["Hardware", "Networks", "Data and content", "Crop rotation"], 3],
+  ["According to Jensen (2007), mobile phones in Kerala’s fishing markets led to", ["higher waste of fish", "larger price differences between markets", "smaller price differences and less waste", "no change"], 2],
+  ["ITC e-Choupal is", ["a crop-insurance scheme", "a network of village Internet kiosks run by ITC", "a soil-testing laboratory", "a government call centre"], 1],
+  ["The Bhoomi project in Karnataka computerised", ["soil-health cards", "land records (RTC)", "mandi prices", "weather data"], 1],
+  ["Digital Green spreads farming practices mainly through", ["satellite images", "participatory videos shown by local mediators", "radio broadcasts", "printed leaflets"], 1],
+  ["Common Service Centres are", ["agricultural research stations", "village-level digital service points", "cold-storage units", "seed banks"], 1],
+  ["PM-KISAN pays eligible farmer families", ["₹2,000 a year", "₹6,000 a year in three instalments", "₹12,000 a year", "₹6,000 once"], 1],
+  ["In the meta-analysis by Fabregas et al. (2019), digital agricultural information increased yields by about", ["4%", "22%", "40%", "100%"], 0],
+  ["Which channel best suits farmers who cannot read text messages?", ["E-mail", "Voice calls and video", "Printed reports", "Spreadsheets"], 1],
+  ["The gap in access to ICT between rural and urban people is called the", ["digital divide", "value chain", "law of one price", "information asymmetry index"], 0],
+  ["Moving government services and payments online is called", ["e-commerce", "e-governance", "e-learning", "e-mail"], 1]
 ]

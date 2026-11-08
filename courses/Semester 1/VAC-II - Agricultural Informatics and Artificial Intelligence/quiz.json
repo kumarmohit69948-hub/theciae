@@ -106,5 +106,17 @@
   ["In the meta-analysis by Fabregas et al. (2019), digital agricultural information increased yields by about", ["4%", "22%", "40%", "100%"], 0],
   ["Which channel best suits farmers who cannot read text messages?", ["E-mail", "Voice calls and video", "Printed reports", "Spreadsheets"], 1],
   ["The gap in access to ICT between rural and urban people is called the", ["digital divide", "value chain", "law of one price", "information asymmetry index"], 0],
-  ["Moving government services and payments online is called", ["e-commerce", "e-governance", "e-learning", "e-mail"], 1]
+  ["Moving government services and payments online is called", ["e-commerce", "e-governance", "e-learning", "e-mail"], 1],
+  ["A model that fits a relationship to observed data without representing the underlying processes is", ["mechanistic", "empirical", "stochastic", "dynamic"], 1],
+  ["A model whose state variables change day by day is", ["static", "dynamic", "descriptive", "empirical"], 1],
+  ["Testing a calibrated model against independent data is called", ["calibration", "sensitivity analysis", "validation", "normalisation"], 2],
+  ["In the regression ŷ = a + bx, b is the", ["intercept", "slope", "correlation coefficient", "residual"], 1],
+  ["If R² = 0.76 for yield regressed on rainfall, rainfall explains", ["0.76% of the variation in yield", "24% of the variation in yield", "76% of the variation in yield", "all of the variation in yield"], 2],
+  ["The Weibull formula for probability of exceedance is", ["m / n", "m / (n + 1)", "(n + 1) / m", "n / m"], 1],
+  ["With a base temperature of 10 °C, a day with Tmax 30 °C and Tmin 16 °C contributes", ["13 GDD", "23 GDD", "20 GDD", "6 GDD"], 0],
+  ["IMD medium-range forecasts have a lead time of", ["less than 24 hours", "1 to 3 days", "4 to 10 days", "a whole season"], 2],
+  ["Under GKMS, agromet advisories are issued", ["daily", "every Tuesday and Friday", "once a month", "once a season"], 1],
+  ["Which crop model is \"water-driven\", converting transpiration to biomass?", ["DSSAT", "APSIM", "AquaCrop", "InfoCrop"], 2],
+  ["Which crop model was designed for tropical environments and also estimates yield losses due to pests?", ["InfoCrop", "AquaCrop", "CERES", "APSIM"], 0],
+  ["In crop models, the fraction of light intercepted by the canopy is calculated mainly from", ["soil pH", "leaf area index", "rainfall", "harvest index"], 1]
 ]

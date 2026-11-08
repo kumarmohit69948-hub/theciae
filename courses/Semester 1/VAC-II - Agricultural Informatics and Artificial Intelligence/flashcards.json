@@ -117,5 +117,13 @@
   ["MIS vs DSS vs ES", "MIS: routine reports. DSS: data + models, user explores. ES: rules + inference, expert-like advice."],
   ["EMV and EVPI", "EMV = Σ(p × payoff); break-even probability; EVPI = EV with perfect info − best EMV."],
   ["Linear programming", "Objective, decision variables, constraints; optimum at a corner; binding constraints; shadow price."],
-  ["Agricultural DSS", "DSSAT, CROPWAT, Nutrient Expert, Meghdoot, NPSS; uptake depends on usability, cost-effectiveness, performance, relevance."]
+  ["Agricultural DSS", "DSSAT, CROPWAT, Nutrient Expert, Meghdoot, NPSS; uptake depends on usability, cost-effectiveness, performance, relevance."],
+  ["Expert system", "Program using specialist knowledge (facts + rules) and an inference engine to solve problems needing an expert."],
+  ["Expert system components", "Knowledge base, inference engine, working memory, explanation facility, knowledge acquisition, user interface."],
+  ["Knowledge representation", "Production rules (IF–THEN), frames, semantic networks, decision trees/tables."],
+  ["Forward vs backward chaining", "Forward: facts → conclusions (data-driven). Backward: goal → needed facts (goal-driven, diagnosis)."],
+  ["Certainty factors", "Range −1 to +1; CF(conclusion) = CF(rule) × CF(condition); combine CF₁ + CF₂(1 − CF₁)."],
+  ["Agricultural expert systems", "COMAX (cotton management, rules + simulation + sensors); AgriDaksh (ICAR-IASRI tool), e.g. Tobacco Agridaksh."],
+  ["Soil information system", "Soil maps + soil-test database (SHC, 12 parameters) + global data (SoilGrids 250 m) in GIS, with interpretation rules."],
+  ["Land capability classes", "I–VIII, limitations increase; subclasses e (erosion), w (water), s (root zone), c (climate); most limiting factor decides."]
 ]

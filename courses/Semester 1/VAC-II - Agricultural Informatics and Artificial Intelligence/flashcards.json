@@ -141,5 +141,13 @@
   ["Agents and PEAS", "Agent perceives via sensors, acts via actuators; PEAS = Performance, Environment, Actuators, Sensors."],
   ["Types of machine learning", "Supervised (labels: classify, regress), unsupervised (clusters), reinforcement (rewards)."],
   ["Classifier metrics", "Accuracy (TP+TN)/total; precision TP/(TP+FP); recall TP/(TP+FN); F1 = 2PR/(P+R)."],
-  ["AI in Indian agriculture", "IndiaAI Mission (₹10,371.92 cr, 2024); Kisan e-Mitra chatbot; NPSS pest photos; YES-TECH yields."]
+  ["AI in Indian agriculture", "IndiaAI Mission (₹10,371.92 cr, 2024); Kisan e-Mitra chatbot; NPSS pest photos; YES-TECH yields."],
+  ["Turing test", "Imitation game (1950): interrogator questions a machine and a human by typed text; machine passes if not reliably identified."],
+  ["Turing’s prediction", "In ~50 years, storage ~10⁹: average interrogator ≤ 70% correct after 5 minutes of questioning."],
+  ["Turing’s nine objections", "Theological, heads in the sand, mathematical, consciousness, disabilities, Lady Lovelace, nervous system, informality, ESP."],
+  ["Criticisms and variants", "Chinese room (Searle 1980); ELIZA (1966) over-attribution; CAPTCHA reverse test; total Turing test."],
+  ["State-space formulation", "States, initial state, operators, goal test, path cost."],
+  ["Production system", "Global database + production rules + control system (decides which rule next, when to stop)."],
+  ["Control-strategy requirements", "Must cause motion and be systematic (no wandering, no revisiting)."],
+  ["Types of control strategy", "Forward/backward; irrevocable vs tentative (backtracking, graph search); blind vs heuristic; conflict resolution."]
 ]

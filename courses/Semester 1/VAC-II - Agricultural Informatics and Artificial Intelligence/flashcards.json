@@ -1,0 +1,10 @@
+[
+  ["Computer", "Electronic programmable machine: input → storage → processing → output, under control."],
+  ["Data vs information", "Data: raw facts. Information: processed, meaningful data for decisions."],
+  ["GIGO", "Garbage in, garbage out — output quality depends on input and program."],
+  ["Analytical Engine (1834)", "Babbage’s general-purpose design: store (memory) + mill (processor), punched cards."],
+  ["Stored-program concept", "Program and data in the same memory — von Neumann, 1945 EDVAC report."],
+  ["Generations", "Vacuum tubes → transistors → ICs → microprocessors → AI/parallel processing."],
+  ["India milestones", "HEC-2M (ISI, 1955–56), TIFRAC (1960), ISIJU (1965–66), PARAM 8000 (1991)."],
+  ["Classification", "Working principle: analog/digital/hybrid; size: super/mainframe/mini/micro/embedded; purpose: general/special."]
+]

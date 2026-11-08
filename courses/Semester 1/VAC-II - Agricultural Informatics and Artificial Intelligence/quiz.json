@@ -142,5 +142,17 @@
   ["A Soil Health Card reports soil status for how many parameters?", ["6", "9", "12", "15"], 2],
   ["In STCR equations, the fertiliser dose depends on", ["the yield target and soil-test value", "rainfall only", "crop price only", "the farm size only"], 0],
   ["Diammonium phosphate (DAP) contains", ["46% N", "18% N and 46% P₂O₅", "60% K₂O", "16% P₂O₅ only"], 1],
-  ["A SPAD meter is used to judge a crop’s", ["potassium status", "nitrogen status from leaf greenness", "soil pH", "water stress from soil moisture"], 1]
+  ["A SPAD meter is used to judge a crop’s", ["potassium status", "nitrogen status from leaf greenness", "soil pH", "water stress from soil moisture"], 1],
+  ["Which smartphone feature lets an app give advice for the farmer’s exact location?", ["Bluetooth", "GPS", "Camera flash", "Speaker"], 1],
+  ["An app that runs in the browser without installation is a", ["native app", "web app", "hybrid app", "IVR service"], 1],
+  ["In mandi price reports, the price at which most of the produce was sold is the", ["minimum price", "maximum price", "modal price", "support price"], 2],
+  ["The e-NAM mobile app was launched in", ["April 2016", "October 2016", "July 2022", "August 2024"], 1],
+  ["e-NAM’s Platform of Platforms links users to", ["only weather forecasts", "logistics, warehousing, quality, finance and other value-chain services", "only seed dealers", "land records"], 1],
+  ["The Kisan Suvidha app gives weather information for", ["the current day only", "the current day and next 5 days", "the next month", "the whole season"], 1],
+  ["Meghdoot is a joint initiative of", ["IMD, IITM and ICAR", "ISRO and NABARD", "WDRA and FCI", "TRAI and BSNL"], 0],
+  ["The Damini app provides", ["mandi prices", "lightning alerts", "soil-test results", "loan status"], 1],
+  ["Through the National Pest Surveillance System, farmers", ["buy pesticides online", "upload photos of pest attacks for identification and advice", "sell produce", "book tractors"], 1],
+  ["Electronic negotiable warehouse receipts are issued by", ["any village shop", "WDRA-registered warehouses", "mandi commission agents", "mobile operators"], 1],
+  ["Loans against e-NWRs usually require a margin of", ["5%", "10%", "25%", "50%"], 2],
+  ["Storing produce is profitable only if the later price exceeds the", ["modal price today", "break-even price including storage, interest and losses", "minimum support price", "maximum price today"], 1]
 ]

@@ -6,5 +6,13 @@
   ["Stored-program concept", "Program and data in the same memory — von Neumann, 1945 EDVAC report."],
   ["Generations", "Vacuum tubes → transistors → ICs → microprocessors → AI/parallel processing."],
   ["India milestones", "HEC-2M (ISI, 1955–56), TIFRAC (1960), ISIJU (1965–66), PARAM 8000 (1991)."],
-  ["Classification", "Working principle: analog/digital/hybrid; size: super/mainframe/mini/micro/embedded; purpose: general/special."]
+  ["Classification", "Working principle: analog/digital/hybrid; size: super/mainframe/mini/micro/embedded; purpose: general/special."],
+  ["Parts of the CPU", "Control unit (decodes, directs), ALU (arithmetic and logic), registers (fast storage: PC, IR, accumulator, MAR, MDR)."],
+  ["Machine cycle", "Fetch → decode → execute → store, repeated billions of times a second."],
+  ["Three buses", "Data (two-way data), address (location; 2ⁿ locations for n lines), control (read/write, clock, interrupts)."],
+  ["System vs application software", "System: OS, drivers, utilities, translators, firmware. Application: general (Office, browser) and specific (CAD, GIS, CROPWAT)."],
+  ["Compiler vs interpreter", "Compiler: whole program before running. Interpreter: one statement at a time while running."],
+  ["OCR / OMR / MICR", "OCR reads printed text; OMR reads marks in boxes; MICR reads magnetic-ink characters on cheques (E-13B)."],
+  ["Printer types", "Dot-matrix (impact), inkjet, laser, thermal; plotters; 3D printers. Quality in dpi, speed in ppm."],
+  ["Actuator", "Output that acts physically under computer control — solenoid valve, relay, motor."]
 ]

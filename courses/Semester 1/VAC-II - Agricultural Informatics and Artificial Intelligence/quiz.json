@@ -118,5 +118,17 @@
   ["Under GKMS, agromet advisories are issued", ["daily", "every Tuesday and Friday", "once a month", "once a season"], 1],
   ["Which crop model is \"water-driven\", converting transpiration to biomass?", ["DSSAT", "APSIM", "AquaCrop", "InfoCrop"], 2],
   ["Which crop model was designed for tropical environments and also estimates yield losses due to pests?", ["InfoCrop", "AquaCrop", "CERES", "APSIM"], 0],
-  ["In crop models, the fraction of light intercepted by the canopy is calculated mainly from", ["soil pH", "leaf area index", "rainfall", "harvest index"], 1]
+  ["In crop models, the fraction of light intercepted by the canopy is calculated mainly from", ["soil pH", "leaf area index", "rainfall", "harvest index"], 1],
+  ["A device that converts a physical quantity into an electrical signal is a", ["sensor", "actuator", "relay", "controller"], 0],
+  ["In an automatic drip system, the solenoid valve acts as", ["a sensor", "an actuator", "a controller", "a filter"], 1],
+  ["A timer that opens a valve for 60 minutes every day, regardless of rain, is an example of", ["closed-loop control", "open-loop control", "PID control", "feedback control"], 1],
+  ["Separate switch-on and switch-off thresholds in on–off control are used to", ["increase pump speed", "prevent rapid on–off switching", "measure soil moisture", "save memory"], 1],
+  ["In PID control, the integral term responds to", ["the present error only", "the error accumulated over time", "how fast the error changes", "the setpoint only"], 1],
+  ["A rugged industrial controller programmed in ladder logic is a", ["PLC", "GNSS receiver", "tensiometer", "relay"], 0],
+  ["The reference (standard) method for measuring soil water content is", ["TDR", "gravimetric oven-drying", "capacitance probe", "gypsum block"], 1],
+  ["A fertiliser injector that uses a constriction to create suction is a", ["dosing pump", "Venturi injector", "by-pass tank", "solenoid valve"], 1],
+  ["A nozzle delivering 1.5 L/min at 6 km/h with 0.5 m spacing applies", ["150 L/ha", "300 L/ha", "450 L/ha", "600 L/ha"], 1],
+  ["Variable-rate application that uses a prescription map and GNSS position is", ["sensor-based VRT", "map-based VRT", "open-loop timing", "section control"], 1],
+  ["The standard for communication between tractors and implements is", ["ISO 9001", "ISO 11783 (ISOBUS)", "IEEE 802.11", "ISO 14001"], 1],
+  ["Under Per Drop More Crop, small and marginal farmers receive financial assistance of", ["25%", "45%", "55%", "100%"], 2]
 ]

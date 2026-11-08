@@ -101,5 +101,13 @@
   ["Weather apps", "Mausam (forecasts, radar, warnings); Meghdoot (IMD–IITM–ICAR agromet advisories, Tue/Fri); Damini (lightning)."],
   ["Kisan Suvidha", "Omnibus app: weather today + 5 days, alerts, dealers, market prices, agro-advisories, plant protection, IPM."],
   ["NPSS", "National Pest Surveillance System (August 2024): upload pest photos, AI and experts give identification and advice."],
-  ["e-NWR and e-Kisan Upaj Nidhi", "WDRA receipts as loan collateral; usual margin 25%; KCC farmers 7% a year for up to 6 months."]
+  ["e-NWR and e-Kisan Upaj Nidhi", "WDRA receipts as loan collateral; usual margin 25%; KCC farmers 7% a year for up to 6 months."],
+  ["Geospatial technology", "Remote sensing (see) + GNSS (locate) + GIS (store, analyse, map)."],
+  ["Spectral signature of crops", "Healthy leaves absorb blue and red, reflect some green and strongly NIR; stress raises red and lowers NIR."],
+  ["Four resolutions", "Spatial (pixel size), spectral (bands), temporal (revisit), radiometric (brightness levels)."],
+  ["NDVI", "(NIR − Red)/(NIR + Red); −1 to +1; high for dense healthy crops, near 0 for soil, negative for water."],
+  ["Satellites for agriculture", "Sentinel-2: 10 m, 13 bands, 5-day revisit. Resourcesat: LISS-IV 5.8 m, LISS-III 23.5 m, AWiFS 56 m."],
+  ["GNSS and NavIC", "Distance from signal travel time; ≥4 satellites. NavIC: 7 satellites, India + 1,500 km, better than 20 m."],
+  ["Vector, raster and GIS operations", "Vector = points/lines/polygons; raster = cells. Overlay, buffer, query, interpolation, map algebra."],
+  ["Geospatial applications in India", "FASAL crop forecasts and drought (MNCFC), YES-TECH crop insurance, AgriStack village maps, Bhuvan, precision farming."]
 ]

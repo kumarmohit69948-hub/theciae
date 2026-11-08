@@ -82,5 +82,17 @@
   ["In https://market.example.org/prices, \"market.example.org\" is the", ["scheme", "host (domain) name", "path", "query string"], 1],
   ["Which protocol is used to send email?", ["SMTP", "HTTP", "DNS", "IMAP"], 0],
   ["In India, the minimum download speed for a broadband connection is", ["256 kbps", "512 kbps", "2 Mbps", "10 Mbps"], 2],
-  ["The toll-free number of the Kisan Call Centre is", ["1930", "112", "1800-180-1551", "100"], 2]
+  ["The toll-free number of the Kisan Call Centre is", ["1930", "112", "1800-180-1551", "100"], 2],
+  ["A finite, step-by-step procedure for solving a problem is called", ["a flowchart", "an algorithm", "a compiler", "a variable"], 1],
+  ["In a flowchart, a decision is shown by a", ["rectangle", "parallelogram", "diamond", "oval"], 2],
+  ["Which translator converts the whole program into machine code before it runs?", ["Interpreter", "Compiler", "Debugger", "Editor"], 1],
+  ["A program that runs but gives a wrong answer contains a", ["syntax error", "logic error", "compilation error", "hardware error"], 1],
+  ["Which is NOT one of the three basic control structures?", ["Sequence", "Selection", "Iteration", "Compilation"], 3],
+  ["In Visual Basic, the text typed into a TextBox is held in its", ["Name property", "Text property", "Click event", "Clear method"], 1],
+  ["Code that runs when the user clicks a button is an example of", ["event-driven programming", "machine language", "interpretation", "normalisation"], 0],
+  ["In Visual Basic, a variable is declared with the keyword", ["Var", "Dim", "Let", "Def"], 1],
+  ["Java source code is compiled into", ["machine code for one processor", "bytecode", "HTML", "assembly language"], 1],
+  ["Java bytecode is executed by the", ["JDK compiler", "Java Virtual Machine", "web browser only", "operating system kernel"], 1],
+  ["Keeping data and methods together and hiding the data inside a class is called", ["inheritance", "polymorphism", "encapsulation", "iteration"], 2],
+  ["Which of these is a long-term-support (LTS) release of Java?", ["Java 22", "Java 23", "Java 25", "Java 26"], 2]
 ]

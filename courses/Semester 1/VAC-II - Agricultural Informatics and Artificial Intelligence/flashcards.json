@@ -30,5 +30,13 @@
   ["CPU scheduling", "FCFS, SJF (lowest average wait), priority, round robin (time quantum)."],
   ["File systems", "FAT32 (4 GB file limit), exFAT, NTFS (Windows), ext4 (Linux), APFS (Apple)."],
   ["Types of OS", "Batch, multiprogramming, time-sharing, multiprocessing, multi-user, real-time, distributed, network, mobile, embedded."],
-  ["RTOS", "Guaranteed response time; hard vs soft real-time; drones (PX4 on NuttX), machine controllers."]
+  ["RTOS", "Guaranteed response time; hard vs soft real-time; drones (PX4 on NuttX), machine controllers."],
+  ["Word essentials", "Styles → automatic contents; captions and citations; track changes; mail merge for personalised letters."],
+  ["Excel formula rules", "Start with =; order: brackets, ^, * /, + −."],
+  ["Relative vs absolute reference", "A1 changes when copied; $A$1 stays fixed; F4 cycles the types."],
+  ["Key Excel functions", "SUM, AVERAGE, MAX, COUNTIF, SUMIF, IF, XLOOKUP/VLOOKUP, SLOPE, INTERCEPT, RSQ."],
+  ["Choosing a chart", "Compare → column/bar; time → line; parts → pie; relationship → scatter; distribution → histogram."],
+  ["Trendline calibration", "Scatter + linear trendline → y = mx + c and R²; e.g. moisture % = 0.076 × reading − 5.1."],
+  ["PowerPoint design", "One idea per slide, few words, large text, high contrast, visuals, PDF backup."],
+  ["Office file formats", ".docx/.xlsx/.pptx = ISO/IEC 29500; .odt/.ods/.odp = ISO/IEC 26300; .csv = plain text data."]
 ]

@@ -22,5 +22,17 @@
   ["The QR code was released in 1994 by", ["IBM", "DENSO WAVE", "Xerox", "Intel"], 1],
   ["Pashu Aadhaar uses an ear tag with a", ["6-digit number", "10-digit number", "12-digit bar-coded number", "QR code only"], 2],
   ["A solenoid valve controlled by an irrigation controller is a(n)", ["input device", "actuator (output)", "storage device", "register"], 1],
-  ["A Full HD image of 1920 × 1080 pixels at 24-bit colour needs about", ["2 MB", "6.2 MB", "62 MB", "600 kB"], 1]
+  ["A Full HD image of 1920 × 1080 pixels at 24-bit colour needs about", ["2 MB", "6.2 MB", "62 MB", "600 kB"], 1],
+  ["One byte equals", ["4 bits", "8 bits", "16 bits", "1024 bits"], 1],
+  ["How many different values can 8 bits represent?", ["8", "64", "128", "256"], 3],
+  ["The binary equivalent of decimal 45 is", ["101011", "101101", "110101", "100111"], 1],
+  ["Which memory loses its contents when power is switched off?", ["ROM", "Flash", "RAM", "Hard disk"], 2],
+  ["Cache memory is usually made of", ["DRAM", "SRAM", "EPROM", "magnetic tape"], 1],
+  ["EPROM is erased by", ["electric pulses", "ultraviolet light", "magnetic field", "heat"], 1],
+  ["1 GiB equals", ["10⁹ bytes", "2³⁰ bytes", "2²⁰ bytes", "10¹² bytes"], 1],
+  ["The SI prefix adopted in 2022 for 10³⁰ is", ["yotta", "ronna", "quetta", "zetta"], 2],
+  ["With h = 0.9, T_c = 2 ns and T_m = 50 ns, the average access time T = h·T_c + (1 − h)(T_c + T_m) is", ["6.5 ns", "7.0 ns", "5.2 ns", "50 ns"], 1],
+  ["Average rotational latency of a 7200 rpm disk is about", ["1.4 ms", "4.17 ms", "8.33 ms", "16.7 ms"], 1],
+  ["An SDHC memory card can hold up to", ["2 GB", "32 GB", "2 TB", "128 TB"], 1],
+  ["Magnetic tape provides", ["random access", "sequential access", "direct access", "cache access"], 1]
 ]

@@ -93,5 +93,13 @@
   ["Net and gross irrigation", "NIR = ETc − effective rainfall; GIR = NIR ÷ application efficiency."],
   ["Water tools (FAO)", "CROPWAT 8.0 + CLIMWAT (requirements and schedules), ETo Calculator, AquaCrop, WaPOR (satellite water productivity)."],
   ["STCR targeted yield", "Fertiliser nutrient = a × yield target − b × soil-test value; equations specific to crop, soil and region."],
-  ["Fertiliser conversions", "Urea 46% N; DAP 18% N + 46% P₂O₅; MOP 60% K₂O. Calculate P from DAP first, then top up N with urea."]
+  ["Fertiliser conversions", "Urea 46% N; DAP 18% N + 46% P₂O₅; MOP 60% K₂O. Calculate P from DAP first, then top up N with urea."],
+  ["Smartphone features for farming", "GPS (location), camera (diagnosis, QR), data/Wi-Fi, Bluetooth (sensors), notifications (alerts), voice and offline storage."],
+  ["Types of apps", "Native (installed, fast, offline), web (browser), hybrid (web packaged as app); SMS/IVR as backup."],
+  ["Mandi price terms", "Arrival; minimum, maximum and modal price (most common). Choose by net price after transport and charges."],
+  ["e-NAM app", "Launched Oct 2016; free prices for 247 commodities (Dec 2025); Platform of Platforms (14 July 2022) for value-chain services."],
+  ["Weather apps", "Mausam (forecasts, radar, warnings); Meghdoot (IMD–IITM–ICAR agromet advisories, Tue/Fri); Damini (lightning)."],
+  ["Kisan Suvidha", "Omnibus app: weather today + 5 days, alerts, dealers, market prices, agro-advisories, plant protection, IPM."],
+  ["NPSS", "National Pest Surveillance System (August 2024): upload pest photos, AI and experts give identification and advice."],
+  ["e-NWR and e-Kisan Upaj Nidhi", "WDRA receipts as loan collateral; usual margin 25%; KCC farmers 7% a year for up to 6 months."]
 ]

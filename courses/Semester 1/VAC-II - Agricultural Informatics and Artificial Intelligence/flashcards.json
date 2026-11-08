@@ -85,5 +85,13 @@
   ["Soil-moisture measurement", "Gravimetric (reference), tensiometer (tension), TDR, capacitance, resistance blocks; calibrate for each soil."],
   ["Fertigation injectors", "Venturi (suction, no power), by-pass tank (pressure differential), dosing pump (accurate, proportional)."],
   ["Sprayer calibration", "L/ha = L/min × 600 ÷ (km/h × spacing m); speed = m × 3.6 ÷ s; rate controller keeps L/ha as speed changes."],
-  ["VRT and ISOBUS", "Map-based (prescription map + GNSS) or sensor-based (real time); ISOBUS = ISO 11783 tractor–implement standard."]
+  ["VRT and ISOBUS", "Map-based (prescription map + GNSS) or sensor-based (real time); ISOBUS = ISO 11783 tractor–implement standard."],
+  ["ET₀, Kc and ETc", "ET₀ = weather’s evaporating power (reference grass); Kc = crop and stage factor; ETc = Kc × ET₀."],
+  ["FAO Penman–Monteith", "Sole standard ET₀ method (FAO-56): net radiation, temperature, humidity (VPD) and wind at 2 m."],
+  ["Kc curve", "Initial (low Kc) → development (rising) → mid-season (peak, e.g. 1.15 for wheat) → late season (falling)."],
+  ["TAW and RAW", "TAW = 1000(θFC − θWP)Zr; RAW = p × TAW; irrigate when depletion reaches RAW."],
+  ["Net and gross irrigation", "NIR = ETc − effective rainfall; GIR = NIR ÷ application efficiency."],
+  ["Water tools (FAO)", "CROPWAT 8.0 + CLIMWAT (requirements and schedules), ETo Calculator, AquaCrop, WaPOR (satellite water productivity)."],
+  ["STCR targeted yield", "Fertiliser nutrient = a × yield target − b × soil-test value; equations specific to crop, soil and region."],
+  ["Fertiliser conversions", "Urea 46% N; DAP 18% N + 46% P₂O₅; MOP 60% K₂O. Calculate P from DAP first, then top up N with urea."]
 ]

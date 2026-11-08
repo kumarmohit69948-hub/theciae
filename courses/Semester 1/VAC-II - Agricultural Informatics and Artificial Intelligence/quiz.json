@@ -130,5 +130,17 @@
   ["A nozzle delivering 1.5 L/min at 6 km/h with 0.5 m spacing applies", ["150 L/ha", "300 L/ha", "450 L/ha", "600 L/ha"], 1],
   ["Variable-rate application that uses a prescription map and GNSS position is", ["sensor-based VRT", "map-based VRT", "open-loop timing", "section control"], 1],
   ["The standard for communication between tractors and implements is", ["ISO 9001", "ISO 11783 (ISOBUS)", "IEEE 802.11", "ISO 14001"], 1],
-  ["Under Per Drop More Crop, small and marginal farmers receive financial assistance of", ["25%", "45%", "55%", "100%"], 2]
+  ["Under Per Drop More Crop, small and marginal farmers receive financial assistance of", ["25%", "45%", "55%", "100%"], 2],
+  ["FAO-56 recommends which method as the standard for reference evapotranspiration?", ["Hargreaves", "Blaney–Criddle", "FAO Penman–Monteith", "Pan evaporation"], 2],
+  ["Crop evapotranspiration is calculated as", ["ETc = ET₀ ÷ Kc", "ETc = Kc × ET₀", "ETc = ET₀ − Kc", "ETc = Kc + ET₀"], 1],
+  ["The crop coefficient is highest during the", ["initial stage", "development stage", "mid-season stage", "late-season stage"], 2],
+  ["The Hargreaves method requires", ["wind speed and humidity", "temperature and extraterrestrial radiation", "pan evaporation only", "soil moisture"], 1],
+  ["For θFC = 0.30, θWP = 0.14 and root depth 1.0 m, total available water is", ["16 mm", "44 mm", "160 mm", "440 mm"], 2],
+  ["Readily available water is calculated as", ["TAW × p", "TAW ÷ p", "TAW − ETc", "ET₀ × Kc"], 0],
+  ["If net irrigation is 70 mm and efficiency 70%, gross irrigation is", ["49 mm", "70 mm", "100 mm", "140 mm"], 2],
+  ["CROPWAT 8.0 was developed by", ["ICAR", "FAO", "IMD", "ISRO"], 1],
+  ["A Soil Health Card reports soil status for how many parameters?", ["6", "9", "12", "15"], 2],
+  ["In STCR equations, the fertiliser dose depends on", ["the yield target and soil-test value", "rainfall only", "crop price only", "the farm size only"], 0],
+  ["Diammonium phosphate (DAP) contains", ["46% N", "18% N and 46% P₂O₅", "60% K₂O", "16% P₂O₅ only"], 1],
+  ["A SPAD meter is used to judge a crop’s", ["potassium status", "nitrogen status from leaf greenness", "soil pH", "water stress from soil moisture"], 1]
 ]

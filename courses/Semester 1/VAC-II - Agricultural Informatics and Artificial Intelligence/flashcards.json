@@ -46,5 +46,13 @@
   ["Keys", "Primary (unique ID), candidate, super, foreign (links tables), composite (several columns)."],
   ["Normal forms", "1NF single values; 2NF no partial dependency; 3NF no transitive dependency."],
   ["SQL groups", "DDL CREATE/ALTER/DROP; DML INSERT/UPDATE/DELETE; DQL SELECT; DCL GRANT/REVOKE; TCL COMMIT/ROLLBACK."],
-  ["Agricultural databases", "Soil Health Card (2015), AgriStack registries (DAM 2024), Bharat Pashudhan, market and weather databases."]
+  ["Agricultural databases", "Soil Health Card (2015), AgriStack registries (DAM 2024), Bharat Pashudhan, market and weather databases."],
+  ["Internet vs WWW", "Internet = global network of networks using TCP/IP; WWW = service on it (HTML pages, URLs, HTTP), proposed by Berners-Lee in 1989."],
+  ["Network types", "PAN (metres), LAN (building/campus), MAN (city), WAN (country/world; the Internet is the largest WAN)."],
+  ["Topologies", "Bus (shared cable), star (central switch), ring (loop), mesh (many paths), tree (hierarchy of stars)."],
+  ["TCP/IP layers", "Application (HTTP, DNS, SMTP), transport (TCP, UDP), Internet (IP), link (Ethernet, Wi-Fi, 4G/5G)."],
+  ["IP addresses", "IPv4 32 bits (about 4.3 billion addresses), e.g. 192.168.1.10; IPv6 128 bits."],
+  ["DNS look-up", "Browser → resolver → root → TLD → authoritative server → IP address → HTTPS request to the web server."],
+  ["Parts of a URL", "Scheme, host (subdomain, domain, TLD), port, path, query string, fragment."],
+  ["Internet in Indian agriculture", "e-NAM (1,656 mandis, March 2026), Kisan Call Centre 1800-180-1551 (2004), mKisan, AGMARKNET, weather advisories."]
 ]

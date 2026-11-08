@@ -70,5 +70,17 @@
   ["Which SQL command retrieves data?", ["INSERT", "UPDATE", "SELECT", "CREATE"], 2],
   ["GRANT and REVOKE belong to", ["DDL", "DML", "DCL", "TCL"], 2],
   ["In ACID, \"A\" stands for", ["Accuracy", "Atomicity", "Availability", "Authentication"], 1],
-  ["Which is NOT one of AgriStack’s foundational registries?", ["Farmers’ Registry", "Crop Sown Registry", "Geo-referenced Village Maps", "Mandi Price Registry"], 3]
+  ["Which is NOT one of AgriStack’s foundational registries?", ["Farmers’ Registry", "Crop Sown Registry", "Geo-referenced Village Maps", "Mandi Price Registry"], 3],
+  ["The Internet grew out of which network?", ["ERNET", "ARPANET", "NICNET", "BharatNet"], 1],
+  ["The World Wide Web was proposed by", ["Vinton Cerf", "Tim Berners-Lee", "E. F. Codd", "Charles Babbage"], 1],
+  ["Which protocol is used to request and send web pages?", ["SMTP", "FTP", "HTTP", "UDP"], 2],
+  ["DNS translates", ["IP addresses into MAC addresses", "domain names into IP addresses", "HTML into text", "analogue signals into digital"], 1],
+  ["An IPv4 address is how many bits long?", ["16", "32", "64", "128"], 1],
+  ["Which device forwards packets between different networks?", ["Hub", "Repeater", "Router", "Modem"], 2],
+  ["In which topology are all devices connected to a central switch?", ["Bus", "Ring", "Star", "Mesh"], 2],
+  ["IP works at which layer of the TCP/IP model?", ["Application", "Transport", "Internet", "Link"], 2],
+  ["In https://market.example.org/prices, \"market.example.org\" is the", ["scheme", "host (domain) name", "path", "query string"], 1],
+  ["Which protocol is used to send email?", ["SMTP", "HTTP", "DNS", "IMAP"], 0],
+  ["In India, the minimum download speed for a broadband connection is", ["256 kbps", "512 kbps", "2 Mbps", "10 Mbps"], 2],
+  ["The toll-free number of the Kisan Call Centre is", ["1930", "112", "1800-180-1551", "100"], 2]
 ]

@@ -10,5 +10,17 @@
   ["The stored-program concept is associated with", ["Charles Babbage", "John von Neumann", "Blaise Pascal", "Herman Hollerith"], 1],
   ["A tractor’s engine control unit is an example of a(n)", ["supercomputer", "mainframe", "embedded computer", "analog computer"], 2],
   ["India’s first indigenous supercomputer is", ["TIFRAC", "HEC-2M", "PARAM 8000", "ISIJU"], 2],
-  ["A computer that works with continuously varying quantities is", ["digital", "analog", "hybrid", "embedded"], 1]
+  ["A computer that works with continuously varying quantities is", ["digital", "analog", "hybrid", "embedded"], 1],
+  ["The main circuit board of a computer is the", ["chipset", "motherboard", "power supply", "expansion card"], 1],
+  ["Which register holds the address of the next instruction?", ["Accumulator", "Instruction register", "Program counter", "Memory data register"], 2],
+  ["The correct order of the machine cycle is", ["decode, fetch, execute, store", "fetch, decode, execute, store", "fetch, execute, decode, store", "store, fetch, decode, execute"], 1],
+  ["A CPU with 32 address lines can address", ["32 locations", "2³² locations", "32² locations", "2 × 32 locations"], 1],
+  ["One clock cycle of a 2 GHz processor lasts", ["0.5 ns", "2 ns", "0.5 µs", "2 ms"], 0],
+  ["A program that translates and runs one statement at a time is a(n)", ["compiler", "assembler", "interpreter", "linker"], 2],
+  ["BIOS/UEFI is an example of", ["application software", "firmware", "a utility", "a device driver"], 1],
+  ["Indian bank cheques are read using", ["OMR", "OCR", "MICR", "RFID"], 2],
+  ["The QR code was released in 1994 by", ["IBM", "DENSO WAVE", "Xerox", "Intel"], 1],
+  ["Pashu Aadhaar uses an ear tag with a", ["6-digit number", "10-digit number", "12-digit bar-coded number", "QR code only"], 2],
+  ["A solenoid valve controlled by an irrigation controller is a(n)", ["input device", "actuator (output)", "storage device", "register"], 1],
+  ["A Full HD image of 1920 × 1080 pixels at 24-bit colour needs about", ["2 MB", "6.2 MB", "62 MB", "600 kB"], 1]
 ]

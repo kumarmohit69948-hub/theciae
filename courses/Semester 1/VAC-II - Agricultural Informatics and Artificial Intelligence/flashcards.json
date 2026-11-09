@@ -221,5 +221,13 @@
   ["Digital Agriculture Mission", "Approved 2 Sep 2024, ₹2,817 crore; DPIs: AgriStack, Krishi DSS, soil profile maps; plus Digital General Crop Estimation Survey."],
   ["AgriStack registries", "Farmers’ Registry (Farmer ID), geo-referenced village maps, Crop Sown Registry (Digital Crop Survey); built by States."],
   ["e-NAM trade cycle", "Gate entry → lot ID → assaying → online bidding → sale → e-payment; inter-state bidding; 12 languages; 1.80 crore farmers (2026)."],
-  ["DPDP Act 2023", "Enacted 11 Aug 2023; Rules notified Nov 2025; consent, purpose limitation, minimisation, accuracy, storage limit, security, accountability."]
+  ["DPDP Act 2023", "Enacted 11 Aug 2023; Rules notified Nov 2025; consent, purpose limitation, minimisation, accuracy, storage limit, security, accountability."],
+  ["IDEA", "India Digital Ecosystem of Agriculture; consultation paper 1 June 2021; ecosystem approach based on MeitY’s InDEA; framework for AgriStack."],
+  ["IDEA vision", "A national digital agriculture ecosystem raising efficiency and productivity and improving farmers’ welfare and income."],
+  ["IDEA principle categories", "Ecosystem, architecture, business (domain), technology, architecture governance — e.g. federated, open APIs, farmer choice, privacy by design."],
+  ["IDEA building blocks", "Core (national source of truth, government-built), common (shared, Ministry-hosted), reference (open-source templates)."],
+  ["Unique Farmer ID and UFSI", "UFID: random, unique, authenticates, no transaction data. UFSI: like UPI for agri data; federated with State FSIs."],
+  ["I-Box and ADEx", "I-Box: sandbox to test innovations against principles and AI ethics. ADEx: regulated Agri Data Exchange."],
+  ["AgriStack progress (2025)", "7.63 crore Farmer IDs of 11 crore target (1.93 crore women); Digital Crop Survey 23.5 crore plots in 492 districts."],
+  ["AI services on digital foundation", "Kisan e-Mitra (2023, 93 lakh queries), NPSS, AI monsoon-onset forecasts (3.88 crore farmers), Bharat-VISTAAR (Budget 2026–27)."]
 ]

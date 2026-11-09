@@ -334,5 +334,17 @@
   ["The Krishi Decision Support System is mainly a", ["call centre", "geospatial system unifying remote-sensing data on crops, soil, weather and water", "fertiliser subsidy", "tractor database"], 1],
   ["In e-NAM, quality testing of a lot before bidding is called", ["assaying", "winnowing", "gate entry", "e-payment"], 0],
   ["In the e-NAM simulation, the gain to farmers was largest when", ["no outside traders bid", "many outside traders bid and transport was cheap", "only local traders bid", "lots were not assayed"], 1],
-  ["The DPDP Act was enacted by Parliament on", ["11 August 2023", "1 July 2015", "14 April 2016", "2 September 2024"], 0]
+  ["The DPDP Act was enacted by Parliament on", ["11 August 2023", "1 July 2015", "14 April 2016", "2 September 2024"], 0],
+  ["IDEA stands for", ["Indian Digital Engineering Act", "India Digital Ecosystem of Agriculture", "Integrated Data for Extension and Advisory", "International Development of Agri-tech"], 1],
+  ["The IDEA consultation paper was released on", ["1 July 2015", "1 June 2021", "2 September 2024", "14 February 2026"], 1],
+  ["IDEA drew its architecture principles from MeitY’s", ["InDEA framework", "GST network", "BHIM app", "Aadhaar Act"], 0],
+  ["Which is NOT an IDEA principle?", ["Open APIs by default", "Federated architecture", "Privacy by design", "Single vendor lock-in"], 3],
+  ["In IDEA, the Unique Farmer ID", ["stores every transaction of the farmer", "is a random number that stores no transaction data", "is the farmer’s bank account number", "is issued by private companies"], 1],
+  ["UFSI is envisaged to play a role for agricultural data comparable to", ["GST for taxes", "UPI for payments", "IRCTC for railways", "NREGA for wages"], 1],
+  ["Building blocks that act as a national single source of truth and are built by government are called", ["core building blocks", "common building blocks", "reference building blocks", "service blocks"], 0],
+  ["The IDEA sandbox (I-Box) is meant to", ["store grain", "test innovative solutions against principles, norms and AI ethics", "collect taxes", "replace State registries"], 1],
+  ["By 27 November 2025, Farmer IDs generated under AgriStack numbered over", ["1.93 crore", "7.63 crore", "11 crore", "23.5 crore"], 1],
+  ["In the record-linkage program, matching by similar names", ["linked every record correctly", "fixed spelling slips but linked 20 records to the wrong farmer", "linked no records", "was identical to Farmer ID"], 1],
+  ["Kisan e-Mitra is", ["a seed variety", "a voice-enabled AI chatbot for scheme queries", "a drone", "a soil-testing kit"], 1],
+  ["Bharat-VISTAAR, proposed in the Union Budget 2026–27, is", ["a fertiliser plant", "a multilingual AI tool integrating AgriStack portals and ICAR practices", "a highway project", "a crop variety"], 1]
 ]

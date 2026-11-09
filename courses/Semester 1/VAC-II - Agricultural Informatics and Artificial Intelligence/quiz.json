@@ -274,5 +274,17 @@
   ["Jacobs and Siegford (2012) report that automatic milking systems can reduce labour by as much as", ["5%", "18%", "50%", "90%"], 1],
   ["In a classic pedometer study, cows during oestrus were about how many times as active as on other days?", ["1.1 times", "2.75 to 4 times", "20 times", "no more active"], 1],
   ["Pashu Aadhaar is", ["a 12-digit barcoded ear tag for each registered animal", "a milk price app", "a cattle breed", "a fodder scheme"], 0],
-  ["ISO 18497-1:2024 deals with", ["milk quality testing", "safety of partially automated, semi-autonomous and autonomous farm machinery", "soil testing methods", "drone licensing"], 1]
+  ["ISO 18497-1:2024 deals with", ["milk quality testing", "safety of partially automated, semi-autonomous and autonomous farm machinery", "soil testing methods", "drone licensing"], 1],
+  ["Which optical technique measures leaf temperature to reveal stress?", ["RGB imaging", "Thermography", "Chlorophyll fluorescence", "LiDAR"], 1],
+  ["An AI output that draws a box and label around each insect on a trap image is", ["image classification", "object detection", "semantic segmentation", "clustering"], 1],
+  ["Labelling every pixel of a leaf image as healthy or lesion is", ["classification", "detection", "semantic segmentation", "regression"], 2],
+  ["If 9,000 of a leaf’s 120,000 pixels are lesion pixels, disease severity is", ["0.75%", "7.5%", "13.3%", "75%"], 1],
+  ["Mohanty et al. (2016) found that their model’s accuracy on images taken under different conditions fell to about", ["99%", "85%", "31%", "5%"], 2],
+  ["The economic threshold level is the pest population at which", ["the crop dies", "control should begin to prevent economic injury", "pests disappear", "yield doubles"], 1],
+  ["ICAR-CICR’s pheromone-trap ETL for pink bollworm is", ["2 moths per trap for 1 day", "8 moths per trap on 3 consecutive days", "20 moths per hectare", "50 moths per week"], 1],
+  ["With daily trap counts 2, 3, 5, 9, 7, 8, 10, 12, the ETL of 8 moths for 3 consecutive days is first reached on day", ["4", "6", "8", "10"], 2],
+  ["Separating green plants from bare soil and residues is called", ["green-on-green detection", "green-on-brown detection", "segmentation of roots", "NDVI masking"], 1],
+  ["Patch spraying has shown herbicide savings of at least", ["5%", "20%", "50%", "95%"], 2],
+  ["A PWM nozzle with 0.8 L/min full flow, 0.5 m spacing and 6 km/h speed applies 160 L/ha; at 50% duty cycle it applies about", ["40 L/ha", "80 L/ha", "160 L/ha", "320 L/ha"], 1],
+  ["India’s SOPs for using drones to apply pesticides and nutrients were first released in", ["2014", "2018", "December 2021", "2025"], 2]
 ]

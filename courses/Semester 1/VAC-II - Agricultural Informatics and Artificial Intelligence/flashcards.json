@@ -197,5 +197,13 @@
   ["Inverse distance weighting", "ẑ = Σwᵢzᵢ ÷ Σwᵢ with wᵢ = 1/dᵢᵖ (p = 2); kriging uses spatial correlation instead (Shepard, 1968)."],
   ["Management zones", "Areas of similar yield potential found by clustering multi-year yield maps, soil EC, elevation; basis for prescription maps."],
   ["ML yield prediction", "Inputs mostly temperature, rainfall, soil; ANN most used; CNN and LSTM in deep learning; test on unseen seasons (MAE, RMSE, MAPE)."],
-  ["FASAL and YES-TECH", "FASAL: MNCFC remote-sensing crop forecasts; YES-TECH: PMFBY yield estimation, paddy and wheat from kharif 2023, 30% weight (up to 50%)."]
+  ["FASAL and YES-TECH", "FASAL: MNCFC remote-sensing crop forecasts; YES-TECH: PMFBY yield estimation, paddy and wheat from kharif 2023, 30% weight (up to 50%)."],
+  ["Inter-row vs intra-row weeding", "Inter-row: between rows, camera-guided hoes (robust, widely available). Intra-row: among crop plants, needs AI to locate each plant."],
+  ["Robotic weeding methods", "Camera-guided hoe; robotic in-row hoe; spot spraying (Lecture 25); laser weeding (no soil disturbance, low capacity, reflection hazard)."],
+  ["Timing budget of an AI weeder", "Time = camera-to-tool distance ÷ speed; position error = speed × timing jitter (30 ms → 2.5 cm at 3 km/h, 4.2 cm at 5 km/h)."],
+  ["Protected-zone trade-off", "Bigger zone round crop plants → less crop damage but fewer in-row weeds removed; detection misses set the damage floor."],
+  ["Why automate weeding and harvesting", "Labour shortage, herbicide resistance and environment, few herbicides for specialty crops, high cost of hand picking."],
+  ["Steps of a harvesting robot", "Detect (ripeness) → localise in 3D → plan arm path → grasp → detach → place."],
+  ["Harvesting robot performance", "Bac et al. 2014: harvest success 66%, cycle 33 s, none of 50 commercial. 2014–2021: ~81%, ~19 s (Oliveira et al., 2021)."],
+  ["Directions for harvesting robots", "Simplify the task (plant training), enhance the robot, define and measure performance, consider practical requirements (Bac et al., 2014)."]
 ]

@@ -298,5 +298,17 @@
   ["Management zones are usually found by", ["supervised classification of labelled images", "unsupervised clustering of yield and soil layers", "manual counting of plants", "reinforcement learning"], 1],
   ["In the review by van Klompenburg et al. (2020), the most applied machine-learning algorithm for yield prediction was", ["decision trees", "artificial neural networks", "k-means", "linear programming"], 1],
   ["MAPE stands for", ["maximum absolute prediction error", "mean absolute percentage error", "mean average plot estimate", "model accuracy percentage estimate"], 1],
-  ["YES-TECH under PMFBY was launched for paddy and wheat from", ["Kharif 2016", "Kharif 2023", "Rabi 2019", "Kharif 2026"], 1]
+  ["YES-TECH under PMFBY was launched for paddy and wheat from", ["Kharif 2016", "Kharif 2023", "Rabi 2019", "Kharif 2026"], 1],
+  ["Weeds growing within the crop row among the crop plants are called", ["inter-row weeds", "intra-row weeds", "border weeds", "aquatic weeds"], 1],
+  ["A camera-guided inter-row hoe keeps its blades between the rows by", ["GPS only", "a hydraulic side-shift controlled from camera images", "manual steering", "a laser"], 1],
+  ["Which weeding method leaves the soil undisturbed but needs care because reflections can harm people?", ["Inter-row hoeing", "Laser weeding", "Ploughing", "Flame weeding by hand"], 1],
+  ["With the camera 0.5 m ahead of the blade at 3 km/h, a plant reaches the blade after about", ["0.06 s", "0.6 s", "6 s", "1.8 s"], 1],
+  ["A 30 ms timing error at 5 km/h causes a position error of about", ["0.4 cm", "4.2 cm", "15 cm", "42 cm"], 1],
+  ["In the robotic hoe simulation, increasing the protected zone round crop plants", ["removes more weeds and damages more crops", "removes fewer weeds and damages fewer crops", "has no effect", "only changes speed"], 1],
+  ["In the simulation, crop damage never fell below about 2% because", ["the blade was blunt", "2% of crop plants were not recognised by the CNN", "the speed was too low", "weeds were too many"], 1],
+  ["Picking only ripe fruits one at a time is called", ["bulk harvesting", "selective harvesting", "threshing", "winnowing"], 1],
+  ["The correct order of steps for a harvesting robot is", ["grasp, detect, place, detach", "detect, localise, plan, grasp, detach, place", "place, plan, detect, grasp", "detach, detect, grasp, place"], 1],
+  ["Bac et al. (2014) found an average harvest success of", ["33%", "66%", "85%", "99%"], 1],
+  ["Bac et al. (2014) reported that of the 50 harvesting robots reviewed", ["all were commercial", "none was commercialised", "half were commercial", "most used lasers"], 1],
+  ["At an average cycle time of 18.88 s and 81% success, one arm harvests about", ["19 fruits/h", "155 fruits/h", "1,000 fruits/h", "3,600 fruits/h"], 1]
 ]

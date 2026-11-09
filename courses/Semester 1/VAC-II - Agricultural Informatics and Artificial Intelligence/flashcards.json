@@ -157,5 +157,13 @@
   ["Depth-limited and iterative deepening", "DLS caps depth ℓ; IDS repeats DLS with ℓ = 0, 1, 2…: complete, optimal (equal costs), space O(b·d)."],
   ["Uniform-cost and bidirectional search", "UCS expands lowest path cost (Dijkstra-like); bidirectional meets in the middle, O(b^(d/2))."],
   ["BFS memory growth", "b = 10: depth 6 ≈ 1.1 million nodes (1.1 GB at 1 KB/node); depth 10 ≈ 11 billion (11 TB)."],
-  ["Search in agriculture", "Robot and machine routes, flood fill to count fields or patches, diagnosis, scheduling."]
+  ["Search in agriculture", "Robot and machine routes, flood fill to count fields or patches, diagnosis, scheduling."],
+  ["Heuristic function h(n)", "Estimated cost of the cheapest path from n to a goal; h(goal) = 0. Examples: straight-line distance, Manhattan distance, misplaced tiles."],
+  ["Best-first search", "Expands the frontier node with the lowest f(n) using a priority queue: uniform-cost f = g, greedy f = h, A* f = g + h."],
+  ["Greedy best-first search", "f(n) = h(n): heads for the node that looks closest to the goal; fast but not optimal, and can loop as tree search."],
+  ["A* search", "f(n) = g(n) + h(n), the estimated cost of the cheapest solution through n (Hart, Nilsson & Raphael, 1968); optimal with an admissible h."],
+  ["Admissible vs consistent heuristic", "Admissible: h(n) ≤ true cost h*(n). Consistent: h(n) ≤ c(n, n′) + h(n′) for every edge. Consistent implies admissible."],
+  ["Dominance and effective branching factor", "h₂ dominates h₁ if h₂(n) ≥ h₁(n) and both are admissible → fewer expansions. b*: N + 1 = 1 + b* + … + (b*)ᵈ; nearer 1 is better."],
+  ["Variants of heuristic search", "Weighted A* (cost ≤ w × optimal); IDA* (linear memory); beam search; hill climbing (local maxima, plateaus, ridges); AO* for AND–OR graphs."],
+  ["Heuristic search in agriculture", "Robot, tractor and drone route planning on field maps; farm-to-mandi routing with straight-line distance; scheduling field operations."]
 ]

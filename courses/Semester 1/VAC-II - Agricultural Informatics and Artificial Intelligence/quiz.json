@@ -238,5 +238,17 @@
   ["The search that expands the node with the lowest path cost is", ["depth-first", "breadth-first", "uniform-cost", "depth-limited"], 2],
   ["With b = 10, how many nodes does BFS generate up to depth 4?", ["40", "1,000", "11,111", "1,000,000"], 2],
   ["In the farm road example, BFS found S → B → G and DFS found", ["S → B → G", "S → A → C → D → E → G", "no path", "S → G"], 1],
-  ["\"Flood fill\" for counting fields in a classified image is an application of", ["BFS or DFS", "linear programming", "regression", "certainty factors"], 0]
+  ["\"Flood fill\" for counting fields in a classified image is an application of", ["BFS or DFS", "linear programming", "regression", "certainty factors"], 0],
+  ["A heuristic function h(n) estimates", ["the cost already spent to reach n", "the cost of the cheapest path from n to a goal", "the depth of n", "the number of children of n"], 1],
+  ["Greedy best-first search expands the node with the lowest", ["g(n)", "h(n)", "g(n) + h(n)", "depth"], 1],
+  ["A* search ranks frontier nodes by", ["f(n) = g(n)", "f(n) = h(n)", "f(n) = g(n) + h(n)", "f(n) = g(n) − h(n)"], 2],
+  ["A heuristic is admissible if it", ["never overestimates the true cost to the goal", "always overestimates the cost", "is always zero", "is computed by breadth-first search"], 0],
+  ["A heuristic is consistent if, for every edge from n to n′,", ["h(n) ≤ c(n, n′) + h(n′)", "h(n) ≥ c(n, n′) + h(n′)", "h(n) = 0", "g(n) = h(n)"], 0],
+  ["A* with h(n) = 0 for every node behaves like", ["depth-first search", "greedy best-first search", "uniform-cost search", "hill climbing"], 2],
+  ["The A* algorithm was introduced in 1968 by", ["Dijkstra", "Hart, Nilsson and Raphael", "Turing", "Korf"], 1],
+  ["On the farm-to-mandi map, greedy best-first search found a 43 km route while A* found", ["43 km", "33 km", "24 km", "51 km"], 1],
+  ["Straight-line distance is admissible for road routing because", ["roads are always straight", "no road between two places is shorter than the straight line", "GPS is always accurate", "it is always zero"], 1],
+  ["For the 8-puzzle, the Manhattan-distance heuristic h₂ compared with the misplaced-tiles heuristic h₁", ["is inadmissible", "dominates h₁ and expands fewer nodes", "expands more nodes", "is identical to h₁"], 1],
+  ["The main practical drawback of A* is that it", ["is never optimal", "keeps all generated nodes in memory", "cannot use heuristics", "works only on trees"], 1],
+  ["Hill climbing can fail to find the best solution because of", ["local maxima, plateaus and ridges", "too much memory use", "admissible heuristics", "FIFO queues"], 0]
 ]

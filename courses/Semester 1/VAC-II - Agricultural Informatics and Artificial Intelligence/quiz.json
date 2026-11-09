@@ -262,5 +262,17 @@
   ["A soil-moisture probe that reports exactly the same value for many hours most likely", ["is stuck or faulty", "shows heavy rain", "shows perfect irrigation", "has a faster radio"], 0],
   ["Processing data on a gateway near the field rather than in a distant data centre is called", ["cloud computing", "edge computing", "batch processing", "data warehousing"], 1],
   ["Wolfert et al. (2017) identified which issue as a research priority for big data in smart farming?", ["Governance of data and data sharing", "Shortage of sensors", "Too few satellites", "Slow tractors"], 0],
-  ["In the worked example, one 20 ha drone survey (about 2.7 GB) equals roughly how many years of data from 40 soil sensors?", ["1 year", "8 years", "80 years", "800 years"], 2]
+  ["In the worked example, one 20 ha drone survey (about 2.7 GB) equals roughly how many years of data from 40 soil sensors?", ["1 year", "8 years", "80 years", "800 years"], 2],
+  ["An autonomous farm machine differs from a simply automated one because it", ["repeats a fixed programme", "senses, decides and acts by itself towards a goal", "needs no sensors", "cannot be stopped"], 1],
+  ["The correct order of the autonomy loop is", ["act, sense, decide, perceive", "sense, perceive, decide, act", "decide, act, sense, perceive", "perceive, act, sense, decide"], 1],
+  ["Learning from examples that carry the correct answer is", ["supervised learning", "unsupervised learning", "reinforcement learning", "rule-based reasoning"], 0],
+  ["Grouping fields into management zones without labels is an example of", ["supervised learning", "unsupervised learning", "reinforcement learning", "expert systems"], 1],
+  ["Precision is calculated as", ["TP ÷ (TP + FN)", "TP ÷ (TP + FP)", "(TP + TN) ÷ all cases", "FP ÷ (FP + TN)"], 1],
+  ["In the heat-detection example, why is accuracy (98.9%) misleading?", ["the program has a bug", "heat days are rare, so never alerting would still score 95.2%", "precision was zero", "recall was 100%"], 1],
+  ["RTK correction gives GNSS positions accurate to about", ["a few centimetres", "a few metres", "a kilometre", "100 m"], 0],
+  ["In the review by Oliveira et al. (2021), most agricultural robotic systems were", ["in commercial use", "still at the research stage", "used for milking", "flying drones"], 1],
+  ["Jacobs and Siegford (2012) report that automatic milking systems can reduce labour by as much as", ["5%", "18%", "50%", "90%"], 1],
+  ["In a classic pedometer study, cows during oestrus were about how many times as active as on other days?", ["1.1 times", "2.75 to 4 times", "20 times", "no more active"], 1],
+  ["Pashu Aadhaar is", ["a 12-digit barcoded ear tag for each registered animal", "a milk price app", "a cattle breed", "a fodder scheme"], 0],
+  ["ISO 18497-1:2024 deals with", ["milk quality testing", "safety of partially automated, semi-autonomous and autonomous farm machinery", "soil testing methods", "drone licensing"], 1]
 ]

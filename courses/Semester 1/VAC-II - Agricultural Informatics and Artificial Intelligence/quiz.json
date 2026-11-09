@@ -346,5 +346,17 @@
   ["By 27 November 2025, Farmer IDs generated under AgriStack numbered over", ["1.93 crore", "7.63 crore", "11 crore", "23.5 crore"], 1],
   ["In the record-linkage program, matching by similar names", ["linked every record correctly", "fixed spelling slips but linked 20 records to the wrong farmer", "linked no records", "was identical to Farmer ID"], 1],
   ["Kisan e-Mitra is", ["a seed variety", "a voice-enabled AI chatbot for scheme queries", "a drone", "a soil-testing kit"], 1],
-  ["Bharat-VISTAAR, proposed in the Union Budget 2026–27, is", ["a fertiliser plant", "a multilingual AI tool integrating AgriStack portals and ICAR practices", "a highway project", "a crop variety"], 1]
+  ["Bharat-VISTAAR, proposed in the Union Budget 2026–27, is", ["a fertiliser plant", "a multilingual AI tool integrating AgriStack portals and ICAR practices", "a highway project", "a crop variety"], 1],
+  ["When judging an agri-tech success story, the first thing to check is", ["the colour of the app", "who reported the result and how it was measured", "the number of downloads only", "the company logo"], 1],
+  ["The ICRISAT–Microsoft Sowing App pilot (2016) advised groundnut farmers mainly on", ["fertiliser brand", "the best time to sow", "tractor hire", "export markets"], 1],
+  ["Farmers following the sowing advisories reported a yield per hectare that was on average", ["10% lower", "the same", "30% higher", "300% higher"], 2],
+  ["Saagu Baagu was piloted for chilli farmers in", ["Kurnool, Andhra Pradesh", "Khammam, Telangana", "Nagpur, Maharashtra", "Punjab"], 1],
+  ["The World Economic Forum reported Saagu Baagu phase 1 chilli yields per acre rising by", ["5%", "9%", "21%", "66%"], 2],
+  ["Namo Drone Didi provides drones to", ["large companies", "women self-help groups", "only research institutes", "banks"], 1],
+  ["Central assistance under Namo Drone Didi is", ["20% up to ₹2 lakh", "50% up to ₹5 lakh", "80% up to ₹8 lakh", "100% without limit"], 2],
+  ["In the ADRTC study, the share of drone didis facing transport problems where no utility vehicle was provided was", ["4.3%", "18%", "42.68%", "90%"], 2],
+  ["Under the RKVY agri-startup programme, the maximum seed-stage assistance is", ["₹5 lakh", "₹25 lakh", "₹1 crore", "₹168 crore"], 1],
+  ["FAO (2022) identifies which of these as a barrier to inclusive adoption of digital automation?", ["too much electricity", "low digital literacy", "excess connectivity", "too many skills"], 1],
+  ["A project is financially worthwhile when its net present value is", ["negative", "zero or above", "equal to the investment", "unknown"], 1],
+  ["In the drone simulation, the subsidy raised the chance of a positive NPV from about 52% to about", ["60%", "75%", "98%", "100%"], 2]
 ]

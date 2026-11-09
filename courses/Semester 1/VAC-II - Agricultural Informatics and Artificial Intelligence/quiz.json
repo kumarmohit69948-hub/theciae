@@ -310,5 +310,17 @@
   ["The correct order of steps for a harvesting robot is", ["grasp, detect, place, detach", "detect, localise, plan, grasp, detach, place", "place, plan, detect, grasp", "detach, detect, grasp, place"], 1],
   ["Bac et al. (2014) found an average harvest success of", ["33%", "66%", "85%", "99%"], 1],
   ["Bac et al. (2014) reported that of the 50 harvesting robots reviewed", ["all were commercial", "none was commercialised", "half were commercial", "most used lasers"], 1],
-  ["At an average cycle time of 18.88 s and 81% success, one arm harvests about", ["19 fruits/h", "155 fruits/h", "1,000 fruits/h", "3,600 fruits/h"], 1]
+  ["At an average cycle time of 18.88 s and 81% success, one arm harvests about", ["19 fruits/h", "155 fruits/h", "1,000 fruits/h", "3,600 fruits/h"], 1],
+  ["AGMARK certification in India is backed by the", ["Food Safety Act 2006", "Agricultural Produce (Grading and Marking) Act, 1937", "Seeds Act 1966", "Essential Commodities Act 1955"], 1],
+  ["Separating produce into single items so that each can be inspected is called", ["singulation", "threshing", "blending", "curing"], 0],
+  ["Which part of a grading line pushes an item into its outlet?", ["Camera", "Ejector", "Hopper", "Roller"], 1],
+  ["Defects invisible to the human eye can be detected by imaging in the", ["audible range", "near-infrared and ultraviolet", "microwave oven", "radio band only"], 1],
+  ["At 0.2 mm per pixel, a fruit 310 pixels wide measures", ["31 mm", "62 mm", "155 mm", "0.62 mm"], 1],
+  ["A 1.6% error in measured diameter causes an error in estimated mass of about", ["0.5%", "1.6%", "5%", "16%"], 2],
+  ["A 4-lane grader with 10 fruits per second per lane handles per hour", ["3,600", "36,000", "144,000", "1,440"], 2],
+  ["In a multi-class confusion matrix, correct predictions lie", ["in the first row", "on the diagonal", "in the last column", "outside the table"], 1],
+  ["In the tomato grading example, most size-grading errors occurred", ["between neighbouring grades", "between Large and Process", "only in Reject", "never"], 0],
+  ["Optical colour sorters remove bad grains using", ["magnets", "air jets", "water baths", "sieves only"], 1],
+  ["Internal insect infestation of seeds is generally detectable in the", ["visible range", "near-infrared range", "audible range", "X-ray only"], 1],
+  ["A sorter fed 4 t/h with 3% bad grain rejects 95% of bad and 1.5% of good grain. The bad-grain share in the accepted rice is about", ["3%", "1.5%", "0.16%", "0%"], 2]
 ]

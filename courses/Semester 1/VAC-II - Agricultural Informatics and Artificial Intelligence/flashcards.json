@@ -205,5 +205,13 @@
   ["Why automate weeding and harvesting", "Labour shortage, herbicide resistance and environment, few herbicides for specialty crops, high cost of hand picking."],
   ["Steps of a harvesting robot", "Detect (ripeness) → localise in 3D → plan arm path → grasp → detach → place."],
   ["Harvesting robot performance", "Bac et al. 2014: harvest success 66%, cycle 33 s, none of 50 commercial. 2014–2021: ~81%, ~19 s (Oliveira et al., 2021)."],
-  ["Directions for harvesting robots", "Simplify the task (plant training), enhance the robot, define and measure performance, consider practical requirements (Bac et al., 2014)."]
+  ["Directions for harvesting robots", "Simplify the task (plant training), enhance the robot, define and measure performance, consider practical requirements (Bac et al., 2014)."],
+  ["Why grade produce", "Better prices, standard trade, fewer losses, uniform raw material for processing, food safety."],
+  ["AGMARK", "Third-party quality certification mark; Agricultural Produce (Grading and Marking) Act, 1937 (amended 1986); DMI; export and domestic trade."],
+  ["In-line vision grading line", "Feed and singulate → image (colour + NIR, several sides) → analyse (size, colour, defects, AI) → decide grade → eject at the right outlet."],
+  ["Features measured by vision graders", "Size and shape (pixels × mm/pixel), colour (ripeness), external defects (CNN), internal quality (NIR, hyperspectral)."],
+  ["Size-to-mass error", "Mass ∝ diameter³: a 1.6% diameter error gives ~5% mass error (62 mm → 125 g; 63 mm → 131 g)."],
+  ["Multi-class confusion matrix", "True vs predicted classes; diagonal = correct; grading errors cluster between neighbouring grades."],
+  ["Optical colour sorter", "Grains fall past cameras; off-colour grains blown out by air jets; visible light for discoloration, NIR for internal infestation."],
+  ["AI in food processing", "Raw-material grading, foreign-object detection, process colour control, packaging checks, demand/shelf-life forecasts, predictive maintenance."]
 ]

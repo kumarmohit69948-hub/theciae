@@ -322,5 +322,17 @@
   ["In the tomato grading example, most size-grading errors occurred", ["between neighbouring grades", "between Large and Process", "only in Reject", "never"], 0],
   ["Optical colour sorters remove bad grains using", ["magnets", "air jets", "water baths", "sieves only"], 1],
   ["Internal insect infestation of seeds is generally detectable in the", ["visible range", "near-infrared range", "audible range", "X-ray only"], 1],
-  ["A sorter fed 4 t/h with 3% bad grain rejects 95% of bad and 1.5% of good grain. The bad-grain share in the accepted rice is about", ["3%", "1.5%", "0.16%", "0%"], 2]
+  ["A sorter fed 4 t/h with 3% bad grain rejects 95% of bad and 1.5% of good grain. The bad-grain share in the accepted rice is about", ["3%", "1.5%", "0.16%", "0%"], 2],
+  ["The Digital India programme was launched on", ["15 August 2014", "1 July 2015", "26 January 2017", "2 September 2024"], 1],
+  ["Which is NOT one of the three vision areas of Digital India?", ["Digital infrastructure as a utility to every citizen", "Governance and services on demand", "Digital empowerment of citizens", "Free smartphones for every farmer"], 3],
+  ["BharatNet provides", ["satellite TV to villages", "optical-fibre connectivity to gram panchayats", "free electricity", "crop insurance"], 1],
+  ["About what share of India’s gram panchayats had been made online under BharatNet Phases I and II?", ["25%", "50%", "84%", "100%"], 2],
+  ["The National Broadband Mission 2.0 targets reliable fibre connectivity by 2030 in about", ["42,000 villages", "2.7 lakh villages", "10 lakh villages", "2 crore villages"], 1],
+  ["The Soil Health Card scheme was launched in 2015 at", ["Pune", "Suratgarh, Rajasthan", "New Delhi", "Nagpur"], 1],
+  ["The Digital Agriculture Mission approved in September 2024 has an outlay of", ["₹281.7 crore", "₹2,817 crore", "₹28,170 crore", "₹2.8 lakh crore"], 1],
+  ["Which is one of the three foundational registries of AgriStack?", ["Crop Sown Registry", "Vehicle Registry", "Voter Registry", "Patent Registry"], 0],
+  ["The Krishi Decision Support System is mainly a", ["call centre", "geospatial system unifying remote-sensing data on crops, soil, weather and water", "fertiliser subsidy", "tractor database"], 1],
+  ["In e-NAM, quality testing of a lot before bidding is called", ["assaying", "winnowing", "gate entry", "e-payment"], 0],
+  ["In the e-NAM simulation, the gain to farmers was largest when", ["no outside traders bid", "many outside traders bid and transport was cheap", "only local traders bid", "lots were not assayed"], 1],
+  ["The DPDP Act was enacted by Parliament on", ["11 August 2023", "1 July 2015", "14 April 2016", "2 September 2024"], 0]
 ]

@@ -173,5 +173,13 @@
   ["Edge vs cloud computing", "Edge: on or near the device — fast, less data sent, works offline. Cloud: remote data centres — big storage, heavy analytics."],
   ["Sensor-based irrigation trigger", "TAW = 1000(θFC − θWP)Zr; RAW = p·TAW; trigger θ = θFC − RAW/(1000 Zr). 0.30/0.14/0.6 m/p = 0.5 → 0.22."],
   ["Cleaning sensor data", "Reject missing messages, out-of-range spikes and stuck runs; tune rules so genuine readings are not discarded."],
-  ["IoT and big-data use cases", "Irrigation, disease forecasting, greenhouses, livestock wearables, storage and cold chain, machinery and yield, remote sensing, markets."]
+  ["IoT and big-data use cases", "Irrigation, disease forecasting, greenhouses, livestock wearables, storage and cold chain, machinery and yield, remote sensing, markets."],
+  ["Automation vs autonomy", "Automation repeats programmed actions; autonomy senses, perceives, decides and acts towards a goal in a changing environment, under supervision."],
+  ["Levels of automation (teaching scale)", "Manual → assisted → partially automated → supervised autonomy → full autonomy; safety: ISO 18497-1:2024."],
+  ["Confusion matrix and metrics", "TP, FP, FN, TN. Precision = TP/(TP+FP); recall = TP/(TP+FN); F1 = 2PR/(P+R); accuracy misleads for rare events."],
+  ["Autonomous field robot components", "RTK-GNSS + IMU (localisation), cameras/LiDAR + AI (perception), path planning, control, communication, safety."],
+  ["Precision livestock farming", "Real-time automatic monitoring of health, welfare, yield and environment that warns the farmer to act (Berckmans, 2014)."],
+  ["Automatic milking systems", "On the market since the 1990s; up to +12% milk, −18% labour, cows choose milking time; benefits need voluntary visits."],
+  ["Heat detection from activity", "Oestrous cycle 18–24 days; cows ~2.75–4× more active in heat; alert when steps ≫ own 7-day average; herd context cuts false alarms."],
+  ["Building a machine-learning model", "Define the task → collect and label data → split into training and test sets → train → evaluate on unseen test data → deploy, monitor, retrain."]
 ]

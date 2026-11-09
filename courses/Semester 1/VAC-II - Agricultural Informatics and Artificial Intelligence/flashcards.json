@@ -229,5 +229,13 @@
   ["Unique Farmer ID and UFSI", "UFID: random, unique, authenticates, no transaction data. UFSI: like UPI for agri data; federated with State FSIs."],
   ["I-Box and ADEx", "I-Box: sandbox to test innovations against principles and AI ethics. ADEx: regulated Agri Data Exchange."],
   ["AgriStack progress (2025)", "7.63 crore Farmer IDs of 11 crore target (1.93 crore women); Digital Crop Survey 23.5 crore plots in 492 districts."],
-  ["AI services on digital foundation", "Kisan e-Mitra (2023, 93 lakh queries), NPSS, AI monsoon-onset forecasts (3.88 crore farmers), Bharat-VISTAAR (Budget 2026–27)."]
+  ["AI services on digital foundation", "Kisan e-Mitra (2023, 93 lakh queries), NPSS, AI monsoon-onset forecasts (3.88 crore farmers), Bharat-VISTAAR (Budget 2026–27)."],
+  ["Judging an agri-tech case study", "Problem, technology, who reported, how measured (comparison, seasons), who pays, can it scale."],
+  ["ICRISAT–Microsoft Sowing App", "2016 groundnut pilot, Devanakonda (AP): ML + weather data, 10 SMS advisories in Telugu; 30% higher average yield/ha reported."],
+  ["Saagu Baagu", "Telangana (Khammam) AI4AI pilot, 7,000+ chilli farmers: +21% yield, −9% pesticide, −5% fertiliser, +8% price (WEF, 2024)."],
+  ["Namo Drone Didi", "₹1,261 crore, 15,000 drones for women SHGs; 80% up to ₹8 lakh; 1 acre in 7–8 min; 1,094 distributed (500 under scheme)."],
+  ["Agri-startup support", "RKVY Innovation and Agri-Entrepreneurship: 2,096 start-ups, ₹168.14 crore; ₹5 lakh pre-seed, ₹25 lakh seed."],
+  ["Barriers to digital automation", "FAO (2022): low digital literacy, poor connectivity and electricity, financial constraints for small producers."],
+  ["NPV and payback", "NPV = −investment + Σ cash/(1 + r)ᵗ; annuity factor 3.791 (5 yr, 10%); payback = investment ÷ yearly cash."],
+  ["Monte Carlo business case", "Repeat NPV with random demand, fees and costs; drone pays off in 52% of futures unsubsidised vs 98% with subsidy."]
 ]

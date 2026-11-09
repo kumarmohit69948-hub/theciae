@@ -213,5 +213,13 @@
   ["Size-to-mass error", "Mass ∝ diameter³: a 1.6% diameter error gives ~5% mass error (62 mm → 125 g; 63 mm → 131 g)."],
   ["Multi-class confusion matrix", "True vs predicted classes; diagonal = correct; grading errors cluster between neighbouring grades."],
   ["Optical colour sorter", "Grains fall past cameras; off-colour grains blown out by air jets; visible light for discoloration, NIR for internal infestation."],
-  ["AI in food processing", "Raw-material grading, foreign-object detection, process colour control, packaging checks, demand/shelf-life forecasts, predictive maintenance."]
+  ["AI in food processing", "Raw-material grading, foreign-object detection, process colour control, packaging checks, demand/shelf-life forecasts, predictive maintenance."],
+  ["Digital India", "Launched 1 July 2015; vision: digitally empowered society and knowledge economy; areas: infrastructure as utility, services on demand, digital empowerment."],
+  ["Digital public infrastructure", "Shared identity (Aadhaar), bank accounts and payments, service centres, connectivity and literacy; agriculture builds AgriStack on top."],
+  ["BharatNet and NBM 2.0", "~2.14 of 2.56 lakh gram panchayats online (Phases I–II); NBM 2.0 (2025): fibre in 2.7 lakh villages, 100 Mbps by 2030."],
+  ["Digital-agriculture timeline", "KCC 2004; Soil Health Card 2015; PMFBY and e-NAM 2016; PM-KISAN 2019; drone SOPs 2021; YES-TECH 2023; DAM and NPSS 2024."],
+  ["Digital Agriculture Mission", "Approved 2 Sep 2024, ₹2,817 crore; DPIs: AgriStack, Krishi DSS, soil profile maps; plus Digital General Crop Estimation Survey."],
+  ["AgriStack registries", "Farmers’ Registry (Farmer ID), geo-referenced village maps, Crop Sown Registry (Digital Crop Survey); built by States."],
+  ["e-NAM trade cycle", "Gate entry → lot ID → assaying → online bidding → sale → e-payment; inter-state bidding; 12 languages; 1.80 crore farmers (2026)."],
+  ["DPDP Act 2023", "Enacted 11 Aug 2023; Rules notified Nov 2025; consent, purpose limitation, minimisation, accuracy, storage limit, security, accountability."]
 ]

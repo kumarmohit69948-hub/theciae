@@ -226,5 +226,17 @@
   ["The two requirements of a good control strategy are that it", ["is fast and cheap", "causes motion and is systematic", "uses heuristics and graphs", "is forward and backward"], 1],
   ["A strategy that never reconsiders a rule once applied is", ["tentative", "irrevocable", "backtracking", "graph search"], 1],
   ["In the water-jug problem with 4-L and 3-L cans, pouring the full 4-L can into the empty 3-L can gives", ["(0, 3)", "(1, 3)", "(4, 0)", "(3, 1)"], 1],
-  ["Breadth-first control guarantees", ["the fewest states expanded", "a solution with the fewest steps", "no memory use", "random order"], 1]
+  ["Breadth-first control guarantees", ["the fewest states expanded", "a solution with the fewest steps", "no memory use", "random order"], 1],
+  ["The frontier (open list) contains", ["all states in the problem", "generated but not yet expanded nodes", "only goal states", "expanded nodes"], 1],
+  ["Breadth-first search uses which data structure for its frontier?", ["Stack (LIFO)", "Queue (FIFO)", "Priority queue by heuristic", "Hash table only"], 1],
+  ["Depth-first search uses which data structure for its frontier?", ["Stack (LIFO)", "Queue (FIFO)", "Sorted list", "Tree only"], 0],
+  ["The space complexity of breadth-first search is", ["O(b·m)", "O(b^d)", "O(d)", "O(1)"], 1],
+  ["The space complexity of depth-first search is", ["O(b·m)", "O(b^d)", "O(b^m)", "O(d²)"], 0],
+  ["Breadth-first search is optimal when", ["the tree is infinite", "all step costs are equal", "a heuristic is used", "the goal is deep"], 1],
+  ["Which search may follow an infinite path and never return?", ["Breadth-first search", "Uniform-cost search", "Depth-first search", "Iterative deepening"], 2],
+  ["Iterative deepening search combines", ["the memory of BFS and the speed of DFS", "the memory of DFS and the guarantees of BFS", "heuristics and costs", "two goals"], 1],
+  ["The search that expands the node with the lowest path cost is", ["depth-first", "breadth-first", "uniform-cost", "depth-limited"], 2],
+  ["With b = 10, how many nodes does BFS generate up to depth 4?", ["40", "1,000", "11,111", "1,000,000"], 2],
+  ["In the farm road example, BFS found S → B → G and DFS found", ["S → B → G", "S → A → C → D → E → G", "no path", "S → G"], 1],
+  ["\"Flood fill\" for counting fields in a classified image is an application of", ["BFS or DFS", "linear programming", "regression", "certainty factors"], 0]
 ]

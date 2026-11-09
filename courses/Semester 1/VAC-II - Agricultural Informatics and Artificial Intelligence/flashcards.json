@@ -149,5 +149,13 @@
   ["State-space formulation", "States, initial state, operators, goal test, path cost."],
   ["Production system", "Global database + production rules + control system (decides which rule next, when to stop)."],
   ["Control-strategy requirements", "Must cause motion and be systematic (no wandering, no revisiting)."],
-  ["Types of control strategy", "Forward/backward; irrevocable vs tentative (backtracking, graph search); blind vs heuristic; conflict resolution."]
+  ["Types of control strategy", "Forward/backward; irrevocable vs tentative (backtracking, graph search); blind vs heuristic; conflict resolution."],
+  ["Search vocabulary", "Search tree; expanding a node; frontier (open list); explored set (closed list); b, d, m."],
+  ["Evaluating a search strategy", "Completeness, optimality, time complexity, space complexity."],
+  ["Breadth-first search", "FIFO queue, level by level; complete; optimal for equal costs; time and space O(b^d)."],
+  ["Depth-first search", "LIFO stack, deepest first; space O(b·m); not optimal; incomplete with infinite paths or loops."],
+  ["Depth-limited and iterative deepening", "DLS caps depth ℓ; IDS repeats DLS with ℓ = 0, 1, 2…: complete, optimal (equal costs), space O(b·d)."],
+  ["Uniform-cost and bidirectional search", "UCS expands lowest path cost (Dijkstra-like); bidirectional meets in the middle, O(b^(d/2))."],
+  ["BFS memory growth", "b = 10: depth 6 ≈ 1.1 million nodes (1.1 GB at 1 KB/node); depth 10 ≈ 11 billion (11 TB)."],
+  ["Search in agriculture", "Robot and machine routes, flood fill to count fields or patches, diagnosis, scheduling."]
 ]

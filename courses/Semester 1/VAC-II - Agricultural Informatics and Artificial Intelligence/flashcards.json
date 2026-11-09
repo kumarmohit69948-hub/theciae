@@ -189,5 +189,13 @@
   ["EIL and ETL", "EIL: loss = control cost. ETL: start control before EIL. Pink bollworm: 8 moths/trap for 3 consecutive days (ICAR-CICR, 2019)."],
   ["Spot and patch spraying", "Sensors/classifiers + decision algorithm + section or single-nozzle sprayer; savings ≥50% (patch), up to 99% (spot)."],
   ["PWM variable-rate spraying", "Solenoid valve pulsed on/off; duty cycle sets flow; canopy sensors adapt each nozzle to tree size (Chen et al., 2012)."],
-  ["Drone spraying in India", "SOPs for pesticide and nutrient application (Dec 2021): permissions, registration, pilot certification, insurance, weather; crop-specific SOPs (Apr 2023)."]
+  ["Drone spraying in India", "SOPs for pesticide and nutrient application (Dec 2021): permissions, registration, pilot certification, insurance, weather; crop-specific SOPs (Apr 2023)."],
+  ["Precision agriculture cycle", "Collect data → analyse and map → decide (prescription) → apply variable rate → evaluate with the next yield map."],
+  ["Yield monitor components", "Mass-flow sensor (impact plate on clean-grain elevator), moisture sensor, ground speed, header-height sensor, GNSS, console."],
+  ["Yield calculation", "Yield (t/ha) = mass flow (kg/s) × 10 ÷ [speed (m/s) × width (m)]; Y₁₄ = Y × (100 − M) ÷ 86."],
+  ["Yield data errors", "Flow delay (e.g. ~15 s), filling/emptying, narrow passes, surges, GNSS errors; 10–50% of raw readings may need removal."],
+  ["Inverse distance weighting", "ẑ = Σwᵢzᵢ ÷ Σwᵢ with wᵢ = 1/dᵢᵖ (p = 2); kriging uses spatial correlation instead (Shepard, 1968)."],
+  ["Management zones", "Areas of similar yield potential found by clustering multi-year yield maps, soil EC, elevation; basis for prescription maps."],
+  ["ML yield prediction", "Inputs mostly temperature, rainfall, soil; ANN most used; CNN and LSTM in deep learning; test on unseen seasons (MAE, RMSE, MAPE)."],
+  ["FASAL and YES-TECH", "FASAL: MNCFC remote-sensing crop forecasts; YES-TECH: PMFBY yield estimation, paddy and wheat from kharif 2023, 30% weight (up to 50%)."]
 ]

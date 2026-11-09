@@ -286,5 +286,17 @@
   ["Separating green plants from bare soil and residues is called", ["green-on-green detection", "green-on-brown detection", "segmentation of roots", "NDVI masking"], 1],
   ["Patch spraying has shown herbicide savings of at least", ["5%", "20%", "50%", "95%"], 2],
   ["A PWM nozzle with 0.8 L/min full flow, 0.5 m spacing and 6 km/h speed applies 160 L/ha; at 50% duty cycle it applies about", ["40 L/ha", "80 L/ha", "160 L/ha", "320 L/ha"], 1],
-  ["India’s SOPs for using drones to apply pesticides and nutrients were first released in", ["2014", "2018", "December 2021", "2025"], 2]
+  ["India’s SOPs for using drones to apply pesticides and nutrients were first released in", ["2014", "2018", "December 2021", "2025"], 2],
+  ["Precision agriculture aims mainly to", ["use the same input rate everywhere", "manage inputs according to variability within fields", "replace all farm labour", "increase field size"], 1],
+  ["The most common yield-monitor mass-flow sensor measures", ["the colour of grain", "the force of grain striking a plate at the top of the clean-grain elevator", "the sound of the engine", "the weight of the whole combine"], 1],
+  ["Which sensor starts and stops yield logging?", ["Moisture sensor", "Header-height sensor", "Impact plate", "Thermal camera"], 1],
+  ["A mass flow of 8.0 kg/s at 1.39 m/s with a 6 m header gives a wet yield of about", ["0.96 t/ha", "6.0 t/ha", "9.6 t/ha", "96 t/ha"], 2],
+  ["Converting 9.60 t/ha at 18% moisture to 14% moisture gives", ["8.40 t/ha", "9.15 t/ha", "10.07 t/ha", "9.60 t/ha"], 1],
+  ["Sudduth and Drummond (2007) report that raw yield data contain significant errors in about", ["1% of readings", "10–50% of readings", "80–90% of readings", "no readings"], 1],
+  ["The flow-delay error means that a reading is logged", ["behind the true position", "ahead of where the grain was cut", "at the field centre", "twice"], 1],
+  ["In inverse distance weighting, each reading’s weight is", ["proportional to its distance", "1 ÷ dᵖ", "equal for all readings", "random"], 1],
+  ["Management zones are usually found by", ["supervised classification of labelled images", "unsupervised clustering of yield and soil layers", "manual counting of plants", "reinforcement learning"], 1],
+  ["In the review by van Klompenburg et al. (2020), the most applied machine-learning algorithm for yield prediction was", ["decision trees", "artificial neural networks", "k-means", "linear programming"], 1],
+  ["MAPE stands for", ["maximum absolute prediction error", "mean absolute percentage error", "mean average plot estimate", "model accuracy percentage estimate"], 1],
+  ["YES-TECH under PMFBY was launched for paddy and wheat from", ["Kharif 2016", "Kharif 2023", "Rabi 2019", "Kharif 2026"], 1]
 ]

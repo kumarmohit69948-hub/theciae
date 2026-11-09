@@ -165,5 +165,13 @@
   ["Admissible vs consistent heuristic", "Admissible: h(n) ≤ true cost h*(n). Consistent: h(n) ≤ c(n, n′) + h(n′) for every edge. Consistent implies admissible."],
   ["Dominance and effective branching factor", "h₂ dominates h₁ if h₂(n) ≥ h₁(n) and both are admissible → fewer expansions. b*: N + 1 = 1 + b* + … + (b*)ᵈ; nearer 1 is better."],
   ["Variants of heuristic search", "Weighted A* (cost ≤ w × optimal); IDA* (linear memory); beam search; hill climbing (local maxima, plateaus, ridges); AO* for AND–OR graphs."],
-  ["Heuristic search in agriculture", "Robot, tractor and drone route planning on field maps; farm-to-mandi routing with straight-line distance; scheduling field operations."]
+  ["Heuristic search in agriculture", "Robot, tractor and drone route planning on field maps; farm-to-mandi routing with straight-line distance; scheduling field operations."],
+  ["Big data and its Vs", "Volume, velocity, variety (original 3V) + veracity and value; needs special technology and analytics to yield value (De Mauro et al., 2016)."],
+  ["IoT in agriculture", "Objects that sense, communicate and act; combines sensor networks, RFID, cloud, middleware and apps (Elijah et al., 2018)."],
+  ["IoT architecture layers", "Perception (sensors, actuators) → network (radios, gateways) → processing (edge, cloud, analytics) → application (apps, alerts, control)."],
+  ["Short-range radios vs LPWAN", "Wi-Fi ≤ 600 Mbps, BLE 2 Mbps, ZigBee 250 kbps: short range (~100 m). LoRaWAN 0.3–50 kbps, Sigfox 100/600 bps, NB-IoT 200 kbps: long range, low power."],
+  ["Edge vs cloud computing", "Edge: on or near the device — fast, less data sent, works offline. Cloud: remote data centres — big storage, heavy analytics."],
+  ["Sensor-based irrigation trigger", "TAW = 1000(θFC − θWP)Zr; RAW = p·TAW; trigger θ = θFC − RAW/(1000 Zr). 0.30/0.14/0.6 m/p = 0.5 → 0.22."],
+  ["Cleaning sensor data", "Reject missing messages, out-of-range spikes and stuck runs; tune rules so genuine readings are not discarded."],
+  ["IoT and big-data use cases", "Irrigation, disease forecasting, greenhouses, livestock wearables, storage and cold chain, machinery and yield, remote sensing, markets."]
 ]

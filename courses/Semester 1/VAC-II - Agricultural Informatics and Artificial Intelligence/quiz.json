@@ -250,5 +250,17 @@
   ["Straight-line distance is admissible for road routing because", ["roads are always straight", "no road between two places is shorter than the straight line", "GPS is always accurate", "it is always zero"], 1],
   ["For the 8-puzzle, the Manhattan-distance heuristic h₂ compared with the misplaced-tiles heuristic h₁", ["is inadmissible", "dominates h₁ and expands fewer nodes", "expands more nodes", "is identical to h₁"], 1],
   ["The main practical drawback of A* is that it", ["is never optimal", "keeps all generated nodes in memory", "cannot use heuristics", "works only on trees"], 1],
-  ["Hill climbing can fail to find the best solution because of", ["local maxima, plateaus and ridges", "too much memory use", "admissible heuristics", "FIFO queues"], 0]
+  ["Hill climbing can fail to find the best solution because of", ["local maxima, plateaus and ridges", "too much memory use", "admissible heuristics", "FIFO queues"], 0],
+  ["The three original Vs of big data are", ["volume, velocity and variety", "value, veracity and volume", "velocity, validity and visibility", "volume, variability and value"], 0],
+  ["The veracity of data refers to its", ["size", "speed of arrival", "accuracy and trustworthiness", "number of formats"], 2],
+  ["In the layered IoT architecture, soil-moisture sensors and irrigation valves belong to the", ["application layer", "perception (device) layer", "network layer", "business layer"], 1],
+  ["Which technology gives long range at a low data rate and low power?", ["Wi-Fi", "Bluetooth", "LoRaWAN", "Ethernet"], 2],
+  ["The maximum data rate of ZigBee is about", ["250 kbps", "50 Mbps", "600 Mbps", "100 bps"], 0],
+  ["In the review of IoT irrigation systems by García et al. (2020), the most used communication technology was", ["LoRa", "Wi-Fi", "Sigfox", "Z-Wave"], 1],
+  ["In India, LoRaWAN operates in the", ["865–867 MHz band", "5.8 GHz band", "2.4 GHz band only", "60 GHz band"], 0],
+  ["With θFC = 0.30, θWP = 0.14, a 0.6 m root zone and p = 0.5, the readily available water is", ["96 mm", "48 mm", "24 mm", "160 mm"], 1],
+  ["A soil-moisture probe that reports exactly the same value for many hours most likely", ["is stuck or faulty", "shows heavy rain", "shows perfect irrigation", "has a faster radio"], 0],
+  ["Processing data on a gateway near the field rather than in a distant data centre is called", ["cloud computing", "edge computing", "batch processing", "data warehousing"], 1],
+  ["Wolfert et al. (2017) identified which issue as a research priority for big data in smart farming?", ["Governance of data and data sharing", "Shortage of sensors", "Too few satellites", "Slow tractors"], 0],
+  ["In the worked example, one 20 ha drone survey (about 2.7 GB) equals roughly how many years of data from 40 soil sensors?", ["1 year", "8 years", "80 years", "800 years"], 2]
 ]
